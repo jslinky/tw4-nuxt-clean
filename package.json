@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:scss": "mkdir -p assets/css && sass assets/scss:assets/css --no-source-map --load-path=node_modules",
+    "prepare:css": "npm run build:scss",
+    "build": "npm run prepare:css && nuxt build",
+    "dev": "npm run prepare:css && nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.0-alpha.9",
+    "nuxt": "^3.10.3",
+    "open-props": "^1.6.21",
+    "open-props-scss": "^0.7.1",
+    "sass": "^1.72.0",
+    "tailwindcss": "^4.0.0-alpha.9",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  }
+}

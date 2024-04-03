@@ -1,0 +1,35 @@
+$op-color-oklch-hue: (
+    'op-hue-red': 25,
+    'op-hue-pink': 350,
+    'op-hue-purple': 310,
+    'op-hue-violet': 290,
+    'op-hue-indigo': 270,
+    'op-hue-blue': 240,
+    'op-hue-cyan': 210,
+    'op-hue-teal': 185,
+    'op-hue-green': 145,
+    'op-hue-lime': 125,
+    'op-hue-yellow': 100,
+    'op-hue-orange': 75,
+);
+
+$op-color-oklch-dynamic: (
+    'op-color-0': oklch(99% .03 var(--color-hue, 0)),
+    'op-color-1': oklch(95% .06 var(--color-hue, 0)),
+    'op-color-2': oklch(88% .12 var(--color-hue, 0)),
+    'op-color-3': oklch(80% .14 var(--color-hue, 0)),
+    'op-color-4': oklch(74% .16 var(--color-hue, 0)),
+    'op-color-5': oklch(68% .19 var(--color-hue, 0)),
+    'op-color-6': oklch(63% .20 var(--color-hue, 0)),
+    'op-color-7': oklch(58% .21 var(--color-hue, 0)),
+    'op-color-8': oklch(53% .20 var(--color-hue, 0)),
+    'op-color-9': oklch(49% .19 var(--color-hue, 0)),
+    'op-color-10': oklch(42% .17 var(--color-hue, 0)),
+    'op-color-11': oklch(35% .15 var(--color-hue, 0)),
+    'op-color-12': oklch(27% .12 var(--color-hue, 0)),
+    'op-color-13': oklch(20% .09 var(--color-hue, 0)),
+    'op-color-14': oklch(14% .07 var(--color-hue, 0)),
+    'op-color-15': oklch(11% .05 var(--color-hue, 0)),
+    'op-color-bright': oklch(65% .3 var(--color-hue, 0)),
+);
+

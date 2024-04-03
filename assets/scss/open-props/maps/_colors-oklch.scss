@@ -1,0 +1,50 @@
+@use 'open-props-scss/colors-oklch' as op;
+
+$op-red: (
+    'op-red-0-oklch': op.$red-0,
+    'op-red-1-oklch': op.$red-1,
+    'op-red-2-oklch': op.$red-2,
+    'op-red-3-oklch': op.$red-3,
+    'op-red-4-oklch': op.$red-4,
+    'op-red-5-oklch': op.$red-5,
+    'op-red-6-oklch': op.$red-6,
+    'op-red-7-oklch': op.$red-7,
+    'op-red-8-oklch': op.$red-8,
+    'op-red-9-oklch': op.$red-9,
+    'op-red-10-oklch': op.$red-10,
+    'op-red-11-oklch': op.$red-11,
+    'op-red-12-oklch': op.$red-12
+);
+$op-pink: (
+    'op-pink-0-oklch': op.$pink-0
+);
+$op-purple: (
+    'op-purple-0-oklch': op.$purple-0
+);
+$op-violet: (
+    'op-violet-0-oklch': op.$violet-0
+);
+$op-indigo: (
+    'op-indigo-0-oklch': op.$indigo-0
+);
+$op-blue: (
+    'op-blue-0-oklch': op.$blue-0
+);
+$op-cyan: (
+    'op-cyan-0-oklch': op.$cyan-0
+);
+$op-teal: (
+    'op-teal-0-oklch': op.$teal-0
+);
+$op-green: (
+    'op-green-0-oklch': op.$green-0
+);
+$op-lime: (
+    'op-lime-0-oklch': op.$lime-0
+);
+$op-yellow: (
+    'op-yellow-0-oklch': op.$yellow-0
+);
+$op-orange: (
+    'op-orange-0-oklch': op.$orange-0
+);

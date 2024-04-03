@@ -1,0 +1,30 @@
+@use 'open-props-scss' as op;
+
+$op-border-size: (
+    'op-border-size-1': op.$border-size-1,
+    'op-border-size-2': op.$border-size-2,
+    'op-border-size-3': op.$border-size-3,
+    'op-border-size-4': op.$border-size-4,
+    'op-border-size-5': op.$border-size-5,
+);
+
+$op-border-radius: (
+    'op-radius-1': op.$radius-1,
+    'op-radius-2': op.$radius-2,
+    'op-radius-3': op.$radius-3,
+    'op-radius-4': op.$radius-4,
+    'op-radius-5': op.$radius-5,
+    'op-radius-6': op.$radius-6,
+    'op-radius-round': op.$radius-round,
+    'op-radius-blob-1': op.$radius-blob-1,
+    'op-radius-blob-2': op.$radius-blob-2,
+    'op-radius-blob-3': op.$radius-blob-3,
+    'op-radius-blob-4': op.$radius-blob-4,
+    'op-radius-blob-5': op.$radius-blob-5,
+    'op-radius-conditional-1': op.$radius-conditional-1,
+    'op-radius-conditional-2': op.$radius-conditional-2,
+    'op-radius-conditional-3': op.$radius-conditional-3,
+    'op-radius-conditional-4': op.$radius-conditional-4,
+    'op-radius-conditional-5': op.$radius-conditional-5,
+    'op-radius-conditional-6': op.$radius-conditional-6,
+);

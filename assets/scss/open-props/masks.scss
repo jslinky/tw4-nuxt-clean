@@ -1,0 +1,65 @@
+// @use 'open-props-scss' as op;
+
+// $op-masks-edges: (
+//     'op-mask-edge-scoop-bottom':op.$mask-edge-scoop-bottom,
+//     'op-mask-edge-scoop-top': op.$mask-edge-scoop-top,
+//     'op-mask-edge-scoop-vertical': op.$mask-edge-scoop-vertical,
+//     'op-mask-edge-scoop-left': op.$mask-edge-scoop-left,
+//     'op-mask-edge-scoop-right': op.$mask-edge-scoop-right,
+//     'op-mask-edge-scoop-horizontal': op.$mask-edge-scoop-horizontal,
+//     'op-mask-edge-scalloped': op.$mask-edge-scalloped,
+//     'op-mask-edge-scalloped-bottom':op.$mask-edge-scalloped-bottom,
+//     'op-mask-edge-scalloped-top':op.$mask-edge-scalloped-top,
+//     'op-mask-edge-scalloped-vertical':op.$mask-edge-scalloped-vertical,
+//     'op-mask-edge-scalloped-left':op.$mask-edge-scalloped-left,
+//     'op-mask-edge-scalloped-right':op.$mask-edge-scalloped-right,
+//     'op-mask-edge-scalloped-horizontal':op.$mask-edge-scalloped-horizontal,
+//     'op-mask-edge-drip-bottom':op.$mask-edge-drip-bottom,
+//     'op-mask-edge-drip-top':op.$mask-edge-drip-top,
+//     'op-mask-edge-drip-vertical':op.$mask-edge-drip-vertical,
+//     'op-mask-edge-drip-left':op.$mask-edge-drip-left,
+//     'op-mask-edge-drip-right':op.$mask-edge-drip-right,
+//     'op-mask-edge-drip-horizontal':op.$mask-edge-drip-horizontal,
+//     'op-mask-edge-zig-zag-top': op.$mask-edge-zig-zag-top,
+//     'op-mask-edge-zig-zag-bottom': op.$mask-edge-zig-zag-bottom,
+//     'op-mask-edge-zig-zag-left': op.$mask-edge-zig-zag-left,
+//     'op-mask-edge-zig-zag-right': op.$mask-edge-zig-zag-right,
+//     'op-mask-edge-zig-zag-horizontal': op.$mask-edge-zig-zag-horizontal,
+//     'op-mask-edge-zig-zag-vertical': op.$mask-edge-zig-zag-vertical,
+// );
+
+// $op-masks-corner-cuts: (
+//     'op-mask-corner-cut-circles-1': op.$mask-corner-cut-circles-1,
+//     'op-mask-corner-cut-circles-2': op.$mask-corner-cut-circles-2,
+//     'op-mask-corner-cut-circles-3': op.$mask-corner-cut-circles-3,
+//     'op-mask-corner-cut-squares-1': op.$mask-corner-cut-squares-1,
+//     'op-mask-corner-cut-squares-2': op.$mask-corner-cut-squares-2,
+//     'op-mask-corner-cut-squares-3': op.$mask-corner-cut-squares-3,
+//     'op-mask-corner-cut-angles-1': op.$mask-corner-cut-angles-1,
+//     'op-mask-corner-cut-angles-2': op.$mask-corner-cut-angles-2,
+//     'op-mask-corner-cut-angles-3': op.$mask-corner-cut-angles-3,
+// );
+
+// $op-masks-edges-includes: all;
+// $op-masks-corner-cuts-includes: all;
+
+// @mixin get-masks($include-map, $prop-map) {
+//     @if(length($include-map) == 1 and $include-map == 'all') {
+//         @each $key, $val in $prop-map {
+//             --#{$key}: #{$val};
+//         }
+//     } @else if(length($include-map) > 1) {
+//         @each $entry in $include-map {
+//             @if(map-has-key($prop-map , $entry )) {
+//                 --#{$entry}: map-get($prop-map , $entry );
+//             } @else {
+//                 @warn "#{$entry} not found within #{$prop-map}";
+//             }
+//         }
+//     }
+// }
+
+// :where(html) {
+//     @include get-masks($op-masks-edges-includes, $op-masks-edges);
+//     @include get-masks($op-masks-corner-cuts-includes, $op-masks-corner-cuts);
+// }

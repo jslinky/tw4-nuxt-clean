@@ -1,0 +1,9 @@
+@use "../mixins/op-gradients" as mixins;
+@use "./maps/gradients" as gradients;
+
+
+$op-gradient-includes: '-1', '-2', '-3';
+
+:where(html) {
+    @include mixins.output-gradients($op-gradient-includes, gradients.$op-gradients);
+}

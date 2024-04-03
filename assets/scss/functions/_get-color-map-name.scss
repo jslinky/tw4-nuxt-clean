@@ -1,0 +1,88 @@
+@use "../open-props/maps/colors-hsl" as hsl;
+@use "../open-props/maps/colors-oklch" as oklch;
+
+@function getColorMapName($name, $type: 'hsl') {
+    $color-map: null;
+    @if($type == 'hsl') {
+        // Select the map based on the string parameter
+        @if $name == 'gray' {
+            $color-map: hsl.$op-gray;
+        }
+        @if $name == 'stone' {
+            $color-map: hsl.$op-stone;
+        }    
+        @if $name == 'lime' {
+            $color-map: hsl.$op-lime;
+        }        
+        @if $name == 'green' {
+            $color-map: hsl.$op-green;
+        }        
+        @if $name == 'teal' {
+            $color-map: hsl.$op-teal;
+        }        
+        @if $name == 'yellow' {
+            $color-map: hsl.$op-yellow;
+        }     
+        @if $name == 'orange' {
+            $color-map: hsl.$op-orange;
+        }        
+        @if $name == 'choco' {
+            $color-map: hsl.$op-choco;
+        }        
+        @if $name == 'brown' {
+            $color-map: hsl.$op-brown;
+        }       
+        @if $name == 'brown' {
+            $color-map: hsl.$op-brown;
+        }     
+        @if $name == 'sand' {
+            $color-map: hsl.$op-sand;
+        }          
+        @if $name == 'camo' {
+            $color-map: hsl.$op-camo;
+        }         
+        @if $name == 'jungle' {
+            $color-map: hsl.$op-jungle;
+        }        
+    } 
+    @if($type == 'oklch') {
+        @if $name == 'red' {
+            $color-map: oklch.$op-red;
+        }
+        @if $name == 'pink' {
+            $color-map: oklch.$op-pink;
+        }
+        @if $name == 'purple' {
+            $color-map: oklch.$op-purple;
+        }
+        @if $name == 'violet' {
+            $color-map: oklch.$op-violet;
+        }
+        @if $name == 'indigo' {
+            $color-map: oklch.$op-indigo;
+        }   
+        @if $name == 'blue' {
+            $color-map: oklch.$op-blue;
+        }
+        @if $name == 'cyan' {
+            $color-map: oklch.$op-cyan;
+        }
+        @if $name == 'teal' {
+            $color-map: oklch.$op-teal;
+        }
+        @if $name == 'green' {
+            $color-map: oklch.$op-green;
+        } 
+        @if $name == 'lime' {
+            $color-map: oklch.$op-lime;
+        }
+        @if $name == 'yellow' {
+            $color-map: oklch.$op-yellow;
+        }
+        @if $name == 'orange' {
+            $color-map: oklch.$op-orange;
+        }                                                                                                
+    }
+
+    @return $color-map;
+}

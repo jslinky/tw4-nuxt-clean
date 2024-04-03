@@ -1,0 +1,7 @@
+:where(html) {
+  --op-border-size-1: 1px;
+  --op-border-size-2: 2px;
+  --op-radius-6: 8rem;
+  --op-radius-blob-1: 30% 70% 70% 30%/53% 30% 70% 47%;
+  --op-radius-conditional-1: clamp(0px, (100vw - 100%) * 100000, 2px);
+}

@@ -1,0 +1,193 @@
+@use 'open-props-scss' as op;
+
+$op-gray: (
+    'op-gray-0-hsl': op.$gray-0-hsl,
+    'op-gray-1-hsl': op.$gray-1-hsl,
+    'op-gray-2-hsl': op.$gray-2-hsl,
+    'op-gray-3-hsl': op.$gray-3-hsl,
+    'op-gray-4-hsl': op.$gray-4-hsl,
+    'op-gray-5-hsl': op.$gray-5-hsl,
+    'op-gray-6-hsl': op.$gray-6-hsl,
+    'op-gray-7-hsl': op.$gray-7-hsl,
+    'op-gray-8-hsl': op.$gray-8-hsl,
+    'op-gray-9-hsl': op.$gray-9-hsl,
+    'op-gray-10-hsl': op.$gray-10-hsl,
+    'op-gray-11-hsl': op.$gray-11-hsl,
+    'op-gray-12-hsl': op.$gray-12-hsl,
+);
+
+$op-stone: (
+    'op-stone-0-hsl': op.$stone-0-hsl,
+    'op-stone-1-hsl': op.$stone-1-hsl,
+    'op-stone-2-hsl': op.$stone-2-hsl,
+    'op-stone-3-hsl': op.$stone-3-hsl,
+    'op-stone-4-hsl': op.$stone-4-hsl,
+    'op-stone-5-hsl': op.$stone-5-hsl,
+    'op-stone-6-hsl': op.$stone-6-hsl,
+    'op-stone-7-hsl': op.$stone-7-hsl,
+    'op-stone-8-hsl': op.$stone-8-hsl,
+    'op-stone-9-hsl': op.$stone-9-hsl,
+    'op-stone-10-hsl': op.$stone-10-hsl,
+    'op-stone-11-hsl': op.$stone-11-hsl,
+    'op-stone-12-hsl': op.$stone-12-hsl,
+);
+
+$op-lime: (
+    'op-lime-0-hsl': op.$lime-0-hsl,
+    'op-lime-1-hsl': op.$lime-1-hsl,
+    'op-lime-2-hsl': op.$lime-2-hsl,
+    'op-lime-3-hsl': op.$lime-3-hsl,
+    'op-lime-4-hsl': op.$lime-4-hsl,
+    'op-lime-5-hsl': op.$lime-5-hsl,
+    'op-lime-6-hsl': op.$lime-6-hsl,
+    'op-lime-7-hsl': op.$lime-7-hsl,
+    'op-lime-8-hsl': op.$lime-8-hsl,
+    'op-lime-9-hsl': op.$lime-9-hsl,
+    'op-lime-10-hsl': op.$lime-10-hsl,
+    'op-lime-11-hsl': op.$lime-11-hsl,
+    'op-lime-12-hsl': op.$lime-12-hsl,
+);
+
+$op-green: (
+    'op-green-0-hsl': op.$green-0-hsl,
+    'op-green-1-hsl': op.$green-1-hsl,
+    'op-green-2-hsl': op.$green-2-hsl,
+    'op-green-3-hsl': op.$green-3-hsl,
+    'op-green-4-hsl': op.$green-4-hsl,
+    'op-green-5-hsl': op.$green-5-hsl,
+    'op-green-6-hsl': op.$green-6-hsl,
+    'op-green-7-hsl': op.$green-7-hsl,
+    'op-green-8-hsl': op.$green-8-hsl,
+    'op-green-9-hsl': op.$green-9-hsl,
+    'op-green-10-hsl': op.$green-10-hsl,
+    'op-green-11-hsl': op.$green-11-hsl,
+    'op-green-12-hsl': op.$green-12-hsl,
+);
+
+$op-teal: (
+    'op-teal-0-hsl': op.$teal-0-hsl,
+    'op-teal-1-hsl': op.$teal-1-hsl,
+    'op-teal-2-hsl': op.$teal-2-hsl,
+    'op-teal-3-hsl': op.$teal-3-hsl,
+    'op-teal-4-hsl': op.$teal-4-hsl,
+    'op-teal-5-hsl': op.$teal-5-hsl,
+    'op-teal-6-hsl': op.$teal-6-hsl,
+    'op-teal-7-hsl': op.$teal-7-hsl,
+    'op-teal-8-hsl': op.$teal-8-hsl,
+    'op-teal-9-hsl': op.$teal-9-hsl,
+    'op-teal-10-hsl': op.$teal-10-hsl,
+    'op-teal-11-hsl': op.$teal-11-hsl,
+    'op-teal-12-hsl': op.$teal-12-hsl,
+);
+
+$op-yellow: (
+    'op-yellow-0-hsl': op.$yellow-0-hsl,
+    'op-yellow-1-hsl': op.$yellow-1-hsl,
+    'op-yellow-2-hsl': op.$yellow-2-hsl,
+    'op-yellow-3-hsl': op.$yellow-3-hsl,
+    'op-yellow-4-hsl': op.$yellow-4-hsl,
+    'op-yellow-5-hsl': op.$yellow-5-hsl,
+    'op-yellow-6-hsl': op.$yellow-6-hsl,
+    'op-yellow-7-hsl': op.$yellow-7-hsl,
+    'op-yellow-8-hsl': op.$yellow-8-hsl,
+    'op-yellow-9-hsl': op.$yellow-9-hsl,
+    'op-yellow-10-hsl': op.$yellow-10-hsl,
+    'op-yellow-11-hsl': op.$yellow-11-hsl,
+    'op-yellow-12-hsl': op.$yellow-12-hsl,
+);
+
+$op-orange: (
+    'op-orange-0-hsl': op.$orange-0-hsl,
+    'op-orange-1-hsl': op.$orange-1-hsl,
+    'op-orange-2-hsl': op.$orange-2-hsl,
+    'op-orange-3-hsl': op.$orange-3-hsl,
+    'op-orange-4-hsl': op.$orange-4-hsl,
+    'op-orange-5-hsl': op.$orange-5-hsl,
+    'op-orange-6-hsl': op.$orange-6-hsl,
+    'op-orange-7-hsl': op.$orange-7-hsl,
+    'op-orange-8-hsl': op.$orange-8-hsl,
+    'op-orange-9-hsl': op.$orange-9-hsl,
+    'op-orange-10-hsl': op.$orange-10-hsl,
+    'op-orange-11-hsl': op.$orange-11-hsl,
+    'op-orange-12-hsl': op.$orange-12-hsl,
+);
+
+$op-choco: (
+    'op-choco-0-hsl': op.$choco-0-hsl,
+    'op-choco-1-hsl': op.$choco-1-hsl,
+    'op-choco-2-hsl': op.$choco-2-hsl,
+    'op-choco-3-hsl': op.$choco-3-hsl,
+    'op-choco-4-hsl': op.$choco-4-hsl,
+    'op-choco-5-hsl': op.$choco-5-hsl,
+    'op-choco-6-hsl': op.$choco-6-hsl,
+    'op-choco-7-hsl': op.$choco-7-hsl,
+    'op-choco-8-hsl': op.$choco-8-hsl,
+    'op-choco-9-hsl': op.$choco-9-hsl,
+    'op-choco-10-hsl': op.$choco-10-hsl,
+    'op-choco-11-hsl': op.$choco-11-hsl,
+    'op-choco-12-hsl': op.$choco-12-hsl,
+);
+
+$op-brown: (
+    'op-brown-0-hsl': op.$brown-0-hsl,
+    'op-brown-1-hsl': op.$brown-1-hsl,
+    'op-brown-2-hsl': op.$brown-2-hsl,
+    'op-brown-3-hsl': op.$brown-3-hsl,
+    'op-brown-4-hsl': op.$brown-4-hsl,
+    'op-brown-5-hsl': op.$brown-5-hsl,
+    'op-brown-6-hsl': op.$brown-6-hsl,
+    'op-brown-7-hsl': op.$brown-7-hsl,
+    'op-brown-8-hsl': op.$brown-8-hsl,
+    'op-brown-9-hsl': op.$brown-9-hsl,
+    'op-brown-10-hsl': op.$brown-10-hsl,
+    'op-brown-11-hsl': op.$brown-11-hsl,
+    'op-brown-12-hsl': op.$brown-12-hsl,
+);
+
+$op-sand: (
+    'op-sand-0-hsl': op.$sand-0-hsl,
+    'op-sand-1-hsl': op.$sand-1-hsl,
+    'op-sand-2-hsl': op.$sand-2-hsl,
+    'op-sand-3-hsl': op.$sand-3-hsl,
+    'op-sand-4-hsl': op.$sand-4-hsl,
+    'op-sand-5-hsl': op.$sand-5-hsl,
+    'op-sand-6-hsl': op.$sand-6-hsl,
+    'op-sand-7-hsl': op.$sand-7-hsl,
+    'op-sand-8-hsl': op.$sand-8-hsl,
+    'op-sand-9-hsl': op.$sand-9-hsl,
+    'op-sand-10-hsl': op.$sand-10-hsl,
+    'op-sand-11-hsl': op.$sand-11-hsl,
+    'op-sand-12-hsl': op.$sand-12-hsl,
+);
+
+$op-camo: (
+    'op-camo-0-hsl': op.$camo-0-hsl,
+    'op-camo-1-hsl': op.$camo-1-hsl,
+    'op-camo-2-hsl': op.$camo-2-hsl,
+    'op-camo-3-hsl': op.$camo-3-hsl,
+    'op-camo-4-hsl': op.$camo-4-hsl,
+    'op-camo-5-hsl': op.$camo-5-hsl,
+    'op-camo-6-hsl': op.$camo-6-hsl,
+    'op-camo-7-hsl': op.$camo-7-hsl,
+    'op-camo-8-hsl': op.$camo-8-hsl,
+    'op-camo-9-hsl': op.$camo-9-hsl,
+    'op-camo-10-hsl': op.$camo-10-hsl,
+    'op-camo-11-hsl': op.$camo-11-hsl,
+    'op-camo-12-hsl': op.$camo-12-hsl,
+);
+
+$op-jungle: (
+    'op-jungle-0-hsl': op.$jungle-0-hsl,
+    'op-jungle-1-hsl': op.$jungle-1-hsl,
+    'op-jungle-2-hsl': op.$jungle-2-hsl,
+    'op-jungle-3-hsl': op.$jungle-3-hsl,
+    'op-jungle-4-hsl': op.$jungle-4-hsl,
+    'op-jungle-5-hsl': op.$jungle-5-hsl,
+    'op-jungle-6-hsl': op.$jungle-6-hsl,
+    'op-jungle-7-hsl': op.$jungle-7-hsl,
+    'op-jungle-8-hsl': op.$jungle-8-hsl,
+    'op-jungle-9-hsl': op.$jungle-9-hsl,
+    'op-jungle-10-hsl': op.$jungle-10-hsl,
+    'op-jungle-11-hsl': op.$jungle-11-hsl,
+    'op-jungle-12-hsl': op.$jungle-12-hsl,
+);

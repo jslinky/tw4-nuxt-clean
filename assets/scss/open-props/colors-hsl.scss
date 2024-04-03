@@ -1,0 +1,7 @@
+@use "../mixins/op-colors" as mixins;
+
+$op-color-hsl-includes: 'gray', 'stone' '1' 3 5, 'jungle';
+
+:where(html) {
+    @include mixins.output-colors($op-color-hsl-includes, 'hsl');
+}

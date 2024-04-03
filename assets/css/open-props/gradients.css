@@ -1,0 +1,5 @@
+:where(html) {
+  --op-gradient-1: linear-gradient(to bottom right, #1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b);
+  --op-gradient-2: linear-gradient(to bottom right, #48005c, #8300e2, #a269ff);
+  --op-gradient-3: radial-gradient(circle at top right, hsl(180, 100%, 50%), hsla(180, 100%, 50%, 0)), radial-gradient(circle at bottom left, hsl(328, 100%, 54%), hsla(328, 100%, 54%, 0));
+}
