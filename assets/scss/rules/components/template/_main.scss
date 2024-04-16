@@ -1,0 +1,6 @@
+
+@mixin output-main-area-rules() {
+    .main-area {
+        grid-area: main-area;
+    }
+}

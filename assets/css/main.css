@@ -3,100 +3,36 @@
 @import "./open-props/colors-oklch";
 @import "./open-props/borders";
 @import "./open-props/gradients";
+@import "./props/key-tokens.css";
+@import "./props/colors.css";
+@import "./props/font-size.css";
+@import "./props/font-family.css";
+@import "./props/layout.css";
+@import "./props/headings.css";
+@import "./props/space.css";
+@import "./props/wrapper.css";
+@import "./rules/headings.css";
+@import "./rules/layout.css";
+@import "./rules/wrapper.css";
+@import "./rules/components.css";
 
-@theme {
-    --font-family-display: "Satoshi", "sans-serif";
-  
-    --breakpoint-3xl: 1920px;
-    --size-*: initial;
-    --color-*: initial;
+@import "./tailwindtheme.css";
+@import "./tailwindutilities.css";
 
-    --color-neon-pink: oklch(71.7% 0.25 360);
-    --color-neon-lime: oklch(91.5% 0.258 129);
-    --color-neon-cyan: oklch(91.3% 0.139 195.8);
-    --color-black: hsl(var(--op-gray-11-hsl)); 
-    --color-red: var(--op-red-8-oklch);   
-  
-    --color-primary: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
-    --color-primary-foreground: color-mix(in oklch, var(--color-primary) 50%, black 50%);    
-
-
-
-    /* --color-primary-0: oklch(var(--primary-0-l, var(--color-0-l)) var(--primary-0-c, var(--color-0-c)) var(--primary-h));
-    --color-primary-1: oklch(var(--primary-1-l, var(--color-1-l)) var(--primary-1-c, var(--color-1-c)) var(--primary-h));
-    --color-primary-2: oklch(var(--primary-2-l, var(--color-2-l)) var(--primary-2-c, var(--color-2-c)) var(--primary-h));
-    --color-primary-3: oklch(var(--primary-3-l, var(--color-3-l)) var(--primary-3-c, var(--color-3-c)) var(--primary-h));
-    --color-primary-4: oklch(var(--primary-4-l, var(--color-4-l)) var(--primary-4-c, var(--color-4-c)) var(--primary-h));
-    --color-primary-5: oklch(var(--primary-5-l, var(--color-5-l)) var(--primary-5-c, var(--color-5-c)) var(--primary-h));
-    --color-primary-6: oklch(var(--primary-6-l, var(--color-6-l)) var(--primary-6-c, var(--color-6-c)) var(--primary-h));
-    --color-primary-7: oklch(var(--primary-7-l, var(--color-7-l)) var(--primary-7-c, var(--color-7-c)) var(--primary-h));
-    --color-primary-8: oklch(var(--primary-8-l, var(--color-8-l)) var(--primary-8-c, var(--color-8-c)) var(--primary-h)); */
-
-
-    --color-dynamic: oklch(var(--color-l, var(--color-8-l)) var(--color-c, var(--color-8-c)) var(--color-hue));
-}
-
-:where(html) {
-  --primary-h: var(--op-hue-pink);  
-  --primary-l: var(--color-8-l);
-  --primary-c: var(--color-8-c);
-
-  --color-hue: var(--primary-h);
-
-  --secondary-hue: var(--op-hue-teal);
-
-  --color-0-l: 99%;
-  --color-1-l: 95%;
-  --color-2-l: 88%;
-  --color-3-l: 80%;
-  --color-4-l: 74%;
-  --color-5-l: 68%;
-  --color-6-l: 63%;
-  --color-7-l: 58%;
-  --color-8-l: 53%;
-  --color-9-l: 49%;
-  --color-10-l: 42%;
-  --color-11-l: 35%;
-  --color-12-l: 27%;
-  --color-13-l: 20%;
-  --color-14-l: 14%;
-  --color-15-l: 11%;
-
-
-  --color-0-c: 0.03;
-  --color-1-c: 0.06;
-  --color-2-c: 0.12;
-  --color-3-c: 0.14;
-  --color-4-c: 0.16;
-  --color-5-c: 0.19;
-  --color-6-c: 0.2;
-  --color-7-c: 0.19;
-  --color-8-c: 0.2;
-  --color-9-c: 0.19;
-  --color-10-c: 0.17;
-  --color-11-c: 0.15;
-  --color-12-c: 0.12;
-  --color-13-c: 0.09;
-  --color-14-c: 0.07;
-  --color-15-c: 0.05;  
-
-}
-
-@layer utilities {
-
-
-    .hue-s {
-      --color-hue: var(--secondary-hue);
-    }  
-
-}
+/* @layer base {
+  :root {
+    color-scheme: light dark;
+  }
+} */
 
 
 /* .primary-l {
 
 } */
 
-@custom-media --big-window (min-width: 30em);
+* > :has(.heading, h1, h2, h3, h4, h5, h6) {
+  container-type:inline-size;
+}
 
 @media (--big-window) {
   body { color: green; }

@@ -1,0 +1,9 @@
+$main-header-selector: main-header;
+
+@mixin output-main-header-rules() {
+
+    .#{$main-header-selector} {
+        grid-area: main-header;
+    }
+
+}

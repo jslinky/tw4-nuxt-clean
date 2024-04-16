@@ -1,4 +1,4 @@
-@use "../mixins/op-colors" as mixins;
+@use "../mixins/open-props/op-colors" as mixins;
 @use "./maps/colors-oklch-dynamic" as dynamic;
 
 $op-colors-oklch-includes: 'red';

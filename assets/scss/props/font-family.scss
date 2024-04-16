@@ -1,0 +1,14 @@
+@use "../mixins/ultilities/output-props" as *;
+@use "../mixins/ultilities/exclude-keys" as *;
+@use "../mixins/ultilities/pick-keys" as *;
+@use "../mixins/props-all-or-ends-with" as *;
+@use "../props/maps/font-family" as font-family;
+
+// $font-family-includes: 'sans-system-ui' 'serif-transitional' 'monospace-slab-serif';
+$font-family-includes: 'all';
+
+$font-family-prop-map: if($font-family-includes == 'all', module-variables("font-family"), pick-keys(module-variables("font-family"), $font-family-includes));
+
+:where(html) {
+    @include output-props(custom, font-family, $font-family-prop-map... );    
+}

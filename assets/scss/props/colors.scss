@@ -1,0 +1,13 @@
+@use "../functions/mutiple-map-merge" as *;
+@use "./maps/colors" as props;
+
+$theme-colors: map-collect(props.$color-primary-lch, props.$color-secondary-lch, props.$color-accent-lch, props.$default-color-light-range, props.$default-color-chroma-range);
+
+:where(html) {
+    --color-dynamic: inherit;
+    --color-hue: var(--primary-h);
+
+    @each $key, $value in $theme-colors {
+        --#{$key}: #{$value};
+    }
+}

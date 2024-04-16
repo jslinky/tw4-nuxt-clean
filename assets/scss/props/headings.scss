@@ -1,0 +1,27 @@
+@use "../mixins/ultilities/output-props" as *;
+@use "../mixins/ultilities/pick-keys" as *;
+@use "../props/maps/headings" as headings;
+
+:where(html) {
+    /// Output global props for heading sizes
+    @each $key, $val in (module-variables("headings")) {
+        @include output-props(custom, '#{$key}', pick-keys($val, font-size fs-min fs-fluid)...);
+    }
+
+    // Font Family Heading
+    @include output-props(custom, 'heading', pick-keys(headings.$heading-base, font-family)...);                
+}
+
+// @mixin heading-props() {    
+
+//     // @include output-props(custom, m.remove-keys(module-variables("size"), use-typo-scale)...);
+
+//     /// fonts - output included font-familes to the root
+//     // $font-reference: m.remove-keys(module-variables("fonts"), to-include);
+//     // $fonts-to-include: pick-keys($font-reference, fonts.$to-include);
+//     // Included font families
+//     // @include output-props(custom, $fonts-to-include...);
+//     // Font Family Base
+//     // @include output-props(custom, pick-keys(module-variables("fonts"), font-family-base)...);
+
+// }

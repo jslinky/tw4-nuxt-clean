@@ -1,0 +1,63 @@
+@use 'sass:math';
+
+@mixin bg-range-generate($name, $hue, $sat, $total) {
+    $lightest: 95%;
+    $darkest: 5%;
+    $incrementor: math.div(($lightest - $darkest), ($total - 1));
+
+    @for $i from 1 through $total {
+        $num: 0; // Initialize num variable        
+        // Calculate adjustment for lightness based on the current index
+        $light-value: $lightest - (($i - 1) * $incrementor);
+
+        // Determine the numeric class suffix based on $i
+        @if $i == 1 {
+            $num: 25;
+        } @else if $i == 2 {
+            $num: 50;
+        } @else {
+            $num: ($i - 2) * 100;
+        }
+        .bg-#{$name}-#{$num} {
+            background: hsl(var(--#{$hue}), calc(var(--#{$sat}) * 1%), var(--#{$name}-light-#{$num}, #{$light-value}));
+            // --#{$name}-light-#{$num}: #{$light-value};
+        }
+    }
+}
+
+// @mixin bg-generate($name, $hue, $sat, $light, $total) {
+//     $lightest: 95%;
+//     $darkest: 5%;
+//     $half: math.ceil($total / 2);  // Midpoint
+//     $incrementAbove: ($lightest - $light) / ($half - 1);  // Change for upper half
+//     $incrementBelow: ($light - $darkest) / ($half - 1);  // Change for lower half
+
+//     @for $i from 1 through $total {
+//         $num: 0; // Initialize num variable
+
+//         @if $i == 1 {
+//             $num: 25;
+//         } @else if $i == 2 {
+//             $num: 50;
+//         } @else {
+//             $num: ($i - 2) * 100;
+//         }
+
+//         // Determine the current lightness
+//         $current-lightness: 0;
+//         @if $i < $half {
+//             $current-lightness: $lightest - ($incrementAbove * ($i - 1));
+//         } @else if $i == $half {
+//             $current-lightness: $light;
+//         } @else {
+//             $current-lightness: $light - ($incrementBelow * ($i - $half));
+//         }
+
+//         .bg-#{$name}-#{$num} {
+//             background: hsl(var(--#{$hue}) calc(var(--#{$sat}) * 1%) #{$current-lightness});
+//         }
+//         @debug '.bg-#{$name}-#{$num}';
+//     }
+// }
+
+// @include bg-generate(secondary, sH, sS, 50, 11);

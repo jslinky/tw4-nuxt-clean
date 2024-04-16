@@ -1,0 +1,29 @@
+@use '../mixins/rules/layout' as layout;
+
+
+@layer utilities {
+    // Default grid layout system
+    .layout-grid {
+        @include layout.grid();
+        &.layout-grid--column-count {
+            @include layout.grid-column-count()
+        }
+    }
+    
+    // Default flex layout system
+    .flex-layout-grid {
+        @include layout.flex-grid();
+    }
+    
+    // Note: There is a bug as of Safari 16.4 where uing containment on a grid using auto-fit collapses widths to zero, so proceed with caution if you see this strategy before the bug is resolved
+    
+    :is(.layout) {
+        container: layout-container / inline-size;
+    }
+    
+    :is(.layout-grid, .flex-layout-grid) {
+        > * {
+            container: var(--grid-item-container, grid-item) / inline-size;
+        }
+    }
+}

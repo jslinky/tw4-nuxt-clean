@@ -1,0 +1,6 @@
+@use "../mixins/ultilities/output-props" as *;
+@use "../props/maps/wrapper" as wrapper;
+
+:where(html) {
+    @include output-props(custom, module-variables("wrapper")... );    
+}

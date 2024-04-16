@@ -1,0 +1,5 @@
+@use "../props-all-or-ends-with" as *;
+
+@mixin output-borders($include-map, $prop-map) {
+    @include props-all-or-ends-with($include-map, $prop-map);
+}

@@ -1,0 +1,26 @@
+:where(html) {
+  --heading-base-font-size: 1rem;
+  --heading-base-fs-min: 1rem;
+  --heading-2xl-font-size: var(--text-display-2xl);
+  --heading-2xl-fs-min: var(--text-display-xl);
+  --heading-2xl-fs-fluid: 1.5cqi;
+  --heading-xl-font-size: var(--text-display-xl);
+  --heading-xl-fs-min: var(--text-display-lg);
+  --heading-xl-fs-fluid: 1.5cqi;
+  --heading-lg-font-size: var(--text-display-lg);
+  --heading-lg-fs-min: var(--text-display-md);
+  --heading-lg-fs-fluid: 1.5cqi;
+  --heading-md-font-size: var(--text-display-md);
+  --heading-md-fs-min: var(--text-display-sm);
+  --heading-md-fs-fluid: 1cqi;
+  --heading-sm-font-size: var(--text-display-sm);
+  --heading-sm-fs-min: var(--text-display-xs);
+  --heading-sm-fs-fluid: 1cqi;
+  --heading-xs-font-size: var(--text-display-xs);
+  --heading-xs-fs-min: var(--text-display-xs);
+  --heading-xs-fs-fluid: 1cqi;
+  --heading-xxs-font-size: var(--text-xl);
+  --heading-xxs-fs-min: var(--text-xl);
+  --heading-xxs-fs-fluid: 1cqi;
+  --heading-font-family: var(--font-family-base);
+}

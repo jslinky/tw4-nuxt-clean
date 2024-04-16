@@ -1,0 +1,28 @@
+@use '../../config/framework/js-config' as config;
+
+@function get-breakpoint($key) {
+    @if map-has-key(config.$breakpoints, $key ) {
+        $bp: get($key, config.$breakpoints);
+        @return $bp * 1px;
+    } @else {
+        @warn 'No key in $breakpoints';
+    }
+}
+
+@mixin greaterThan($bp) {
+    @media (min-width: get-breakpoint($bp)) {
+        @content;
+    }
+}
+
+@mixin lessThan($bp) {
+    @media (max-width: calc(get-breakpoint($bp) - 1px)) {
+        @content;
+    }
+}
+
+@mixin greaterThanLessThan($bp-min, $bp-max) {
+    @media (min-width: get-breakpoint($bp-min)) and (max-width: calc(get-breakpoint($bp-max) - 1px)) {
+        @content;
+    }
+}

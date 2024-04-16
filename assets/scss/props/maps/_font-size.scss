@@ -1,0 +1,32 @@
+$use-typo-scale: true!default;
+$font-size-base: calc((var(--font-size-base-px) / 16) * 1rem);
+
+$xxs-px: if($use-typo-scale, calc(var(--xs-px) / var(--text-size-increment)), 10);
+$xs-px: if($use-typo-scale, calc(var(--sm-px) / var(--text-size-increment)), 12);
+$sm-px: if($use-typo-scale, calc(var(--font-size-base-px) / var(--text-size-increment)), 14);
+$md-px: if($use-typo-scale, var(--font-size-base-px), var(--font-size-base-px));
+$lg-px: if($use-typo-scale, calc(var(--md-px) * var(--text-size-increment)), 18);
+$xl-px: if($use-typo-scale, calc(var(--lg-px) * var(--text-size-increment)), 20);
+
+// $display-xxs-px: if($use-typo-scale, calc(var(--xl-px) * var(--text-size-increment)), 30);
+$display-xs-px: if($use-typo-scale, calc(var(--xl-px) * var(--text-size-increment)), 24);
+$display-sm-px: if($use-typo-scale, calc(var(--display-xs-px) * var(--text-size-increment)), 30);
+$display-md-px: if($use-typo-scale, calc(var(--display-sm-px) * var(--text-size-increment)), 36);
+$display-lg-px: if($use-typo-scale, calc(var(--display-md-px) * var(--text-size-increment)), 48);
+$display-xl-px: if($use-typo-scale, calc(var(--display-lg-px) * var(--text-size-increment)), 60);
+$display-2xl-px: if($use-typo-scale, calc(var(--display-xl-px) * var(--text-size-increment)), 72);
+
+$text-xxs: calc((var(--xxs-px) / 16) * 1rem);
+$text-xs: calc((var(--xs-px) / 16) * 1rem);
+$text-sm: calc((var(--sm-px) / 16) * 1rem);
+$text-md: calc((var(--md-px) / 16) * 1rem);
+$text-lg: calc((var(--lg-px) / 16) * 1rem);
+$text-xl: calc((var(--xl-px) / 16) * 1rem);
+
+// $display-xxs: calc((var(--display-xxs-px) / 16) * 1rem);
+$text-display-xs: calc((var(--display-xs-px) / 16) * 1rem);
+$text-display-sm: calc((var(--display-sm-px) / 16) * 1rem);
+$text-display-md: calc((var(--display-md-px) / 16) * 1rem);
+$text-display-lg: calc((var(--display-lg-px) / 16) * 1rem);
+$text-display-xl: calc((var(--display-xl-px) / 16) * 1rem);
+$text-display-2xl: calc((var(--display-2xl-px) / 16) * 1rem);

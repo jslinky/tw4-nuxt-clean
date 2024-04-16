@@ -1,0 +1,29 @@
+@mixin grid() {
+    display: grid;
+    grid-template-columns: var(--layout-grid-template-columns);
+    gap: var(--layout-grid-gap);
+}
+
+@mixin flex-grid() {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--flex-grid-gap);
+
+    > * {
+        flex: 1 1 var(--flex-grid-min);
+    }
+}
+
+/// For defining a max no of columns on a grid layout
+@mixin grid-column-count() {
+    --layout-grid-template-columns: repeat(
+    var(--layout-grid-auto-repeat, auto-fit),
+    minmax(
+        min(
+            max(var(--column-size), (100% - var(--breakpoint)) * -999),
+            100%
+        ),
+        1fr
+    )
+);
+}

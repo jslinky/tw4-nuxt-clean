@@ -1,0 +1,86 @@
+@use "../mixins/rules/headings" as *;
+
+@mixin output-headings-base() {
+    :is(.heading, h1, h2, h3, h4, h5, h6) {
+        @include base();
+    }
+}
+
+@mixin output-headings() {
+    .heading-xxs {
+        @include heading-xxs();
+    }
+    
+    .heading-xs {
+        @include heading-xs();
+    }
+    
+    .heading-sm {
+        @include heading-sm();
+    }
+    
+    .heading-md {
+        @include heading-md();
+    } 
+    
+    .heading-lg {
+        @include heading-lg();
+    } 
+    
+    .heading-xl {
+        @include heading-xl();
+    }  
+    
+    .heading-2xl {
+        @include heading-2xl();
+    }   
+}
+
+@mixin output-fluid-headings() {
+
+    .heading-xxs-fluid {
+        @include heading-xxs-fluid();
+        @include fluid-heading-font-size();
+        font-size: var(--heading-font-size);
+    }
+
+    .heading-sm-fluid {
+        @include heading-sm-fluid();
+        @include fluid-heading-font-size();
+        font-size: var(--heading-font-size);
+    }    
+
+    .heading-md-fluid {
+        @include heading-md-fluid();
+        @include fluid-heading-font-size();
+        font-size: var(--heading-font-size);
+    }
+
+    .heading-lg-fluid {
+        @include heading-lg-fluid();
+        @include fluid-heading-font-size();
+        font-size: var(--heading-font-size);
+    } 
+    
+    .heading-xl-fluid {
+        @include heading-xl-fluid();
+        @include fluid-heading-font-size();
+        font-size: var(--heading-font-size);
+    }
+    
+    .heading-2xl-fluid {
+        @include heading-2xl-fluid();
+        @include fluid-heading-font-size();
+        font-size: var(--heading-font-size);
+    }    
+
+}
+
+@layer components {
+    @include output-headings-base();
+}
+
+@layer utilities {
+    @include output-headings();
+    @include output-fluid-headings();    
+}

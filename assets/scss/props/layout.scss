@@ -1,0 +1,6 @@
+@use "../mixins/ultilities/output-props" as *;
+@use "../props/maps/layout" as layout;
+
+:where(html) {
+    @include output-props(custom, module-variables("layout")... );    
+}

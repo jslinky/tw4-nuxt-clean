@@ -1,0 +1,12 @@
+@layer utilities {
+    .hue-s {
+      --color-hue: var(--secondary-h);
+    }  
+
+    @for $i from 1 to 16 {
+        .grid-layout-col-count-#{$i} {
+            --column-count: #{$i};
+          }
+    }
+  
+  } 

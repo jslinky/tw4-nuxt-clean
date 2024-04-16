@@ -1,0 +1,11 @@
+@use "./template/root-element" as *;
+@use "./template/header" as *;
+@use "./template/main" as *;
+@use "./template/aside" as *;
+
+@layer components {
+    @include output-root-element-rules();
+    @include output-main-header-rules();
+    @include output-main-area-rules();
+    @include output-main-aside-rules();
+}

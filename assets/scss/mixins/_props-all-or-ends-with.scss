@@ -1,6 +1,6 @@
 @use "../functions/string-ends-with" as *;
 
-@mixin op-all-or-ends-with($include-map, $prop-map) {
+@mixin props-all-or-ends-with($include-map, $prop-map) {
     @if(length($include-map) == 1 and $include-map == 'all') {
         @each $key, $val in $prop-map {
             --#{$key}: #{$val};

@@ -1,0 +1,6 @@
+@use "../mixins/ultilities/output-props" as *;
+@use "../props/maps/space" as space;
+
+:where(html) {
+    @include output-props(custom, module-variables("space")... );    
+}

@@ -1,0 +1,25 @@
+@function getHSL($color, $unitless: true) {
+    /// check if hsl
+    $hue: if($unitless, strip-units(hue($color)), hue($color));
+    $sat: if($unitless, strip-units(saturation($color)), saturation($color));
+    $light: if($unitless, strip-units(lightness($color)), lightness($color));
+    @return $hue $sat $light;
+}
+
+@function getHue($color, $unitless: true) {
+    /// check if hsl
+    $hue: if($unitless, strip-units(hue($color)), hue($color));
+    @return $hue;
+}
+
+@function getSat($color, $unitless: true) {
+    /// check if hsl
+    $sat: if($unitless, strip-units(saturation($color)), saturation($color));
+    @return $sat;
+}
+
+@function getLight($color, $unitless: true) {
+    /// check if hsl
+    $light: if($unitless, strip-units(lightness($color)), lightness($color));
+    @return $light;
+}

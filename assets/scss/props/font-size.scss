@@ -1,0 +1,7 @@
+@use "../mixins/ultilities/output-props" as *;
+@use "../mixins/ultilities/exclude-keys" as *;
+@use "../props/maps/font-size" as font-size;
+
+:where(html) {
+    @include output-props(custom, exclude-keys(module-variables("font-size"), use-typo-scale)... );    
+}

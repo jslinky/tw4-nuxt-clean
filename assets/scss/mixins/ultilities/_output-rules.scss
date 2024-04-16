@@ -1,0 +1,16 @@
+/// Outputs CSS rules based on map provided
+/// @author Justin Small
+/// @param {Map} $args - map of key (prop name) value pairs 
+/// Usage
+/// @include output-rules((color: red, font-size: 16px));
+/// Outputs: color: red; font-size: 16px;
+
+
+@mixin output-rules($args...) {
+    @each $prop-name, $prop-val in keywords($args) {
+        // Check if $prop-val is not a map
+        @if type-of($prop-val) != map {
+            #{$prop-name}: #{$prop-val};
+        }
+    }
+}

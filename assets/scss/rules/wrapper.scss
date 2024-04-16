@@ -1,0 +1,17 @@
+@use "../mixins/rules/wrapper" as wrapper;
+/* Wrapper rules */
+
+@mixin wrapper-rules() {
+    .wrapper {
+        @include wrapper.default();
+    }
+
+    .wrapper-grid {
+        @include wrapper.grid();
+    }
+
+}
+
+@layer utilities {
+    @include wrapper-rules();
+}

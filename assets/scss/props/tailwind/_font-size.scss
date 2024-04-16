@@ -1,0 +1,16 @@
+$theme-font-size: (
+    'font-size-*': initial,
+    'font-size-xxs': var(--text-xxs),
+    'font-size-xs': var(--text-xs),
+    'font-size-sm': var(--text-sm),
+    'font-size-md': var(--text-md),
+    'font-size-lg': var(--text-lg),
+    'font-size-xl': var(--text-xl),
+    'font-size-display-xs': var(--text-display-xs),
+    'font-size-display-sm': var(--text-display-sm),
+    'font-size-display-md': var(--text-display-md),
+    'font-size-display-lg': var(--text-display-lg),
+    'font-size-display-xl': var(--text-display-xl),
+    'font-size-display-2xl': var(--text-display-2xl),
+    'font-size-size-inherit': 'inherit',
+);

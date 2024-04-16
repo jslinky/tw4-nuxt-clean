@@ -1,0 +1,12 @@
+@use "./functions/mutiple-map-merge" as *;
+@use "./mixins/ultilities/output-props" as *;
+@use "./mixins/ultilities/exclude-keys" as *;
+@use "./props/tailwind" as tw;
+
+$theme: map-collect(tw.$theme-font-family, tw.$theme-breakpoint, tw.$theme-size, tw.$theme-color, tw.$theme-font-size, tw.$theme-space);
+
+@theme {
+    @each $key, $value in $theme {
+        --#{$key}: #{$value};
+    }
+}

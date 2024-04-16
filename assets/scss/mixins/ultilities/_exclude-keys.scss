@@ -1,0 +1,30 @@
+/// Usage
+/// $my-map: (
+///   color: red,
+///   size: 16px,
+///   font: Arial,
+///   margin: 10px
+/// );
+
+//  $keys-to-remove: color font;
+
+/// $new-map: remove-keys($my-map, $keys-to-remove);
+/// $new-map will now be (size: 16px, margin: 10px)
+
+
+
+@function exclude-keys($map, $keys-to-exclude) {
+    $new-map: (); // Initialize an empty map
+  
+    // Iterate over each key-value pair in the map
+    @each $key, $value in $map {
+      // If the key is not in the list of keys to remove, add it to the new map
+      @if not index($keys-to-exclude, $key) {
+        $new-map: map-merge($new-map, ($key: $value));
+      }
+    }
+  
+    // Return the new map without the removed entries
+    @return $new-map;
+  }
+  

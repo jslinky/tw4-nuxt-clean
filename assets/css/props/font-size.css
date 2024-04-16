@@ -1,0 +1,27 @@
+:where(html) {
+  --font-size-base: calc(var(--font-size-base-px) / 16 * 1rem);
+  --xxs-px: calc(var(--xs-px) / var(--text-size-increment));
+  --xs-px: calc(var(--sm-px) / var(--text-size-increment));
+  --sm-px: calc(var(--font-size-base-px) / var(--text-size-increment));
+  --md-px: var(--font-size-base-px);
+  --lg-px: calc(var(--md-px) * var(--text-size-increment));
+  --xl-px: calc(var(--lg-px) * var(--text-size-increment));
+  --display-xs-px: calc(var(--xl-px) * var(--text-size-increment));
+  --display-sm-px: calc(var(--display-xs-px) * var(--text-size-increment));
+  --display-md-px: calc(var(--display-sm-px) * var(--text-size-increment));
+  --display-lg-px: calc(var(--display-md-px) * var(--text-size-increment));
+  --display-xl-px: calc(var(--display-lg-px) * var(--text-size-increment));
+  --display-2xl-px: calc(var(--display-xl-px) * var(--text-size-increment));
+  --text-xxs: calc(var(--xxs-px) / 16 * 1rem);
+  --text-xs: calc(var(--xs-px) / 16 * 1rem);
+  --text-sm: calc(var(--sm-px) / 16 * 1rem);
+  --text-md: calc(var(--md-px) / 16 * 1rem);
+  --text-lg: calc(var(--lg-px) / 16 * 1rem);
+  --text-xl: calc(var(--xl-px) / 16 * 1rem);
+  --text-display-xs: calc(var(--display-xs-px) / 16 * 1rem);
+  --text-display-sm: calc(var(--display-sm-px) / 16 * 1rem);
+  --text-display-md: calc(var(--display-md-px) / 16 * 1rem);
+  --text-display-lg: calc(var(--display-lg-px) / 16 * 1rem);
+  --text-display-xl: calc(var(--display-xl-px) / 16 * 1rem);
+  --text-display-2xl: calc(var(--display-2xl-px) / 16 * 1rem);
+}

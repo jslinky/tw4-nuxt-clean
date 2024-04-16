@@ -1,0 +1,32 @@
+:where(html) {
+  --root-areas:
+  "main-header main-header main-header"
+  "inline-start-area main-area inline-end-area"
+  "main-footer main-footer main-footer";
+}
+:where(html):has(.admin-header) {
+  --root-areas: "admin-header admin-header admin-header"
+  "main-header main-header main-header"
+  "inline-start-area main-area inline-end-area"
+  "main-footer main-footer main-footer";
+}
+:where(html):has(.main-aside) {
+  --end-col: 0;
+}
+
+@layer components {
+  #__nuxt {
+    display: grid;
+    grid-template-areas: var(--root-areas);
+    grid-template-columns: var(--grid-wrapper-columns);
+  }
+  .main-header {
+    grid-area: main-header;
+  }
+  .main-area {
+    grid-area: main-area;
+  }
+  .main-aside {
+    grid-area: inline-start-area;
+  }
+}

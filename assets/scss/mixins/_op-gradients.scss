@@ -1,5 +1,0 @@
-@use "./op-all-or-ends-with" as *;
-
-@mixin output-gradients($include-map, $prop-map) {
-    @include op-all-or-ends-with($include-map, $prop-map);
-}

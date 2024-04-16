@@ -1,0 +1,74 @@
+/// Outputs custom properties based on map provided
+/// @author Justin Small
+/// @param {String} $prefix - optional prefix custom prop
+/// @param {Map} $args - map of key (prop name) value pairs 
+/// Usage
+/// Without prefix
+/// @include output-props((color: red, size: 16px));
+/// Outputs: --color: red; --size: 16px;
+
+/// With prefix
+/// @include output-props('btn', (color: blue, size: 20px));
+/// Outputs: --btn-color: blue; --btn-size: 20px;
+
+// @mixin output-props($prefix: null, $args...) {
+//     @each $prop-name, $prop-val in keywords($args) {
+//         // Check if $prop-val is not a map
+//         @if type-of($prop-val) != map {
+//             $full-prop-name: if($prefix, $prefix + '-' + $prop-name, $prop-name);
+//             --#{$full-prop-name}: #{$prop-val};
+//         }
+//     }
+// }
+
+
+/// New
+// @mixin output-props($mode: custom, $prefix: null, $args...) {
+//     @each $prop-name, $prop-val in keywords($args) {
+//         @if type-of($prop-val) != map {
+//             $full-prop-name: if($prefix, $prefix + '-' + $prop-name, $prop-name);
+            
+//             @if $mode == custom {
+//                 --#{$full-prop-name}: #{$prop-val};
+//             } @else if $mode == css {
+//                 #{$full-prop-name}: $prop-val;
+//             } @else if $mode == mix {
+//                 @if str-index($full-prop-name, "--") == 1 {
+//                     #{$full-prop-name}: #{$prop-val};
+//                 } @else {
+//                     #{$full-prop-name}: $prop-val;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+/// Newer
+@mixin output-props($mode: custom, $prefix: null, $args...) {
+    @each $prop-name, $prop-val in keywords($args) {
+        @if type-of($prop-val) != map {
+            
+            // Check if the property name is 'extend' and its value is either a list or a string.
+            @if $prop-name == 'extend' and (type-of($prop-val) == list or type-of($prop-val) == string) {
+                @each $tw-class in $prop-val {
+                    @apply #{$tw-class};
+                }
+            } @else {
+                $full-prop-name: if($prefix, $prefix + '-' + $prop-name, $prop-name);
+                
+                @if $mode == custom {
+                    --#{$full-prop-name}: #{$prop-val};
+                } @else if $mode == css {
+                    #{$full-prop-name}: $prop-val;
+                } @else if $mode == mix {
+                    @if str-index($full-prop-name, "--") == 1 {
+                        #{$full-prop-name}: #{$prop-val};
+                    } @else {
+                        #{$full-prop-name}: $prop-val;
+                    }
+                }
+            }
+        }
+    }
+}
+

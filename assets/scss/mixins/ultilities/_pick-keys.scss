@@ -1,0 +1,31 @@
+
+/// Usage: 
+/// $my-map: (
+///   color: red,
+///   size: 16px,
+///   font: Arial,
+///   margin: 10px
+/// );
+
+/// $keys-to-keep: color font;
+
+/// $new-map: filter-keys($my-map, $keys-to-keep);
+/// $new-map will now be (color: red, font: Arial)
+
+
+
+@function pick-keys($map, $keys-to-keep) {
+    $new-map: (); // Initialize an empty map
+
+    // Iterate over each key in the list of keys to keep
+    @each $key in $keys-to-keep {
+        // If the map has an entry with this key, add it to the new map
+        @if map-has-key($map, $key) {
+        $new-map: map-merge($new-map, ($key: map-get($map, $key)));
+        }
+    }
+
+    // Return the new map with only the desired entries
+    @return $new-map;
+}
+  

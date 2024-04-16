@@ -1,0 +1,176 @@
+@use "../ultilities/output-props" as *;
+@use "../ultilities/exclude-keys" as *;
+@use "../ultilities/pick-keys" as *;
+@use "../../props/maps/headings" as headings;
+
+@mixin fluid-heading-font-size() {
+    --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));  
+}
+
+@mixin heading-font-size($size) {
+    --heading-font-size: var(--heading-#{$size}-font-size);
+}
+
+@mixin base-props() {
+    @include output-props(custom, heading, exclude-keys(headings.$heading-base, font-family font-size fs-min fs-max fs-fluid is-fluid)...);
+    @include output-props(custom, pick-keys(headings.$heading-base, fs-max)...);          
+}
+
+@mixin base() {
+    @include base-props();
+    font-size: var(--heading-font-size, var(--fs-max));
+    color: var(--heading-color, inherit);
+    font-weight: var(--heading-font-weight, bold);
+    text-transform: var(--heading-text-transform, none);
+    font-family: var(--heading-font-family, inherit); // update with default heading ff var here
+    letter-spacing: var(--heading-letter-spacing, normal);
+    line-height: var(--heading-line-height);
+    text-wrap: balance;
+    &.fluid {
+        @include fluid-heading-font-size();
+    }
+
+    @content;
+} 
+
+// Used in Tailwind utilities layer
+@mixin heading-xxs-fluid() {
+    --fs-min: var(--heading-xxs-fs-min);
+    --fs: var(--heading-xxs-font-size);
+    @supports (font-size: unquote('1cqi')) {
+        --fs-fluid: var(--heading-xxs-fs-fluid); // define using container queries
+    }          
+}
+
+@mixin heading-xxs() {
+    // obmitting font-size as outputting on root. Defined in tailwind also
+    @include output-props(custom, heading, exclude-keys(headings.$heading-xxs, font-size fs-min fs-fluid is-fluid)...);    
+    @include heading-xxs-fluid();
+    @if map-get(headings.$heading-xxs, "is-fluid") {
+        @include fluid-heading-font-size();
+    } @else {
+        @include heading-font-size(xxs);
+    }    
+    @content;    
+}
+
+// Used in Tailwind utilities layer
+@mixin heading-xs-fluid() {
+    --fs-min: var(--heading-xs-fs-min);
+    --fs: var(--heading-xs-font-size);
+    @supports (font-size: unquote('1cqi')) {
+        --fs-fluid: var(--heading-xs-fs-fluid); // define using container queries
+    }          
+}
+
+@mixin heading-xs() {
+    @include output-props(custom, heading, exclude-keys(headings.$heading-xs, font-size fs-min fs-fluid is-fluid)...);    
+    // --heading-font-size: var(--heading-xs-font-size);
+    @include heading-xs-fluid();    
+    @if map-get(headings.$heading-xs, "is-fluid") {
+        @include fluid-heading-font-size();
+    } @else {
+        @include heading-font-size(xs);
+    }     
+    @content;    
+}
+
+// Used in Tailwind utilities layer
+@mixin heading-sm-fluid() {
+    --fs-min: var(--heading-sm-fs-min);
+    --fs: var(--heading-sm-font-size);
+    @supports (font-size: unquote('1cqi')) {
+        --fs-fluid: var(--heading-sm-fs-fluid); // define using container queries
+    }          
+}
+
+@mixin heading-sm() {
+    @include output-props(custom, heading, exclude-keys(headings.$heading-sm, font-size fs-min fs-fluid is-fluid)...);    
+    @include heading-sm-fluid();
+    @if map-get(headings.$heading-sm, "is-fluid") {
+        @include fluid-heading-font-size();
+    } @else {
+        @include heading-font-size(sm);
+    }           
+    @content;    
+}
+
+// Used in Tailwind utilities layer
+@mixin heading-md-fluid() {
+    --fs-min: var(--heading-md-fs-min);
+    --fs: var(--heading-md-font-size);
+    @supports (font-size: unquote('1cqi')) {
+        --fs-fluid: var(--heading-md-fs-fluid); // define using container queries
+    }          
+}
+
+@mixin heading-md() {
+    @include output-props(custom, heading, exclude-keys(headings.$heading-md, font-size fs-min fs-fluid is-fluid)...);    
+    @include heading-md-fluid();    
+    @if map-get(headings.$heading-md, "is-fluid") {
+        @include fluid-heading-font-size();
+    } @else {
+        @include heading-font-size(md);
+    }        
+    @content;    
+}
+
+// Used in Tailwind utilities layer
+@mixin heading-lg-fluid() {
+    --fs-min: var(--heading-lg-fs-min);
+    --fs: var(--heading-lg-font-size);
+    @supports (font-size: unquote('1cqi')) {
+        --fs-fluid: var(--heading-lg-fs-fluid); // define using container queries
+    }          
+}
+
+@mixin heading-lg() {
+    @include output-props(custom, heading, exclude-keys(headings.$heading-lg, font-size fs-min fs-fluid is-fluid)...);    
+    @include heading-lg-fluid();
+    @if map-get(headings.$heading-lg, "is-fluid") {
+        @include fluid-heading-font-size();
+    } @else {
+        @include heading-font-size(lg);
+    }        
+    @content;    
+}
+
+// Used in Tailwind utilities layer
+@mixin heading-xl-fluid() {
+    --fs-min: var(--heading-xl-fs-min);
+    --fs: var(--heading-xl-font-size);
+    @supports (font-size: unquote('1cqi')) {
+        --fs-fluid: var(--heading-xl-fs-fluid); // define using container queries
+    }          
+}
+
+@mixin heading-xl() {
+    @include output-props(custom, heading, exclude-keys(headings.$heading-xl, font-size fs-min fs-fluid is-fluid)...);    
+    @include heading-xl-fluid();
+    @if map-get(headings.$heading-xl, "is-fluid") {
+        @include fluid-heading-font-size();
+    } @else {
+        @include heading-font-size(xl);
+    }         
+    @content;    
+}
+
+// Used in Tailwind utilities layer
+@mixin heading-2xl-fluid() {
+    --fs-min: var(--heading-2xl-fs-min);
+    --fs: var(--heading-2xl-font-size);
+    @supports (font-size: unquote('1cqi')) {
+        --fs-fluid: var(--heading-2xl-fs-fluid); // define using container queries
+    }          
+}
+
+@mixin heading-2xl() {
+    @include output-props(custom, heading, exclude-keys(headings.$heading-2xl, font-size fs-min fs-fluid is-fluid)...);    
+    @include heading-2xl-fluid();
+    @if map-get(headings.$heading-2xl, "is-fluid") {
+        @include fluid-heading-font-size();
+    } @else {
+        @include heading-font-size(2xl);
+    }        
+    @content;    
+}

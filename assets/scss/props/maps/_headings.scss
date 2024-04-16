@@ -1,0 +1,73 @@
+$heading-base: (
+    "font-size": 1rem,
+    "fs-min": 1rem,
+    "fs-max": 1rem,
+    "color": var(--bc),
+    "line-height": 1.2,
+    "font-family": var(--font-family-base),
+) !default;
+
+$heading-2xl: (
+    "font-size": var(--text-display-2xl),
+    "fs-min": var(--text-display-xl),
+    "font-weight": 600,
+    "line-height": 1.25,
+    "text-transform": none,
+    "fs-fluid": unquote('1.5cqi'),
+    "fs-fluid-viewport": unquote('1.5vi'),
+    "is-fluid": true,
+) !default;
+
+$heading-xl: (
+    "font-size": var(--text-display-xl),
+    "fs-min": var(--text-display-lg),
+    "fs-fluid": unquote('1.5cqi'),
+    "fs-fluid-viewport": unquote('1.5vi'),
+    "is-fluid": true,
+    "line-height": 1.25,
+) !default;
+
+$heading-lg: (
+    "font-size": var(--text-display-lg),
+    "fs-min": var(--text-display-md),
+    "fs-fluid": unquote('1.5cqi'),
+    "fs-fluid-viewport": unquote('1.5vi'),
+    "is-fluid": true,
+    "line-height": 1.25,
+) !default;
+
+$heading-md: (
+    "font-size": var(--text-display-md),
+    "fs-min": var(--text-display-sm),
+    "fs-fluid": unquote('1cqi'),
+    "fs-fluid-viewport": unquote('1.5vi'),
+    "is-fluid": true,
+    "line-height": 1,
+) !default;
+
+$heading-sm: (
+    "font-size": var(--text-display-sm),
+    "fs-min": var(--text-display-xs),
+    "fs-fluid": unquote('1cqi'),
+    "fs-fluid-viewport": unquote('1vi'),
+    "is-fluid": true,
+    "line-height": 1.166,
+) !default;
+
+$heading-xs: (
+    "font-size": var(--text-display-xs),
+    "fs-min": var(--text-display-xs),
+    "fs-fluid": unquote('1cqi'),
+    "fs-fluid-viewport": unquote('1vi'),
+    "line-height": 1.166,
+    "is-fluid": false,
+) !default;
+
+$heading-xxs: (
+    "font-size": var(--text-xl),
+    "fs-min": var(--text-xl),
+    "fs-fluid": unquote('1cqi'),
+    "fs-fluid-viewport": unquote('1vi'),
+    "is-fluid": false,
+    "line-height": 1.166,
+) !default;

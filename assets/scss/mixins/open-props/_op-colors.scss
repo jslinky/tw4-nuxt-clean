@@ -1,6 +1,6 @@
-@use "../functions/string-ends-with" as *;
-@use "../functions/get-color-map-name" as *;
-@use "../mixins/op-all-or-ends-with" as *;
+@use "../../functions/string-ends-with" as *;
+@use "../../functions/get-color-map-name" as *;
+@use "../../mixins/props-all-or-ends-with" as *;
 
 @mixin get-colors($color-name, $start, $end, $type) {
     $color-map: getColorMapName($color-name, $type);
@@ -45,5 +45,5 @@
 }
 
 @mixin output-dynamic-colors($include-map, $prop-map) {
-    @include op-all-or-ends-with($include-map, $prop-map);
+    @include props-all-or-ends-with($include-map, $prop-map);
 }

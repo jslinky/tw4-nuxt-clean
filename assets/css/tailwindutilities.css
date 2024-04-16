@@ -1,0 +1,50 @@
+@layer utilities {
+  .hue-s {
+    --color-hue: var(--secondary-h);
+  }
+  .grid-layout-col-count-1 {
+    --column-count: 1;
+  }
+  .grid-layout-col-count-2 {
+    --column-count: 2;
+  }
+  .grid-layout-col-count-3 {
+    --column-count: 3;
+  }
+  .grid-layout-col-count-4 {
+    --column-count: 4;
+  }
+  .grid-layout-col-count-5 {
+    --column-count: 5;
+  }
+  .grid-layout-col-count-6 {
+    --column-count: 6;
+  }
+  .grid-layout-col-count-7 {
+    --column-count: 7;
+  }
+  .grid-layout-col-count-8 {
+    --column-count: 8;
+  }
+  .grid-layout-col-count-9 {
+    --column-count: 9;
+  }
+  .grid-layout-col-count-10 {
+    --column-count: 10;
+  }
+  .grid-layout-col-count-11 {
+    --column-count: 11;
+  }
+  .grid-layout-col-count-12 {
+    --column-count: 12;
+  }
+  .grid-layout-col-count-13 {
+    --column-count: 13;
+  }
+  .grid-layout-col-count-14 {
+    --column-count: 14;
+  }
+  .grid-layout-col-count-15 {
+    --column-count: 15;
+  }
+}

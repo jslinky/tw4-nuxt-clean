@@ -1,0 +1,6 @@
+@use "../mixins/ultilities/output-props" as *;
+@use "../props/maps/key-tokens" as key-tokens;
+
+:where(html) {
+    @include output-props(custom, module-variables("key-tokens")...);                
+}
