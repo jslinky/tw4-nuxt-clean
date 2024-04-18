@@ -1,18 +1,11 @@
-:where(html) {
-  --max-wrapper-width: 1440px;
-  --wrapper-padding: var(--layout-gap);
-  --wrapper-padding-min: clamp(var(--layout-gap), 2vw, var(--layout-gap) * 2);
-  --wrapper-inline: max(var(--wrapper-padding-min, 1rem), 50vw - var(--wrapper-width) / 2 + var(--wrapper-padding) * 2 / 2);
-  --wrapper-width: calc(var(--max-wrapper-width) + var(--wrapper-padding) * 2);
-  --grid-wrapper-columns: var(--start-col, var(--wrapper-inline)) var(--center-col, 1fr) var(--end-col, var(--wrapper-inline));
-}
-
 /* Wrapper rules */
 @layer utilities {
   .wrapper {
+    --wrapper-inline: max(var(--wrapper-padding-min, 1rem), 50vw - var(--wrapper-width) / 2 + var(--wrapper-padding) * 2 / 2);
     padding-inline: var(--wrapper-inline);
   }
   .wrapper-grid {
+    --grid-wrapper-columns: var(--start-col, var(--wrapper-inline)) var(--center-col, 1fr) var(--end-col, var(--wrapper-inline));
     display: grid;
     grid-template-columns: var(--grid-wrapper-columns);
     max-width: 100vw;

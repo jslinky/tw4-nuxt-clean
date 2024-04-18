@@ -6,15 +6,19 @@ $root-element-selector: __nuxt;
     &:has(.admin-header) {
         --root-areas: 'admin-header admin-header admin-header'
         'main-header main-header main-header'
-        'inline-start-area main-area inline-end-area'
+        'main-area main-area main-area'
         'main-footer main-footer main-footer';         
     }
     --root-areas:
     'main-header main-header main-header'
-    'inline-start-area main-area inline-end-area'
+    'main-area main-area main-area'
     'main-footer main-footer main-footer'; 
-    &:has(.main-aside) {
-        --end-col: 0;         
+    &:has(.main-aside) {        
+        --end-col: 0;   
+        --root-areas:
+        'main-header main-header main-header'
+        'inline-start-area main-area inline-end-area'
+        'main-footer main-footer main-footer';               
     }    
 }
 

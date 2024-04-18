@@ -1,0 +1,30 @@
+@use "../../mixins/rules/buttons" as buttons;
+
+:where(.btn, button) {
+    @include buttons.button();    
+    @include buttons.default();
+}
+
+.btn-neutral {
+    @include buttons.neutral();
+}
+
+.btn-primary {
+    @include buttons.primary();
+}
+
+.btn-secondary {
+    @include buttons.secondary();
+}
+
+.btn-accent {
+    @include buttons.accent();
+}
+
+.btn-ghost {
+    @include buttons.ghost();
+}
+
+.btn-link {
+    @include buttons.link();
+}

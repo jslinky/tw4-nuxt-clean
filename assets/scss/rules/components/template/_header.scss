@@ -3,7 +3,54 @@ $main-header-selector: main-header;
 @mixin output-main-header-rules() {
 
     .#{$main-header-selector} {
+        display: grid;
         grid-area: main-header;
+        grid-template-areas: 
+        "block-start-area"
+        "main-area"
+        "stacked-nav-area"
+        "block-end-area";
+        grid-auto-flow: column;
+    }
+
+    :where(.#{$main-header-selector}__inner) {
+        > * {
+            grid-area: main-area;
+        }
+    }
+
+    .#{$main-header-selector}__inner {
+        display: flex;
+    }
+
+    .#{$main-header-selector}__main-content {
+        display: contents;
+    }
+
+    [data-header-layout="stacked-nav"] .#{$main-header-selector}__main-content {
+        display: flex;
+    }
+
+    [data-header-layout="stacked-nav"] .#{$main-header-selector}__inner {
+        display: contents;
+    }
+
+    .#{$main-header-selector}__logo {
+        grid-area: main-area;
+        height: var(--main-header-logo-height, 100px);
+        aspect-ratio: var(--main-header-logo-aspect, 16/9);
+    }
+
+    .#{$main-header-selector}__main-nav {
+        grid-area: main-area;
+    }
+
+    [data-header-layout="stacked-nav"] .#{$main-header-selector}__main-nav {
+        grid-area: stacked-nav-area;
+    }    
+
+    :where(.#{$main-header-selector}__main-content-end) {
+        order: 3;
     }
 
 }

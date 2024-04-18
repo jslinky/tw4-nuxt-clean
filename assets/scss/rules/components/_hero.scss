@@ -1,0 +1,80 @@
+@use "../../mixins/rules/hero" as hero;
+
+:where(.c-header-main).fixed {
+    @include hero.fixed();
+}
+
+.hero--min-h-screen {
+    @include hero.min-h-screen();
+}
+
+.hero--full-overlay {
+    @include hero.full-overlay();
+}
+
+:where(.hero--full-overlay) {
+    @include hero.content-center();
+}
+
+.hero--top-down {
+    @include hero.top-down();
+}
+
+:where(.hero--top-down) {
+    @include hero.content-center();
+}
+
+.hero {
+    // all: unset;
+    @include hero.rules();
+}
+
+.hero__container {
+    height:100%;
+}
+
+.hero-content {
+    // all: unset;
+    position: relative;
+}
+
+:is(.hero, .hero__container, .hero-content) {
+    // display: flex;
+    // flex-direction: row;
+    display: grid;
+}
+
+:is(.hero__container, .hero__content, .hero__content > *) {
+    flex: 1 1 auto;
+}
+
+.hero-content__text {
+    padding-block: var(--layout-gap);
+}
+
+.hero-content__image {
+    display: flex;
+    justify-content: center;
+}
+
+:where(.hero-content__image img) {
+    object-fit: cover;
+}
+
+@container layout-container (inline-size < 120ch) {
+
+    .hero-content {
+        --layout-column-min: 100%;
+    }
+    .hero-content__text:has(+ *) {
+        padding-block-start: 0;
+    }
+
+}
+
+@container layout-container (inline-size > 120ch) {
+    .hero-content__text {
+        --flex-grid-min: 65ch;
+        flex-grow: 0;
+    }
+}

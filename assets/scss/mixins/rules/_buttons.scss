@@ -1,0 +1,60 @@
+@mixin button() {
+    // TODO dynamic darken or lighten here
+    --button-color-hover: color-mix(in oklch, var(--button-color-hover-mix-base, var(--button-color)) var(--button-color-hover-mix-base-strength, 75%), var(--button-color-hover-mix-into, white) var(--button-color-hover-mix-into-strength, 25%));
+    --button-bg-hover: color-mix(in oklch, var(--button-bg-hover-mix-base, var(--button-bg)) var(--button-bg-hover-mix-base-strength, 90%), var(--button-bg-hover-mix-into, black) var(--button-bg-hover-mix-into-strength, 10%));    
+    padding: var(--button-p, var(--text-frame-y) var(--text-frame-x));
+    border: none;
+    background-color: var(--button-bg, var(--color-primary));
+    border-radius: var(--button-radius, var(--radius));
+    font-weight: var(--button-weight, 500);
+    font-size: var(--button-font-size, inherit);
+    cursor: pointer;
+    color: var(--button-color, var(--color-primary-fg));
+    letter-spacing: var(--button-letter-spacing, .03em);  
+    &:hover {        
+        color: var(--button-color-hover);
+        background-color: var(--button-bg-hover);
+    }  
+}
+
+@mixin button-color-variant($variant: null, $bg: null, $color: null) {
+    @if $variant {
+        --button-bg: var(--color-#{$variant});
+        --button-color: var(--color-#{$variant}-fg);    
+    } @else if $bg and $color {
+        --button-bg: #{$bg};
+        --button-color: #{$color};            
+    }
+}
+
+@mixin default() {
+    @include button-color-variant($bg: 'var(--color-grey-2)', $color: 'var(--color-grey-15)');
+}
+
+@mixin ghost() {
+    // replace color with body color?
+    @include button-color-variant($bg: 'transparent', $color: 'var(--color-grey-15)');
+}
+
+@mixin link() {
+    // replace color with body color?
+    @include button-color-variant($bg: 'transparent', $color: 'var(--color-grey-15)');
+    text-decoration: underline;
+    --button-bg-hover: transparent;
+}
+
+@mixin neutral() {
+    @include button-color-variant($bg: 'var(--color-grey-12)', $color: 'var(--color-grey-2)');
+}
+
+@mixin primary() {    
+    @include button-color-variant('primary');
+}
+
+@mixin secondary() {    
+    @include button-color-variant('secondary');
+}
+
+@mixin accent() {    
+    @include button-color-variant('accent');
+}

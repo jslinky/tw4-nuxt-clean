@@ -68,7 +68,29 @@ const styleDef = reactive({
         'color-14': 'bg-accent-14 text-accent-14-fg',
         'color-15': 'bg-accent-15 text-accent-15-fg',           
       }      
-    },        
+    },   
+    grey: {
+      color: 'bg-color-grey-8',
+      foreground: 'text-grey-1',
+      range: {
+        'color-0': 'bg-grey-0 text-grey-0',
+        'color-1': 'bg-grey-1 text-grey-1',
+        'color-2': 'bg-grey-2 text-grey-2',
+        'color-3': 'bg-grey-3 text-grey-3',
+        'color-4': 'bg-grey-4 text-grey-4',
+        'color-5': 'bg-grey-5 text-grey-5',
+        'color-6': 'bg-grey-6 text-grey-6',
+        'color-7': 'bg-grey-7 text-grey-7',
+        'color-8': 'bg-grey-8 text-grey-8',
+        'color-9': 'bg-grey-9 text-grey-9',
+        'color-10': 'bg-grey-10 text-grey-10',
+        'color-11': 'bg-grey-11 text-grey-11',
+        'color-12': 'bg-grey-12 text-grey-12',
+        'color-13': 'bg-grey-13 text-grey-13',
+        'color-14': 'bg-grey-14 text-grey-14',
+        'color-15': 'bg-grey-15 text-grey-15',           
+      }      
+    },            
   }
 })
 
@@ -76,15 +98,51 @@ const styleDef = reactive({
 
 <template>
   <Header />
-  <aside class="main-aside">
+  <!-- <aside class="main-aside">
     <p>Aside</p>
-  </aside>
+  </aside> -->
   <main class="main-area">
+    <div class="hero col-span-full">
+      <div class="hero__container">
+        <article class="hero-content wrapper-grid bg-grey-1 [--end-col:0]">
+          <!-- Classic-->
+          <div class="flex-layout-grid justify-center col-start-2 col-end-2">
+            <div class="hero-content__text flex-col flow justify-center place-content-center">
+              <h2 class="heading-xl">We build your digital future</h2>
+              <p class="text-md">Help us help you take the next step in a journey which will lead you to the final step</p>
+              <div class="flex">
+                <a href="#" class="btn btn-primary self-start">Find out more</a>
+              </div>
+            </div>
+            <div class="hero-content__image">
+                <img src="https://picsum.photos/1200/500" />
+              </div>            
+          </div>
+        </article>
+      </div>
+    </div>
     <div class="md:flex md:hue-s [--color-hue:var(--secondary-h)] bg-grey-2">
       <!-- <NuxtWelcome /> -->
-      <p class="test font-serif bg-grey-1 block w-full text-primary-fg-soft text-display-xl">Hi. My name is Justin</p>    
+      <p class="test font-serif bg-grey-1 block w-full text-primary-fg-soft text-display-xl">Hi. My name is Justin</p>          
     </div>  
-    <div class="wrapper">
+    <div>
+      <button>Button</button>      
+      <button class="btn-neutral">Button</button>
+      <button class="btn-primary">Button</button>
+      <button class="btn-secondary">Button</button>
+      <button class="btn-accent">Button</button>
+      <button class="btn-ghost">Button</button>
+      <button class="btn-link">Button</button>
+    </div>
+
+    <section class="@container">
+      <div class="p-card p-component" data-pc-name="card" data-pc-section="root"><div class="p-card-header" data-pc-section="header"><img alt="user header" class="w-full" src="https://primefaces.org/cdn/primevue/images/card-vue.jpg"></div><div class="p-card-body" data-pc-section="body"><div class="p-card-caption" data-pc-section="caption"><div class="p-card-title" data-pc-section="title">Advanced Card</div><div class="p-card-subtitle" data-pc-section="subtitle">Card subtitle</div></div><div class="p-card-content" data-pc-section="content"><p class="m-0"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas! </p></div><div class="p-card-footer" data-pc-section="footer"><div class="flex gap-3 mt-1"><button class="p-button p-component p-button-secondary p-button-outlined w-full" type="button" aria-label="Cancel" data-pc-name="button" data-pc-section="root" data-p-severity="secondary" data-pd-ripple="true"><!----><span class="p-button-label" data-pc-section="label">Cancel</span><!----><span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span></button><button class="p-button p-component w-full" type="button" aria-label="Save" data-pc-name="button" data-pc-section="root" data-pd-ripple="true"><!----><span class="p-button-label" data-pc-section="label">Save</span><!----><span role="presentation" aria-hidden="true" data-p-ink="true" data-p-ink-active="false" class="p-ink" data-pc-name="ripple" data-pc-section="root"></span></button></div></div></div></div>      
+    </section>
+    <section class="@container">
+      <div class="card w-full bg-base-100 shadow-xl"><figure class="card-picture"><img src="https://picsum.photos/400/200" alt="placeholder"></figure><div class="card-body"><h2 class="card-title">Shoes!</h2><p>If a dog chews shoes whose shoes does he choose?</p><div class="card-actions justify-end"><button class="btn btn-primary">Buy Now</button></div></div></div>      
+    </section>
+
+    <div>
       <div class="layout-grid layout-grid--column-count grid-layout-col-count-3 [--column-size:40ch]">
         <div>
           <h3>Typography</h3>

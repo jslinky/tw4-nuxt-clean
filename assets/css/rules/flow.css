@@ -1,0 +1,5 @@
+@layer utilities {
+  .flow > * + * {
+    margin-top: var(--flow-space, 1em);
+  }
+}

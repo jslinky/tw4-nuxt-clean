@@ -1,4 +1,4 @@
-@use "../../props/wrapper.scss" as wrapper;
+@use "../../props/maps/wrapper.scss" as wrapper;
 @use "../ultilities/output-props" as *;
 @use "../ultilities/pick-keys" as *;
 
@@ -8,7 +8,7 @@
 }
 
 @mixin grid() {
-    @include output-props(custom, pick-keys(module-variables("wrapper"), wrapper-inline)...);
+    @include output-props(custom, pick-keys(module-variables("wrapper"), grid-wrapper-columns)...);
     display: grid;
     grid-template-columns: var(--grid-wrapper-columns);
     max-width: 100vw;
