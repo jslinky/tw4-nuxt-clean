@@ -3,101 +3,103 @@
 @use "../../mixins/rules/headings" as h;
 @use "../../mixins/rules/card" as card;
 
+@layer components {
 
-:where(.card, .p-card) {
-    @include card.default-rules();  
-    --card-two-columns: var(--card-left-col, 1fr) var(--card-right-col, 1fr);
-    grid-template-columns: var(--card-columns, 1fr);
-    &.image-full {
-      @include card.image-full();
-    }
-    a {
-      @include card.link();
-    }
-}  
-
-:where(.card-title, .p-card-title) {
-    @include h.base();
-    @include h.heading-xs();
-}
-
-:where(.card-subtitle, .p-card-subtitle) {
-    @include h.base();
-    --flow-space: var(--spacing-rel-1_5);
-}
-
-:where(.card-picture, .p-card-header) {
-    align-self: stretch;
-    img {
-        height:100%;
-        object-fit: cover;
-    }
-}
-  
-/// Card container queries 
-// @container layout-container (inline-size > 80ch) {
-@container (inline-size > 80ch) {    
     :where(.card, .p-card) {
-        --card-gap: calc(var(--card-p) * 2);            
-        aspect-ratio: 4/3;
-        max-width: 100%;  
-    }
-}
-
-:where(.card-body, .p-card-body, .p-card-caption, .p-card-content, .p-card-footer) {
-    @include flow();
-}
+        @include card.default-rules();  
+        --card-two-columns: var(--card-left-col, 1fr) var(--card-right-col, 1fr);
+        grid-template-columns: var(--card-columns, 1fr);
+        &.image-full {
+          @include card.image-full();
+        }
+        a {
+          @include card.link();
+        }
+    }  
     
-// @container grid-item (inline-size > 35ch) {
-@container (inline-size > 35ch) {    
-
-    :where(.card, .p-card) {
-
-        &:not([class*="card-side"]) {
-            grid-auto-flow: column;
-            align-items: center;
-            justify-content: start;
-            aspect-ratio: unset;
-            
-            &:has(.card-picture, .p-card-header) {
-                grid-auto-flow: row;
-                // grid-template-columns: 1fr;                    
-            }       
-        }
+    :where(.card-title, .p-card-title) {
+        @include h.base();
+        @include h.heading-xs();
     }
-
+    
+    :where(.card-subtitle, .p-card-subtitle) {
+        @include h.base();
+        --flow-space: var(--spacing-rel-1_5);
+    }
+    
     :where(.card-picture, .p-card-header) {
-        order:-1;
+        align-self: stretch;
         img {
-            width: 100%;
+            height:100%;
+            object-fit: cover;
         }
     }
-
+      
+    /// Card container queries 
+    // @container layout-container (inline-size > 80ch) {
+    @container (inline-size > 80ch) {    
+        :where(.card, .p-card) {
+            --card-gap: calc(var(--card-p) * 2);            
+            aspect-ratio: 4/3;
+            max-width: 100%;  
+        }
+    }
+    
+    :where(.card-body, .p-card-body, .p-card-caption, .p-card-content, .p-card-footer) {
+        @include flow();
+    }
+        
+    // @container grid-item (inline-size > 35ch) {
+    @container (inline-size > 35ch) {    
+    
+        :where(.card, .p-card) {
+    
+            &:not([class*="card-side"]) {
+                grid-auto-flow: column;
+                align-items: center;
+                justify-content: start;
+                aspect-ratio: unset;
+                
+                &:has(.card-picture, .p-card-header) {
+                    grid-auto-flow: row;
+                    // grid-template-columns: 1fr;                    
+                }       
+            }
+        }
+    
+        :where(.card-picture, .p-card-header) {
+            order:-1;
+            img {
+                width: 100%;
+            }
+        }
+    
+    }
+    
+    // @container grid-item (inline-size > 80ch) {
+    @container (inline-size > 80ch) {    
+        :where(.card, .p-card):not([class*="card-side"]):has(.card-picture, .p-card-header) {
+            --card-columns: var(--card-two-columns);
+            --card-gap: calc(var(--card-p) * 2);                
+            // display: flex;
+            // flex-direction: row;            
+            grid-auto-flow: column;        
+        }
+    
+        :where(.card, .p-card):not([class*="card-side"]):has(:is(.card-picture, .p-card-header):first-child + :is(.card-body, .p-card-body)) {
+            --card-left-col: 0.6fr;
+            --card-right-col: 0.4fr;
+            // grid-template-columns: 0.6fr 0.4fr;
+        }
+    
+        :where(.card, .p-card):not([class*="card-side"]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .header)) {
+            --card-left-col: 0.4fr;
+            --card-right-col: 0.6fr;        
+            // grid-template-columns: 0.4fr 0.6fr;
+        }    
+    
+        :where(.card-picture, .p-card-header) {
+            order: initial;
+        }               
+    } 
 }
-
-// @container grid-item (inline-size > 80ch) {
-@container (inline-size > 80ch) {    
-    :where(.card, .p-card):not([class*="card-side"]):has(.card-picture, .p-card-header) {
-        --card-columns: var(--card-two-columns);
-        --card-gap: calc(var(--card-p) * 2);                
-        // display: flex;
-        // flex-direction: row;            
-        grid-auto-flow: column;        
-    }
-
-    :where(.card, .p-card):not([class*="card-side"]):has(:is(.card-picture, .p-card-header):first-child + :is(.card-body, .p-card-body)) {
-        --card-left-col: 0.6fr;
-        --card-right-col: 0.4fr;
-        // grid-template-columns: 0.6fr 0.4fr;
-    }
-
-    :where(.card, .p-card):not([class*="card-side"]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .header)) {
-        --card-left-col: 0.4fr;
-        --card-right-col: 0.6fr;        
-        // grid-template-columns: 0.4fr 0.6fr;
-    }    
-
-    :where(.card-picture, .p-card-header) {
-        order: initial;
-    }               
-} 

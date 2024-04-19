@@ -6,11 +6,11 @@ $main-header-selector: main-header;
         display: grid;
         grid-area: main-header;
         grid-template-areas: 
-        "block-start-area"
-        "main-area"
-        "stacked-nav-area"
-        "block-end-area";
+        "inline-start-block-start-area block-start-area inline-end-block-start-area"
+        "inline-start-area main-area inline-end-area"
+        "inline-start-block-end-area block-end-area inline-end-block-end-area";
         grid-auto-flow: column;
+        grid-template-columns: auto 1fr auto;
     }
 
     :where(.#{$main-header-selector}__inner) {
@@ -20,37 +20,38 @@ $main-header-selector: main-header;
     }
 
     .#{$main-header-selector}__inner {
-        display: flex;
-    }
-
-    .#{$main-header-selector}__main-content {
+        // display: flex;
         display: contents;
     }
 
-    [data-header-layout="stacked-nav"] .#{$main-header-selector}__main-content {
-        display: flex;
-    }
+    // .#{$main-header-selector}__main-content {
+    //     display: contents;
+    // }
 
-    [data-header-layout="stacked-nav"] .#{$main-header-selector}__inner {
-        display: contents;
-    }
+    // [data-header-layout="stacked-nav"] .#{$main-header-selector}__main-content {
+    //     display: flex;
+    // }
 
-    .#{$main-header-selector}__logo {
-        grid-area: main-area;
-        height: var(--main-header-logo-height, 100px);
-        aspect-ratio: var(--main-header-logo-aspect, 16/9);
-    }
+    // [data-header-layout="stacked-nav"] .#{$main-header-selector}__inner {
+    //     display: contents;
+    // }
 
-    .#{$main-header-selector}__main-nav {
-        grid-area: main-area;
-    }
+    // .#{$main-header-selector}__logo {
+    //     grid-area: main-area;
+    //     height: var(--main-header-logo-height, 100px);
+    //     aspect-ratio: var(--main-header-logo-aspect, 16/9);
+    // }
 
-    [data-header-layout="stacked-nav"] .#{$main-header-selector}__main-nav {
-        grid-area: stacked-nav-area;
-    }    
+    // .#{$main-header-selector}__main-nav {
+    //     grid-area: main-area;
+    // }
 
-    :where(.#{$main-header-selector}__main-content-end) {
-        order: 3;
-    }
+    // [data-header-layout="stacked-nav"] .#{$main-header-selector}__main-nav {
+    //     grid-area: stacked-nav-area;
+    // }    
+
+    // :where(.#{$main-header-selector}__main-content-end) {
+    //     order: 3;
+    // }
 
 }

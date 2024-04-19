@@ -59,6 +59,11 @@
 }
 
 @mixin top-down() {
+    .hero-content__container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
     .hero-content {
         --layout-column-min: 100%;
     }

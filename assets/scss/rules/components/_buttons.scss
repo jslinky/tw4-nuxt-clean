@@ -1,30 +1,54 @@
 @use "../../mixins/rules/buttons" as buttons;
 
-:where(.btn, button) {
-    @include buttons.button();    
-    @include buttons.default();
-}
+@layer components {
 
-.btn-neutral {
-    @include buttons.neutral();
-}
-
-.btn-primary {
-    @include buttons.primary();
-}
-
-.btn-secondary {
-    @include buttons.secondary();
-}
-
-.btn-accent {
-    @include buttons.accent();
-}
-
-.btn-ghost {
-    @include buttons.ghost();
-}
-
-.btn-link {
-    @include buttons.link();
+    :where(.btn, button) {
+        @include buttons.button();    
+        @include buttons.default();
+        // &:where([aria-expanded], :has(.icon)) {
+        //     display: flex;
+        //     gap: 0.5em;
+        //     align-items: center;
+        // }
+        // &:where(:not(:has(.icon))) {
+        //     text-align: center;
+        //     min-inline-size: 10ch;
+        // }
+        // &:where(:not(:has(.inclusively-hidden))) {
+        //     padding: var(--button-padding, 0.35em 1em);
+        //     border-radius: 0;
+        // }    
+        // &:is([aria-expanded])::after {
+        //     content: "";
+        //     display: block;
+        //     width: 1em;
+        //     height: 0.5em;
+        //     background-color: currentColor;
+        //     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        // }    
+    }
+    
+    .btn-neutral {
+        @include buttons.neutral();
+    }
+    
+    .btn-primary {
+        @include buttons.primary();
+    }
+    
+    .btn-secondary {
+        @include buttons.secondary();
+    }
+    
+    .btn-accent {
+        @include buttons.accent();
+    }
+    
+    .btn-ghost {
+        @include buttons.ghost();
+    }
+    
+    .btn-link {
+        @include buttons.link();
+    }
 }
