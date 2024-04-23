@@ -1,0 +1,76 @@
+:where(.surface, .region, .quote, .card, .p-card) {
+  background-color: var(--color-surface-bg);
+  color: var(--color-surface-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=primary] {
+  --color-surface-bg: var(--color-primary);
+  --color-surface-text: var(--color-primary-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=primary] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=primary-light] {
+  --color-surface-bg: var(--color-primary-light);
+  --color-surface-text: var(--color-primary-light-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=primary-light] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=primary-dark] {
+  --color-surface-bg: var(--color-primary-dark);
+  --color-surface-text: var(--color-primary-dark-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=primary-dark] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=secondary] {
+  --color-surface-bg: var(--color-secondary);
+  --color-surface-text: var(--color-secondary-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=secondary] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=secondary-light] {
+  --color-surface-bg: var(--color-secondary-light);
+  --color-surface-text: var(--color-secondary-light-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=secondary-light] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=secondary-dark] {
+  --color-surface-bg: var(--color-secondary-dark);
+  --color-surface-text: var(--color-secondary-dark-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=secondary-dark] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=accent] {
+  --color-surface-bg: var(--color-accent);
+  --color-surface-text: var(--color-accent-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=accent] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=accent-light] {
+  --color-surface-bg: var(--color-accent-light);
+  --color-surface-text: var(--color-accent-light-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=accent-light] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=accent-dark] {
+  --color-surface-bg: var(--color-accent-dark);
+  --color-surface-text: var(--color-accent-dark-text);
+}
+:where(.surface, .region, .quote, .card, .p-card)[data-surface-theme=accent-dark] .btn-outline {
+  --button-color: var(--color-surface-text);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+}

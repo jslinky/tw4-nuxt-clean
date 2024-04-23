@@ -1,5 +1,7 @@
 :where(html) {
-  --space-xs: calc(var(--unit) / var(--space-increment));
+  --space-3xs: calc(var(--space-2xs) / var(--space-increment));
+  --space-2xs: calc(var(--space-xs) / var(--space-increment));
+  --space-xs: calc(var(--space-sm) / var(--space-increment));
   --space-sm: var(--unit);
   --space-md: calc(var(--space-sm) * var(--space-increment));
   --space-lg: calc(var(--space-md) * var(--space-increment));

@@ -1,0 +1,23 @@
+@use "../../mixins/rules/headings" as headings;
+
+.quote {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-gutter-sm);
+    @include headings.base();
+    @include headings.heading-xxs-fluid();
+    @include headings.fluid-heading-font-size();
+    font-size: var(--heading-font-size);    
+  }
+  
+  .quote img {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    width: clamp(4rem, 30%, 6rem);
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+  
+  .quote q {
+    quotes: none;
+  }

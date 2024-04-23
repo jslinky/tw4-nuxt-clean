@@ -1,5 +1,6 @@
 <template>
     <div class="hero" :class="{'col-span-full': spanFull, 'hero--full-overlay': selectedHeroType === 'overlay', 'hero--top-down': selectedHeroType === 'top-down'}">
+      <div class="hero__container">
       <div data-admin>
         <select v-model="selectedHeroType" name="hero-options" id="hero-options">
           <option v-for="options in heroVariations" :value="options.name">{{ options.name }}</option>
@@ -12,6 +13,8 @@
           </slot>
         </article>
       </div>
+    </div>
+
     </div>
 </template>
 
@@ -58,7 +61,11 @@ const currentComponent = computed(() => {
 
 </script>
 
-<style>
+<style scoped>
+  .hero {
+      grid-column: 1 / -1;
+  }
+
   [data-admin] {
     position: absolute;
     top: var(--space-md);

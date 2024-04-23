@@ -1,0 +1,25 @@
+@mixin surface-theme($type) {
+    &[data-surface-theme="#{$type}"] {
+        --color-surface-bg: var(--color-#{$type});
+        --color-surface-text: var(--color-#{$type}-text);
+        .btn-outline {
+            --button-color: var(--color-surface-text);
+            --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+        }
+    }
+}
+
+:where(.surface, .region, .quote, .card, .p-card) {
+    background-color: var(--color-surface-bg);
+    color: var(--color-surface-text);    
+    @include surface-theme(primary);
+    @include surface-theme(primary-light);
+    @include surface-theme(primary-dark);
+    @include surface-theme(secondary);
+    @include surface-theme(secondary-light);
+    @include surface-theme(secondary-dark);
+    @include surface-theme(accent);
+    @include surface-theme(accent-light);
+    @include surface-theme(accent-dark);                  
+}
+

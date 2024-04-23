@@ -4,7 +4,7 @@ $text-frame-ratio: 2.75;
 $text-frame-y: 0.725em;
 $text-frame-x: calc(var(--text-frame-y)* var(--text-frame-ratio));
 $space-increment: 1.42;
-$unit-max: 0.5rem;
+$unit-max: 1rem;
 $unit-min: var(--unit-max) / 2;
 $unit-fluid: 1vi;
 $unit: clamp(var(--unit-min, 0.25rem), var(--unit-fluid, 1vi), var(--unit-max));

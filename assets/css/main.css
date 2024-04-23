@@ -11,10 +11,14 @@
 @import "./props/headings.css";
 @import "./props/space.css";
 @import "./props/wrapper.css";
+@import "./rules/base.css";
 @import "./rules/headings.css";
 @import "./rules/layout.css";
 @import "./rules/wrapper.css";
 @import "./rules/flow.css";
+@import "./rules/region.css";
+@import "./rules/surface.css";
+@import "./rules/base.css";
 @import "./rules/components.css";
 
 @import "./tailwindtheme.css";
@@ -31,7 +35,7 @@
 
 } */
 
-* > :has(.heading, h1, h2, h3, h4, h5, h6) {
+* :has(> .heading, > h1, > h2, > h3, > h4, > h5, > h6) {
   container-type:inline-size;
 }
 

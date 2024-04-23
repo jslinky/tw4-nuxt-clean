@@ -1,11 +1,14 @@
 @use '../mixins/rules/layout' as layout;
+@use "../props/maps/layout" as props;
+@use "../mixins/ultilities/output-props" as *;
+@use "../mixins/ultilities/pick-keys" as *;
 
-
-@layer utilities {
+@layer components {
     // Default grid layout system
     .layout-grid {
         @include layout.grid();
         &.layout-grid--column-count {
+            @include output-props(custom, pick-keys(module-variables("props"), column-count breakpoint column-size)...);    
             @include layout.grid-column-count()
         }
     }

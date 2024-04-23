@@ -1,12 +1,11 @@
 @use "../../props/maps/hero" as hero;
 
 @mixin rules() {    
-    $hero-aspect: hero.$hero-aspect;
-    --hero-aspect: #{$hero-aspect};
     display: grid;
-    aspect-ratio: var(--hero-aspect, 16 / 7);
+    position: relative;
+    aspect-ratio: var(--hero-aspect, hero.$hero-aspect);
     // min-height: var(--hero-min-h, min((calc(var(--hero-m-h-min, #{hero.$hero-min-h-min}) + var(--layout-gap) * 2)), 100dvb));
-    background-color: var(--hero-bg-color, hsl(var(--grey3)));
+    background-color: var(--hero-bg, var(--color-surface-bg));
     .navigation__brand {
         font-size: 4rem;
     }
@@ -68,6 +67,7 @@
         --layout-column-min: 100%;
     }
     .hero-content__text {
+        container: none;
         flex-grow: 1;
         padding-block-start: calc(var(--layout-gap) * 2);
         &:has(+ *) {

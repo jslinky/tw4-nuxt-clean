@@ -1,3 +1,5 @@
+@use "../../../props/maps/z-index" as z-index;
+
 $main-header-selector: main-header;
 
 @mixin output-main-header-rules() {
@@ -10,7 +12,8 @@ $main-header-selector: main-header;
         "inline-start-area main-area inline-end-area"
         "inline-start-block-end-area block-end-area inline-end-block-end-area";
         grid-auto-flow: column;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: var(--grid-wrapper-columns);
+        z-index: z-index.$template-header-z;
     }
 
     :where(.#{$main-header-selector}__inner) {

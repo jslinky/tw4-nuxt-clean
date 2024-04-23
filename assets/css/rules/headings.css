@@ -1,10 +1,9 @@
 @layer components {
   :is(.heading, h1, h2, h3, h4, h5, h6) {
-    --heading-color: var(--bc);
     --heading-line-height: 1.2;
     --fs-max: 1rem;
     font-size: var(--heading-font-size, var(--fs-max));
-    color: var(--heading-color, inherit);
+    color: var(--heading-color, var(--color-surface-text));
     font-weight: var(--heading-font-weight, bold);
     text-transform: var(--heading-text-transform, none);
     font-family: var(--heading-font-family, inherit);
@@ -79,7 +78,7 @@
   }
   .heading-xl {
     --heading-fs-fluid-viewport: 1.5vi;
-    --heading-line-height: 1.25;
+    --heading-line-height: 1;
     --fs-min: var(--heading-xl-fs-min);
     --fs: var(--heading-xl-font-size);
     --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));
@@ -91,7 +90,7 @@
   }
   .heading-2xl {
     --heading-font-weight: 600;
-    --heading-line-height: 1.25;
+    --heading-line-height: 1;
     --heading-text-transform: none;
     --heading-fs-fluid-viewport: 1.5vi;
     --fs-min: var(--heading-2xl-fs-min);

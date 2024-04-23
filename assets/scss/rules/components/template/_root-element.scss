@@ -13,7 +13,7 @@ $root-element-selector: __nuxt;
     'main-header main-header main-header'
     'main-area main-area main-area'
     'main-footer main-footer main-footer'; 
-    &:has(.main-aside) {        
+    &:has(.main-aside:not(:empty)) {        
         --end-col: 0;   
         --root-areas:
         'main-header main-header main-header'

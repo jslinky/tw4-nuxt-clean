@@ -6,9 +6,7 @@
 @layer components {
 
     :where(.card, .p-card) {
-        @include card.default-rules();  
-        --card-two-columns: var(--card-left-col, 1fr) var(--card-right-col, 1fr);
-        grid-template-columns: var(--card-columns, 1fr);
+        @include card.default-rules();          
         &.image-full {
           @include card.image-full();
         }
@@ -39,7 +37,7 @@
     // @container layout-container (inline-size > 80ch) {
     @container (inline-size > 80ch) {    
         :where(.card, .p-card) {
-            --card-gap: calc(var(--card-p) * 2);            
+            --card-gutter: var(--card-gutter-cols-gutter, var(--spacing-gutter-xl));            
             aspect-ratio: 4/3;
             max-width: 100%;  
         }
@@ -53,8 +51,8 @@
     @container (inline-size > 35ch) {    
     
         :where(.card, .p-card) {
-    
-            &:not([class*="card-side"]) {
+
+            &:not([class*="card--side"]) {
                 grid-auto-flow: column;
                 align-items: center;
                 justify-content: start;
@@ -78,7 +76,7 @@
     
     // @container grid-item (inline-size > 80ch) {
     @container (inline-size > 80ch) {    
-        :where(.card, .p-card):not([class*="card-side"]):has(.card-picture, .p-card-header) {
+        :where(.card, .p-card):not([class*="card--side"]):has(.card-picture, .p-card-header) {
             --card-columns: var(--card-two-columns);
             --card-gap: calc(var(--card-p) * 2);                
             // display: flex;
@@ -86,13 +84,13 @@
             grid-auto-flow: column;        
         }
     
-        :where(.card, .p-card):not([class*="card-side"]):has(:is(.card-picture, .p-card-header):first-child + :is(.card-body, .p-card-body)) {
+        :where(.card, .p-card):not([class*="card--side"]):has(:is(.card-picture, .p-card-header):first-child + :is(.card-body, .p-card-body)) {
             --card-left-col: 0.6fr;
             --card-right-col: 0.4fr;
             // grid-template-columns: 0.6fr 0.4fr;
         }
     
-        :where(.card, .p-card):not([class*="card-side"]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .header)) {
+        :where(.card, .p-card):not([class*="card--side"]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .header)) {
             --card-left-col: 0.4fr;
             --card-right-col: 0.6fr;        
             // grid-template-columns: 0.4fr 0.6fr;
@@ -102,4 +100,12 @@
             order: initial;
         }               
     } 
+
+    :is(.card, .p-card) {
+
+        &.card--stacked {
+            @include card.stacked();
+        }
+    }
+
 }

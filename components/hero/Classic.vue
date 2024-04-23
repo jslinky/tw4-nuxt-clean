@@ -2,7 +2,7 @@
     <div class="col-start-2 col-end-2 hero-content__container flex-layout-grid justify-center">
       <div class="hero-content__text @container flex-col flow justify-center place-content-center">
         <h2 class="heading-xl">We build your digital future</h2>
-        <p class="text-md">Help us help you take the next step in a journey which will lead you to the final step</p>
+        <p class="text-xl text-slate max-w-prose text-balance">Help us help you take the next step in a journey which will lead you to the final step</p>
         <div class="flex">
           <a href="#" class="btn btn-primary self-start">Find out more</a>
         </div>

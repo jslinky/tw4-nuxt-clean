@@ -1,10 +1,14 @@
-@layer utilities {
+/* calculations */
+@layer components {
   .layout-grid {
     display: grid;
     grid-template-columns: var(--layout-grid-template-columns);
     gap: var(--layout-grid-gap);
   }
   .layout-grid.layout-grid--column-count {
+    --column-count: 4;
+    --breakpoint: calc(var(--layout-grid-min) * var(--column-count) + var(--layout-grid-gap) * (var(--column-count) - 1));
+    --column-size: calc(100% / var(--column-count) - var(--layout-grid-gap));
     --layout-grid-template-columns: repeat(
         var(--layout-grid-auto-repeat, auto-fit),
         minmax(

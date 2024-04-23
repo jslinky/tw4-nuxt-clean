@@ -49,6 +49,10 @@
     :is(.hero__container, .hero__content, .hero__content > *) {
         flex: 1 1 auto;
     }
+
+    .hero-content__container {
+        --flex-grid-min: 45ch;
+    }
     
     .hero-content__text {
         padding-block: var(--layout-gap);

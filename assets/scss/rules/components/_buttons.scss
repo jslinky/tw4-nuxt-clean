@@ -34,6 +34,9 @@
     
     .btn-primary {
         @include buttons.primary();
+        &.btn-link {
+            --button-color: var(--color-primary);
+        }
     }
     
     .btn-secondary {
@@ -51,4 +54,25 @@
     .btn-link {
         @include buttons.link();
     }
+
+    .btn-circle {
+        @include buttons.circle();
+    }
+
+    :where(.btn, button):is(.btn-outline):not(.btn-ghost, .btn-link) {
+        @include buttons.outline();
+        &.btn-primary {
+            @include buttons.primary-outline();
+        }
+        &.btn-secondary {
+            @include buttons.secondary-outline();
+        }  
+        &.btn-accent {
+            @include buttons.accent-outline();
+        }
+        &.btn-neutral {
+            @include buttons.neutral-outline();
+        }                      
+    }    
+
 }

@@ -1,13 +1,10 @@
 /* calculations */
 :where(html) {
   --layout-column-min: 30ch;
-  --layout-gap: max(3vmax, var(--space-xl, 1rem));
+  --layout-gap: var(--spacing-gutter);
   --layout-grid-min: var(--layout-column-min);
   --layout-grid-gap: var(--layout-gap);
   --layout-grid-template-columns: repeat(var(--layout-grid-auto-repeat, auto-fit), minmax(min(100%, var(--layout-grid-min)), 1fr));
-  --column-count: 4;
-  --breakpoint: calc(var(--layout-grid-min) * var(--column-count) + var(--layout-grid-gap) * (var(--column-count) - 1));
-  --column-size: calc(100% / var(--column-count) - var(--layout-grid-gap));
   --flex-grid-min: var(--layout-column-min);
   --flex-grid-gap: var(--layout-gap);
 }

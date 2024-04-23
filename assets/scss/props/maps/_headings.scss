@@ -2,7 +2,6 @@ $heading-base: (
     "font-size": 1rem,
     "fs-min": 1rem,
     "fs-max": 1rem,
-    "color": var(--bc),
     "line-height": 1.2,
     "font-family": var(--font-family-base),
 ) !default;
@@ -11,7 +10,7 @@ $heading-2xl: (
     "font-size": var(--text-display-2xl),
     "fs-min": var(--text-display-xl),
     "font-weight": 600,
-    "line-height": 1.25,
+    "line-height": 1,
     "text-transform": none,
     "fs-fluid": unquote('1.5cqi'),
     "fs-fluid-viewport": unquote('1.5vi'),
@@ -24,7 +23,7 @@ $heading-xl: (
     "fs-fluid": unquote('1.5cqi'),
     "fs-fluid-viewport": unquote('1.5vi'),
     "is-fluid": true,
-    "line-height": 1.25,
+    "line-height": 1,
 ) !default;
 
 $heading-lg: (

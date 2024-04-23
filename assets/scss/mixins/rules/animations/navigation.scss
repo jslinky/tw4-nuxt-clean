@@ -1,0 +1,27 @@
+@mixin menu-from-left() {
+    @keyframes menu-show-from-left {
+      0% {
+        display: none;
+      }
+      1% {
+        display: grid;
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+  
+    @keyframes menu-hide-from-left {
+      0% {
+        display: grid;
+        transform: translateX(0%);
+      }
+      99% {
+        display: none;
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  }

@@ -19,7 +19,7 @@
 @mixin base() {
     @include base-props();
     font-size: var(--heading-font-size, var(--fs-max));
-    color: var(--heading-color, inherit);
+    color: var(--heading-color, var(--color-surface-text));
     font-weight: var(--heading-font-weight, bold);
     text-transform: var(--heading-text-transform, none);
     font-family: var(--heading-font-family, inherit); // update with default heading ff var here

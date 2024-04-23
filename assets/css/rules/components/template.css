@@ -10,7 +10,7 @@
   "main-area main-area main-area"
   "main-footer main-footer main-footer";
 }
-:where(html):has(.main-aside) {
+:where(html):has(.main-aside:not(:empty)) {
   --end-col: 0;
   --root-areas:
   "main-header main-header main-header"
@@ -29,7 +29,8 @@
     grid-area: main-header;
     grid-template-areas: "inline-start-block-start-area block-start-area inline-end-block-start-area" "inline-start-area main-area inline-end-area" "inline-start-block-end-area block-end-area inline-end-block-end-area";
     grid-auto-flow: column;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: var(--grid-wrapper-columns);
+    z-index: 1;
   }
   :where(.main-header__inner) > * {
     grid-area: main-area;
@@ -50,27 +51,74 @@
   .main-aside {
     grid-area: inline-start-area;
   }
+  @keyframes menu-show-from-left {
+    0% {
+      display: none;
+    }
+    1% {
+      display: grid;
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  @keyframes menu-hide-from-left {
+    0% {
+      display: grid;
+      transform: translateX(0%);
+    }
+    99% {
+      display: none;
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
   .navigation {
     margin-block: 0;
-    padding: var(--space-md);
+    padding: max(var(--space-xs), var(--spacing-1));
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-gutter) var(--spacing-gutter-xl);
     align-items: center;
     flex: 1 1 auto;
     grid-area: main-area;
   }
+  .navigation:has(> *:only-child) {
+    grid-template-columns: 1fr;
+  }
+  .navigation:has(> *:nth-child(3):last-child) {
+    grid-template-columns: auto 1fr auto;
+  }
+  .navigation[data-nav-layout=stacked] .navigation__menu {
+    grid-column: 1/-1;
+  }
+  .navigation[data-nav-layout=stacked-centered] .navigation__brand {
+    grid-column: 1/-1;
+    justify-content: center;
+  }
+  .navigation[data-nav-layout=stacked-centered] .navigation__menu {
+    grid-column: 1/-1;
+    justify-content: center;
+  }
+  .navigation[data-nav-layout=centered] .navigation__menu {
+    justify-content: center;
+  }
   .navigation a:not(.btn) {
     text-decoration: none;
-    padding: 0.15em 0.25em;
+    padding: var(--spacing-rel-2) var(--spacing-rel-2_5);
     width: fit-content;
     color: var(--color-primary);
+    border-radius: min(var(--radius), var(--space-2xs));
+  }
+  .navigation a:not(.btn) span {
     border-bottom: 2px solid transparent;
   }
   .navigation a:not(.btn):hover {
-    background-color: var(--color-accent);
+    background-color: var(--color-grey-1);
   }
-  .navigation a:not(.btn)[aria-current] {
+  .navigation a:not(.btn)[aria-current] span {
     border-bottom-color: var(--color-accent);
   }
   .navigation__brand {
@@ -79,15 +127,14 @@
     gap: 0.25em;
     font-weight: bold;
     font-size: 1.25rem;
-    transform: translateY(-0.1em);
     text-decoration: none;
-    height: var(--main-header-logo-height, 100px);
-    aspect-ratio: var(--main-header-logo-aspect, 16/9);
+    height: var(--main-header-logo-height, 64px);
+    grid-row: 1/1;
+    grid-column: 1/1;
   }
   .navigation__brand svg {
     width: auto;
     height: 100%;
-    transform: translateY(0.25em);
   }
   .navigation__brand span {
     /* Inclusively hidden so it is still read as a label by assistive tech */
@@ -103,11 +150,14 @@
     font-weight: 600;
     color: var(--color-primary);
   }
-  .navigation__menu ul {
-    gap: 0.5rem;
+  .navigation__menu button {
+    z-index: 1;
+    margin-inline: auto 0;
   }
-  .btn:where([aria-expanded=false]) + ul {
-    display: none;
+  .navigation__menu__menu {
+    gap: 0.5rem;
+    position: absolute;
+    top: 0;
   }
   .navigation__actions {
     display: flex;
@@ -119,6 +169,12 @@
   }
   .navigation__menu {
     container: menu/inline-size;
+    display: flex;
+  }
+  :where(.navigation__menu) {
+    align-self: stretch;
+    justify-content: flex-start;
+    align-items: center;
   }
   @container navigation (inline-size >= 55ch) {
     .navigation__brand span {
@@ -129,25 +185,38 @@
       line-height: unset;
     }
   }
-  @container menu (inline-size >= 60ch) {
+  @container navigation (inline-size >= 60ch) {
     .navigation__menu button {
       display: none;
     }
-    .navigation__menu ul {
+    .navigation__menu__menu {
+      position: relative;
       display: flex;
+      --nav-menu-bg: var(--nav-menu-show-bg, transparent);
     }
   }
   .navigation__menu:has(:nth-child(6)) {
     --show-menu: true;
   }
-  @container menu (40ch <= inline-size <= 60ch) {
-    @container not style(--show-menu: true) {
-      .navigation__menu button {
-        display: none;
-      }
-      .navigation__menu ul {
-        display: flex;
-      }
+  @container navigation (40ch <= inline-size <= 60ch) {
+    .navigation:not([data-show-menu]) .btn:where([aria-expanded=false]) + .navigation__menu__menu {
+      display: none;
+      animation: var(--menu-hide, menu-hide-from-left) 500ms ease-in forwards;
+    }
+    .navigation:not([data-show-menu]) .btn:where([aria-expanded=true]) + .navigation__menu__menu {
+      animation: var(--menu-show, menu-show-from-left) 500ms ease-in forwards;
+    }
+    .navigation:not([data-show-menu]) .navigation__menu {
+      display: contents;
+    }
+    .navigation:not([data-show-menu]) .navigation__menu__menu {
+      height: 100dvh;
+      width: 100vw;
+      margin-inline: calc(-50vw + 50%);
+      top: 0;
+      display: grid;
+      place-content: center;
+      background: var(--nav-menu-bg, var(--nav-menu-hide-bg, var(--color-accent)));
     }
   }
 }

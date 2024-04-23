@@ -1,23 +1,31 @@
-@mixin default-rules() {    
-    --card-gap: calc(var(--card-p) * 1);
-    --card-p: clamp(var(--spacing-sm), 8cqi, var(--spacing-xl));
-    background-color: var(--card-bg, hsl(var(--b1)));
+@mixin default-rules() {  
+    --card-two-columns: var(--card-left-col, 1fr) var(--card-right-col, 1fr);  
+    --card-gutter-stacked: var(--spacing-gutter);
+    grid-template-columns: var(--card-columns, 1fr);    
+    background-color: var(--card-bg, var(--color-surface-bg));
     position: relative;
     border: var(--field-border-width, 1px) solid var(--field-border-color);
+    border-radius: var(--card-radius, var(--radius));
     height: 100%;
-    gap: var(--card-gap);
+    gap: var(--card-gutter, var(--card-gutter-stacked));
     aspect-ratio: var(--card-aspect, none);
     display: grid;
-    padding: var(--card-p);
+    padding: var(--card-p, var(--spacing-card, clamp(var(--spacing-sm), 8cqi, var(--spacing-xl))));
     :is(h2, h3):not(.heading) {
         // --headingFontSize: clamp(var(--heading-mSize), 5cqi, var(--heading-lSize));
         text-wrap: balance;
     } 
     &:focus-within {
-        outline: 3px solid var(--color-grey-6);
-        outline-offset: -6px;
+        outline: 3px solid var(--color-surface-bg-interact); 
+        outline-offset: -6px;        
     }   
       
+}
+
+@mixin stacked() {
+    --card-columns: 1fr;
+    --card-gutter: var(--card-gutter-stacked);
+    grid-auto-flow: row;    
 }
 
 @mixin image-full() {
