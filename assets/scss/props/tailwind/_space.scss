@@ -48,5 +48,5 @@ $theme-space: (
     'spacing-gutter-lg': var(--spacing-lg),
     'spacing-gutter-xl': var(--spacing-xl),
     'spacing-regions': var(--spacing-xl),      
-    'spacing-card': clamp(var(--spacing-sm), 8cqi, var(--spacing-xl)),
+    'spacing-card-component': clamp(var(--spacing-sm), 8cqi, var(--spacing-xl)),
 );

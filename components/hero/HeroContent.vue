@@ -1,5 +1,5 @@
 <template>
-    <div class="hero" :class="{'col-span-full': spanFull, 'hero--full-overlay': selectedHeroType === 'overlay', 'hero--top-down': selectedHeroType === 'top-down'}">
+    <div class="hero" data-surface-theme="primary" :class="{'col-span-full': spanFull, 'hero--full-overlay': selectedHeroType === 'overlay', 'hero--top-down': selectedHeroType === 'top-down'}">
       <div class="hero__container">
       <div data-admin>
         <select v-model="selectedHeroType" name="hero-options" id="hero-options">
@@ -7,7 +7,7 @@
         </select>
       </div>
       <div class="hero__container">
-        <article class="hero-content wrapper-grid bg-grey-1 [--end-col:0]">
+        <article class="hero-content wrapper-grid [--end-col:0]">
           <slot>
             <component :is="currentComponent" />
           </slot>
@@ -25,7 +25,7 @@ type HeroOptions = {
   spanFull?: boolean;
 };
 
-type HeroVariations = 'classic' | 'three-col' | 'overlay' | 'top-down';
+type HeroVariations = 'classic' | 'three-col' | 'overlay' | 'top-down' | 'two-col-stacked';
 type HeroVariationOptions = {
   name: HeroVariations;
   component: ReturnType<typeof defineAsyncComponent>;
@@ -51,7 +51,11 @@ const heroVariations: HeroVariationOptions[] = [
   {
     name: 'top-down',
     component: defineAsyncComponent(() => import('./TopDown.vue'))
-  }      
+  },
+  {
+    name: 'two-col-stacked',
+    component: defineAsyncComponent(() => import('./TwoColStacked.vue'))
+  }          
 ]
 
 const currentComponent = computed(() => {

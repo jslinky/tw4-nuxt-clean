@@ -11,6 +11,11 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
   --breakpoint-3xl: 1920px;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-5xl: 64rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
   --size-3xs: 16rem;
   --size-2xs: 18rem;
   --size-xs: 20rem;
@@ -33,7 +38,9 @@
   --color-surface-text-interact: var(--color-dark);
   --color-light: #ffffff;
   --color-light-shade: var(--color-grey-1);
+  --color-light-text: var(--color-global-text);
   --color-dark: #000000;
+  --color-dark-text: var(--color-eggshell);
   --color-mid: var(--color-grey-3);
   --color-mid-shade: var(--color-grey-4);
   --color-midnight: var(--color-grey-12);
@@ -229,6 +236,6 @@
   --spacing-gutter-lg: var(--spacing-lg);
   --spacing-gutter-xl: var(--spacing-xl);
   --spacing-regions: var(--spacing-xl);
-  --spacing-card: clamp(var(--spacing-sm), 8cqi, var(--spacing-xl));
+  --spacing-card-component: clamp(var(--spacing-sm), 8cqi, var(--spacing-xl));
   --z-50: 50;
 }

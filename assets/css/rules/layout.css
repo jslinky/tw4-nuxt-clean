@@ -1,6 +1,10 @@
 /* calculations */
 @layer components {
   .layout-grid {
+    --column-count: 4;
+    --layout-grid-min: var(--layout-column-min);
+    --layout-grid-gap: var(--layout-gap);
+    --layout-grid-template-columns: repeat(var(--layout-grid-auto-repeat, auto-fit), minmax(min(100%, var(--layout-grid-min)), 1fr));
     display: grid;
     grid-template-columns: var(--layout-grid-template-columns);
     gap: var(--layout-grid-gap);

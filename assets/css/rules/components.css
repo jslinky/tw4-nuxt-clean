@@ -307,6 +307,7 @@
 }
 @layer components {
   :where(.card, .p-card) {
+    --color-surface-bg: transparent;
     --card-two-columns: var(--card-left-col, 1fr) var(--card-right-col, 1fr);
     --card-gutter-stacked: var(--spacing-gutter);
     grid-template-columns: var(--card-columns, 1fr);
@@ -318,7 +319,7 @@
     gap: var(--card-gutter, var(--card-gutter-stacked));
     aspect-ratio: var(--card-aspect, none);
     display: grid;
-    padding: var(--card-p, var(--spacing-card, clamp(var(--spacing-sm), 8cqi, var(--spacing-xl))));
+    padding: var(--card-padding, 0);
   }
   :where(.card, .p-card) :is(h2, h3):not(.heading) {
     text-wrap: balance;
@@ -335,17 +336,16 @@
   :where(.card, .p-card).image-full :is(.card-picture, header) {
     height: 100%;
   }
-  :where(.card, .p-card) a {
-    text-decoration: none;
-    font-size: inherit;
-  }
-  :where(.card, .p-card) a:focus-visible {
+  :where(.card, .p-card) :is(.btn, button):focus-visible {
     --outline-color: transparent;
   }
-  :where(.card, .p-card) a:not(.button)::before {
+  :where(.card, .p-card) :is(.btn, button):only-of-type::before {
     content: "";
     position: absolute;
     inset: 0;
+  }
+  :where(.card, .p-card)[data-card-clip=true] {
+    overflow: clip;
   }
   :where(.card-title, .p-card-title) {
     --heading-line-height: 1.2;
@@ -390,10 +390,31 @@
   }
   :where(.card-picture, .p-card-header) {
     align-self: stretch;
+    aspect-ratio: var(--card-aspect, 16/9);
   }
   :where(.card-picture, .p-card-header) img {
     height: 100%;
     object-fit: cover;
+  }
+  :where(.card-body, .p-card-body, .card-caption, .p-card-caption, .card-content, .p-card-content, .card-footer, .p-card-footer) > * + * {
+    margin-top: var(--flow-space, 1em);
+  }
+  :where(.card-body, .p-card-body) {
+    padding: var(--card-body-padding, 0);
+  }
+  :where(.card, .p-card):is([class*=bg-], [data-surface-theme], [class*="--color-surface-bg"]) {
+    --card-body-padding: var(--spacing-card-component);
+  }
+  :where(.card, .p-card):is([class*=bg-], [data-surface-theme], [class*="--color-surface-bg"]):is(.card--stacked):has(:where(.card-picture, .p-card-header:not(.hidden, [class*=order-])) + :where(.card-body, .p-card-body)) :where(.card-body, .p-card-body) {
+    padding-block-start: 0;
+  }
+  @container (inline-size <= 80ch) {
+    :where(.card, .p-card):is([class*=bg-], [data-surface-theme], [class*="--color-surface-bg"]):has(:where(.card-picture, .p-card-header:not(.hidden, [class*=order-]))) :where(.card-body, .p-card-body) {
+      padding-block-start: 0;
+    }
+    :where(.card, .p-card):not([class*=card--side]):has(.card-picture, .p-card-header) {
+      grid-auto-rows: max-content;
+    }
   }
   @container (inline-size > 80ch) {
     :where(.card, .p-card) {
@@ -401,19 +422,20 @@
       aspect-ratio: 4/3;
       max-width: 100%;
     }
-  }
-  :where(.card-body, .p-card-body, .p-card-caption, .p-card-content, .p-card-footer) > * + * {
-    margin-top: var(--flow-space, 1em);
+    :where(.card-picture, .p-card-header) {
+      --card-aspect: auto;
+    }
   }
   @container (inline-size > 35ch) {
     :where(.card, .p-card):not([class*=card--side]) {
       grid-auto-flow: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: start;
       aspect-ratio: unset;
     }
     :where(.card, .p-card):not([class*=card--side]):has(.card-picture, .p-card-header) {
       grid-auto-flow: row;
+      grid-auto-rows: max-content;
     }
     :where(.card-picture, .p-card-header) {
       order: -1;
@@ -432,7 +454,7 @@
       --card-left-col: 0.6fr;
       --card-right-col: 0.4fr;
     }
-    :where(.card, .p-card):not([class*=card--side]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .header)) {
+    :where(.card, .p-card):not([class*=card--side]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .p-card-header)) {
       --card-left-col: 0.4fr;
       --card-right-col: 0.6fr;
     }
@@ -564,42 +586,42 @@
     }
   }
 }
-.quote {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-gutter-sm);
-  --heading-line-height: 1.2;
-  --fs-max: 1rem;
-  font-size: var(--heading-font-size, var(--fs-max));
-  color: var(--heading-color, var(--color-surface-text));
-  font-weight: var(--heading-font-weight, bold);
-  text-transform: var(--heading-text-transform, none);
-  font-family: var(--heading-font-family, inherit);
-  letter-spacing: var(--heading-letter-spacing, normal);
-  line-height: var(--heading-line-height);
-  text-wrap: balance;
-  --fs-min: var(--heading-xxs-fs-min);
-  --fs: var(--heading-xxs-font-size);
-  --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));
-  font-size: var(--heading-font-size);
-}
-.quote.fluid {
-  --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));
-}
-@supports (font-size: 1cqi) {
+@layer components {
   .quote {
-    --fs-fluid: var(--heading-xxs-fs-fluid);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-gutter-sm);
   }
-}
-
-.quote img {
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  width: clamp(4rem, 30%, 6rem);
-  flex-shrink: 0;
-  object-fit: cover;
-}
-
-.quote q {
-  quotes: none;
+  .quote img {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    width: clamp(4rem, 30%, 6rem);
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+  .quote q {
+    quotes: none;
+    --heading-line-height: 1.2;
+    --fs-max: 1rem;
+    font-size: var(--heading-font-size, var(--fs-max));
+    color: var(--heading-color, var(--color-surface-text));
+    font-weight: var(--heading-font-weight, bold);
+    text-transform: var(--heading-text-transform, none);
+    font-family: var(--heading-font-family, inherit);
+    letter-spacing: var(--heading-letter-spacing, normal);
+    line-height: var(--heading-line-height);
+    text-wrap: balance;
+    --fs-min: var(--heading-xxs-fs-min);
+    --fs: var(--heading-xxs-font-size);
+    --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));
+    font-size: var(--heading-font-size);
+  }
+  .quote q.fluid {
+    --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));
+  }
+  @supports (font-size: 1cqi) {
+    .quote q {
+      --fs-fluid: var(--heading-xxs-fs-fluid);
+    }
+  }
 }

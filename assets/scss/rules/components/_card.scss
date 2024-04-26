@@ -3,69 +3,126 @@
 @use "../../mixins/rules/headings" as h;
 @use "../../mixins/rules/card" as card;
 
+/// Card variations
+/// Default - no padding on component or body, no bg-class or data-surface-theme
+/// Card with background - has bg-class or data-surface theme
+/// Card with background but no picture
+/// 
+/// Create a padding prop for component and body which reference card-spacing
+
+$card-component-selectors: '.card, .p-card';
+$card-caption-selectors: '.card-caption, .p-card-caption';
+$card-title-selectors: '.card-title, .p-card-title';
+$card-subtitle-selectors: '.card-subtitle, .p-card-subtitle';
+$card-picture-selectors: '.card-picture, .p-card-header';
+$card-body-selectors: '.card-body, .p-card-body';
+$card-content-selectors: '.card-content, .p-card-content';
+$card-footer-selectors: '.card-footer, .p-card-footer';
+
 @layer components {
 
-    :where(.card, .p-card) {
+    :where(#{$card-component-selectors}) {
         @include card.default-rules();          
         &.image-full {
           @include card.image-full();
         }
-        a {
+        :is(.btn, button) {
           @include card.link();
+        }
+        &[data-card-clip="true"] {
+            overflow: clip;
         }
     }  
     
-    :where(.card-title, .p-card-title) {
+    :where(#{$card-title-selectors}) {
         @include h.base();
         @include h.heading-xs();
     }
     
-    :where(.card-subtitle, .p-card-subtitle) {
+    :where(#{$card-subtitle-selectors}) {
         @include h.base();
         --flow-space: var(--spacing-rel-1_5);
     }
     
-    :where(.card-picture, .p-card-header) {
+    :where(#{$card-picture-selectors}) {
         align-self: stretch;
+        aspect-ratio: var(--card-aspect, 16 / 9);
         img {
             height:100%;
             object-fit: cover;
         }
     }
-      
+    
+    :where(#{$card-body-selectors}, #{$card-caption-selectors}, #{$card-content-selectors}, #{$card-footer-selectors}) {
+        @include flow();
+    }
+
+    :where(#{$card-body-selectors}) {
+        padding: var(--card-body-padding, 0);
+    }
+
+    :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]) {
+        --card-body-padding: var(--spacing-card-component);
+    }
+
+    :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]):is(.card--stacked) {
+        &:has(:where(#{$card-picture-selectors}:not(.hidden, [class*="order-"])) + :where(#{$card-body-selectors})) :where(#{$card-body-selectors}) {
+            padding-block-start: 0;
+            // background:red;
+        }
+    }    
+
+    @container (inline-size <= 80ch) { 
+        :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]) {
+            &:has(:where(#{$card-picture-selectors}:not(.hidden, [class*="order-"]))) :where(#{$card-body-selectors}) {
+                padding-block-start: 0;
+                // background:red;
+            }            
+        } 
+        :where(#{$card-component-selectors}) {
+
+            &:not([class*="card--side"]) {              
+                &:has(#{$card-picture-selectors}) {
+                    grid-auto-rows: max-content;
+                }       
+            }
+        }
+
+    }
+
     /// Card container queries 
     // @container layout-container (inline-size > 80ch) {
     @container (inline-size > 80ch) {    
-        :where(.card, .p-card) {
+        :where(#{$card-component-selectors}) {
             --card-gutter: var(--card-gutter-cols-gutter, var(--spacing-gutter-xl));            
             aspect-ratio: 4/3;
             max-width: 100%;  
         }
-    }
-    
-    :where(.card-body, .p-card-body, .p-card-caption, .p-card-content, .p-card-footer) {
-        @include flow();
-    }
+        :where(#{$card-picture-selectors}) {
+            --card-aspect: auto;
+        }
+    }    
         
     // @container grid-item (inline-size > 35ch) {
     @container (inline-size > 35ch) {    
     
-        :where(.card, .p-card) {
+        :where(#{$card-component-selectors}) {
 
             &:not([class*="card--side"]) {
                 grid-auto-flow: column;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: start;
                 aspect-ratio: unset;
                 
-                &:has(.card-picture, .p-card-header) {
+                &:has(#{$card-picture-selectors}) {
                     grid-auto-flow: row;
+                    grid-auto-rows: max-content;
                     // grid-template-columns: 1fr;                    
                 }       
             }
         }
     
-        :where(.card-picture, .p-card-header) {
+        :where(#{$card-picture-selectors}) {
             order:-1;
             img {
                 width: 100%;
@@ -76,7 +133,7 @@
     
     // @container grid-item (inline-size > 80ch) {
     @container (inline-size > 80ch) {    
-        :where(.card, .p-card):not([class*="card--side"]):has(.card-picture, .p-card-header) {
+        :where(#{$card-component-selectors}):not([class*="card--side"]):has(#{$card-picture-selectors}) {
             --card-columns: var(--card-two-columns);
             --card-gap: calc(var(--card-p) * 2);                
             // display: flex;
@@ -84,24 +141,24 @@
             grid-auto-flow: column;        
         }
     
-        :where(.card, .p-card):not([class*="card--side"]):has(:is(.card-picture, .p-card-header):first-child + :is(.card-body, .p-card-body)) {
+        :where(#{$card-component-selectors}):not([class*="card--side"]):has(:is(#{$card-picture-selectors}):first-child + :is(#{$card-body-selectors})) {
             --card-left-col: 0.6fr;
             --card-right-col: 0.4fr;
             // grid-template-columns: 0.6fr 0.4fr;
         }
     
-        :where(.card, .p-card):not([class*="card--side"]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .header)) {
+        :where(#{$card-component-selectors}):not([class*="card--side"]):has(:is(#{$card-body-selectors}):first-child + :is(#{$card-picture-selectors})) {
             --card-left-col: 0.4fr;
             --card-right-col: 0.6fr;        
             // grid-template-columns: 0.4fr 0.6fr;
         }    
     
-        :where(.card-picture, .p-card-header) {
+        :where(#{$card-picture-selectors}) {
             order: initial;
         }               
     } 
 
-    :is(.card, .p-card) {
+    :is(#{$card-component-selectors}) {
 
         &.card--stacked {
             @include card.stacked();

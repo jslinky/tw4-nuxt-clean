@@ -10,7 +10,7 @@
           <a href="#" class="btn btn-primary self-start">Find out more</a>
         </div>        
     </div>
-    <div class="hero-content__col hero-content__image hidden @7xl:flex">
+    <div class="hero-content__col hero-content__image @7xl:flex">
       <img src="https://picsum.photos/1200/500" />
     </div>
   </div>
@@ -20,8 +20,8 @@
 
 </script>
 
-<style scoped>
+<!-- <style scoped>
   .hero-content__container {
     grid-column: 1 / -1;
   }
-</style>
+</style> -->

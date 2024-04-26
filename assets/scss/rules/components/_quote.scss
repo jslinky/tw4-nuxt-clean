@@ -1,13 +1,11 @@
 @use "../../mixins/rules/headings" as headings;
 
-.quote {
+@layer components {
+
+  .quote {
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-gutter-sm);
-    @include headings.base();
-    @include headings.heading-xxs-fluid();
-    @include headings.fluid-heading-font-size();
-    font-size: var(--heading-font-size);    
   }
   
   .quote img {
@@ -20,4 +18,9 @@
   
   .quote q {
     quotes: none;
+    @include headings.base();
+    @include headings.heading-xxs-fluid();
+    @include headings.fluid-heading-font-size();
+    font-size: var(--heading-font-size);
   }
+}

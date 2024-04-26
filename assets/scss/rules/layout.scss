@@ -6,6 +6,7 @@
 @layer components {
     // Default grid layout system
     .layout-grid {
+        @include output-props(custom, pick-keys(module-variables("props"), column-count layout-grid-min layout-grid-gap layout-grid-template-columns)...);    
         @include layout.grid();
         &.layout-grid--column-count {
             @include output-props(custom, pick-keys(module-variables("props"), column-count breakpoint column-size)...);    

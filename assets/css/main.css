@@ -42,3 +42,11 @@
 /* @media (--big-window) {
   body { color: green; }
 } */
+
+@custom-media --sm-n-above    (width >= 480px);
+
+@media (--sm-n-above) {
+  body {
+    opacity:0.4;
+  }
+}

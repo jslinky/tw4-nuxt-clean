@@ -1,4 +1,5 @@
 @mixin default-rules() {  
+    --color-surface-bg: transparent;
     --card-two-columns: var(--card-left-col, 1fr) var(--card-right-col, 1fr);  
     --card-gutter-stacked: var(--spacing-gutter);
     grid-template-columns: var(--card-columns, 1fr);    
@@ -10,7 +11,8 @@
     gap: var(--card-gutter, var(--card-gutter-stacked));
     aspect-ratio: var(--card-aspect, none);
     display: grid;
-    padding: var(--card-p, var(--spacing-card, clamp(var(--spacing-sm), 8cqi, var(--spacing-xl))));
+    padding: var(--card-padding, 0);
+    // padding: var(--card-padding, var(--spacing-card-component, clamp(var(--spacing-sm), 8cqi, var(--spacing-xl))));
     :is(h2, h3):not(.heading) {
         // --headingFontSize: clamp(var(--heading-mSize), 5cqi, var(--heading-lSize));
         text-wrap: balance;
@@ -19,6 +21,8 @@
         outline: 3px solid var(--color-surface-bg-interact); 
         outline-offset: -6px;        
     }   
+    ///
+    
       
 }
 
@@ -38,12 +42,13 @@
 }
 
 @mixin link() {
-    text-decoration: none;
-    font-size: inherit;       
+    // text-decoration: none;
+    // font-size: inherit;       
     &:focus-visible {
       --outline-color: transparent;
     }
-    &:not(.button)::before {
+    // &:not(.button)::before {
+    &:only-of-type::before {        
       content: "";
       position: absolute;
       inset: 0;
