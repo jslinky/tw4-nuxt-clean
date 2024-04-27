@@ -3,25 +3,49 @@
   <Header />
   <aside class="main-aside bg-primary">
     <slot name="aside"></slot>
-  </aside>    
-  <main class="main-area">
+  </aside>
+  <main class="main-area"">
     <slot />
   </main>
-  <div v-if="uiSettings" class="ui-settings-panel col-start-2 col-end-4 row-span-full bg-dark/90 w-56 h-full ml-auto mr-0 z-50">
-    <p>Panel</p>
-  </div>
-  <button @click="uiSettings = !uiSettings" class="btn btn-circle fixed mr-lg bottom-lg z-50 right-0">
+  <UiSettingsPanel v-model:tokenBodyFont="settings" :showMenu="uiSettings" />
+  <button
+    @click="uiSettings = !uiSettings"
+    class="btn btn-circle fixed mr-lg bottom-lg z-50 right-0"
+  >
     <Icon name="uil:cog" color="black" />
   </button>
 </template>
 
 <script lang="ts" setup>
+import { useSiteSettings } from "~/composables/useSiteSettings";
 
-const uiSettings = useState('ui-settings', () => false)
+const uiSettings = useState("ui-settings", () => false);
+const settings = useSiteSettings();
+
+onMounted(() => {
+
+  function updateFont(fontPropName: string, fontName: string): void {
+    document.body.style.setProperty(
+          `${fontPropName}`,
+          `var(--font-family-${fontName})`
+        );    
+  }
+
+  watch(
+    [() => settings.value.fonts.bodyFont.name, () => settings.value.fonts.headingFont.name],
+    ([newBodyFont, newHeadingFont]) => {
+      if(newBodyFont) {
+        updateFont('--font-base', newBodyFont)
+      }
+      if(newHeadingFont) {
+        updateFont('--heading-font-family', newHeadingFont)
+      }      
+    },
+    { deep: true }
+  );
+});
 
 
 </script>
 
-<style>
-
-</style>
+<style></style>
