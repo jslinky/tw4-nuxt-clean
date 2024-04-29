@@ -15,6 +15,7 @@
     "@nuxt/fonts": "^0.6.1",
     "@tailwindcss/postcss": "^4.0.0-alpha.11",
     "@tailwindcss/vite": "^4.0.0-alpha.11",
+    "@vituum/vite-plugin-postcss": "^1.1.0",
     "clsx": "^2.1.1",
     "nuxt": "^3.10.3",
     "open-props": "^1.6.21",
@@ -30,6 +31,7 @@
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "nuxt-icon": "^0.6.10",
-    "nuxt-primevue": "^0.3.1"
+    "nuxt-primevue": "^0.3.1",
+    "postcss-custom-media": "^10.0.4"
   }
 }

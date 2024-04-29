@@ -1,8 +1,10 @@
 @import "tailwindcss";
+@import "./open-props/media";
 @import "./open-props/colors-hsl";
 @import "./open-props/colors-oklch";
 @import "./open-props/borders";
 @import "./open-props/gradients";
+@import "./open-props/masks";
 @import "./props/key-tokens.css";
 @import "./props/colors.css";
 @import "./props/font-size.css";
@@ -37,16 +39,4 @@
 
 * :has(> .heading, > h1, > h2, > h3, > h4, > h5, > h6) {
   container-type:inline-size;
-}
-
-/* @media (--big-window) {
-  body { color: green; }
-} */
-
-@custom-media --sm-n-above    (width >= 480px);
-
-@media (--sm-n-above) {
-  body {
-    opacity:0.4;
-  }
 }

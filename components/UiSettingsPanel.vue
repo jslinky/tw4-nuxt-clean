@@ -1,27 +1,20 @@
 <script setup lang="ts">
-type FontListSystem =
-  | "sans-system-ui"
-  | "sans-humanist"
-  | "sans-geometric-humanist"
-  | "sans-classical-humanist"
-  | "sans-neo-grotesque"
-  | "sans-industrial"
-  | "sans-rounded-sans"
-  | "serif-transitional"
-  | "serif-old-style"
-  | "serif-slab-serif"
-  | "serif-antique"
-  | "serif-didone"
-  | "monospace-slab-serif"
-  | "monospace-code"
-  | "cursive-handwritten";
+import type { SystemFontNames, SitePropSettings } from "@/types";
 
-const selectedBodyFont = ref();
-const selectedHeadingFont = ref();
+const sitePropSettings = defineModel<SitePropSettings>("sitePropSettings");
 
-type SystemFont = Record<'name', FontListSystem>
+const selectedBodyFont = ref("");
+const selectedHeadingFont = ref("");
+const baseFontSizePx = ref();
+const textSizeIncrementProxy = ref();
+const textFrameRatio = ref();
+const textFrameY = ref();
+const spaceIncrement = ref();
+const unitMax = ref();
+const unitFluid = ref();
+const radius = ref();
 
-const systemFonts: Ref<SystemFont[]> = ref([
+const systemFonts: Ref<SystemFontNames[]> = ref([
   { name: "sans-system-ui" },
   { name: "sans-humanist" },
   { name: "sans-geometric-humanist" },
@@ -43,56 +36,150 @@ defineProps<{
   showMenu: boolean;
 }>();
 
-type FontConfig = {
-  fonts: {
-    bodyFont: {
-      name: string;
-    };
-    headingFont: {
-      name: string;
-    }
-  };
-};
+onMounted(() => {
+  if (sitePropSettings.value) {
+    const styles = getPropComputedStyle(document.documentElement);
 
-const tokenBodyFont = defineModel<FontConfig>('tokenBodyFont');
-
-watch([selectedBodyFont, selectedHeadingFont], ([newBodyFont, newHeadingFont]) => {
-  if(newBodyFont) {
-    if(tokenBodyFont?.value) {
-      tokenBodyFont.value.fonts.bodyFont.name = newBodyFont
+    const basePx = splitValueAndUnit(styles("--font-size-base-px"));
+    if (basePx) {
+      const [value] = basePx;
+      if (value) {
+        baseFontSizePx.value = Number(value);
+      }
     }
+
+    const textSizeIncr = splitValueAndUnit(styles("--text-size-increment"));
+    if (textSizeIncr) {
+      const [value] = textSizeIncr;
+      if (value) {
+        textSizeIncrementProxy.value = Number(value);
+      }
+    }
+
+    const spaceIncr = splitValueAndUnit(styles("--space-increment"));
+    if (spaceIncr) {
+      const [value] = spaceIncr;
+      if (value) {
+        spaceIncrement.value = Number(value);
+      }
+    }
+
+    const radiusVal = splitValueAndUnit(styles("--radius"));
+    if (radiusVal) {
+      const [value] = radiusVal;
+      if (value) {
+        radius.value = Number(value);
+      }
+    }
+
   }
-  if(newHeadingFont) {
-    if(tokenBodyFont?.value) {
-      tokenBodyFont.value.fonts.headingFont.name = newHeadingFont
-    }
-  }  
-})
+});
 
+watchEffect(() => {
+  if (selectedBodyFont.value && sitePropSettings.value) {
+    sitePropSettings.value.fonts["font-base"].name = selectedBodyFont.value;
+  }
+  if (selectedHeadingFont.value && sitePropSettings.value) {
+    sitePropSettings.value.fonts["heading-font-family"].name =
+      selectedHeadingFont.value;
+  }
+  if (baseFontSizePx.value && sitePropSettings.value) {
+    sitePropSettings.value.size["font-size-base-px"].value =
+      baseFontSizePx.value.toString();
+  }
+  if (textSizeIncrementProxy.value && sitePropSettings.value) {
+    sitePropSettings.value.size["text-size-increment"].value =
+      textSizeIncrementProxy.value.toString();
+  }
+  if (spaceIncrement.value && sitePropSettings.value) {
+    sitePropSettings.value.size["space-increment"].value =
+      spaceIncrement.value.toString();
+  }
+
+  if (radius.value && sitePropSettings.value) {
+    sitePropSettings.value.size["radius"].value =
+      radius.value.toString();
+  }  
+});
 </script>
 
 <template>
   <div
     v-if="showMenu"
-    class="ui-settings-panel col-start-2 col-end-4 row-span-full bg-dark/90 w-56 h-full ml-auto mr-0 z-50"
+    class="ui-settings-panel col-start-2 col-end-4 row-span-full bg-light/90 w-56 h-full ml-auto mr-0 z-50"
   >
-    <!-- <pre class="text-light">Body {{ selectedBodyFont }}</pre>
-    <pre class="text-light">Heading {{ selectedHeadingFont }}</pre>    
-    <pre class="text-light">Heading {{ tokenBodyFont }}</pre>     -->
-    <Dropdown
-      :options="systemFonts"
-      @change="val => selectedBodyFont = val.value.name"      
-      optionLabel="name"
-      placeholder="Select a body font"
-      class="w-full md:w-14rem block"
-    />
+    <div class="px-sm">
+      <Dropdown
+        :options="systemFonts"
+        @change="(val) => (selectedBodyFont = val.value.name)"
+        optionLabel="name"
+        placeholder="Select a body font"
+        class="w-full block"
+      />
 
-    <Dropdown
-      :options="systemFonts"
-      @change="val => selectedHeadingFont = val.value.name"      
-      optionLabel="name"
-      placeholder="Select a heading font"
-      class="w-full md:w-14rem block"
-    />    
+      <Dropdown
+        :options="systemFonts"
+        @change="(val) => (selectedHeadingFont = val.value.name)"
+        optionLabel="name"
+        placeholder="Select a heading font"
+        class="w-full block"
+      />
+
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Base font size</h4>
+        <p>{{ baseFontSizePx }}</p>
+        <!-- <InputText v-model.number="baseFontSize" :min="12" :max="18" class="w-full mb-3" /> -->
+        <Slider
+          v-model="baseFontSizePx"
+          :step="1"
+          :min="12"
+          :max="18"
+          class="w-full"
+        />
+      </div>
+
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Text size increment</h4>
+        <p>
+          {{ textSizeIncrementProxy }}
+        </p>
+        <Slider
+          v-model="textSizeIncrementProxy"
+          :step="0.025"
+          :min="1.2"
+          :max="1.4"
+          class="w-full"
+        />
+      </div>
+
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Space increment</h4>
+        <p>
+          {{ spaceIncrement }}
+        </p>
+        <Slider
+          v-model="spaceIncrement"
+          :step="0.001"
+          :min="1.1"
+          :max="2"
+          class="w-full"
+        />
+      </div>
+
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Radius</h4>
+        <p>
+          {{ radius }}
+        </p>
+        <Slider
+          v-model="radius"
+          :step="0.025"
+          :min="0"
+          :max="4"
+          class="w-full"
+        />
+      </div>
+
+    </div>
   </div>
 </template>

@@ -1,1 +1,36 @@
-
+:where(html) {
+  --op-mask-edge-scoop-bottom: radial-gradient(20px at 50% 100%, rgba(0, 0, 0, 0) 97%, #000) 50%/38px 100%;
+  --op-mask-edge-scoop-top: radial-gradient(20px at 50% 0, rgba(0, 0, 0, 0) 97%, #000) 50%/38px 100%;
+  --op-mask-edge-scoop-vertical: radial-gradient(20px at 50% 20px, rgba(0, 0, 0, 0) 97%, #000) 50% -20px/38px 100%;
+  --op-mask-edge-scoop-left: radial-gradient(20px at 0 50%, rgba(0, 0, 0, 0) 97%, #000) 50%/100% 38px;
+  --op-mask-edge-scoop-right: radial-gradient(20px at 100% 50%, rgba(0, 0, 0, 0) 97%, #000) 50%/100% 38px;
+  --op-mask-edge-scoop-horizontal: radial-gradient(20px at 20px 50%, rgba(0, 0, 0, 0) 97%, #000) -20px/100% 38px;
+  --op-mask-edge-scalloped: radial-gradient(farthest-side, #000 97%, rgba(0, 0, 0, 0)) 0 0/20px 20px round, linear-gradient(#000 0 0) 50%/calc(100% - 20px) calc(100% - 20px) no-repeat;
+  --op-mask-edge-scalloped-bottom: linear-gradient(to top, rgba(0, 0, 0, 0) 20px, #000 0), radial-gradient(20px at top, #000 97%, rgba(0, 0, 0, 0)) bottom/38px 20px;
+  --op-mask-edge-scalloped-top: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20px, #000 0), radial-gradient(20px at bottom, #000 97%, rgba(0, 0, 0, 0)) top/38px 20px;
+  --op-mask-edge-scalloped-vertical: linear-gradient(0deg, rgba(0, 0, 0, 0) 40px, #000 0) 0 20px, radial-gradient(20px, #000 97%, rgba(0, 0, 0, 0)) 50%/38px 40px repeat space;
+  --op-mask-edge-scalloped-left: linear-gradient(to right, rgba(0, 0, 0, 0) 20px, #000 0), radial-gradient(20px at right, #000 97%, rgba(0, 0, 0, 0)) left/20px 38px;
+  --op-mask-edge-scalloped-right: linear-gradient(to left, rgba(0, 0, 0, 0) 20px, #000 0), radial-gradient(20px at left, #000 97%, rgba(0, 0, 0, 0)) right/20px 38px;
+  --op-mask-edge-scalloped-horizontal: linear-gradient(-90deg, rgba(0, 0, 0, 0) 40px, #000 0) 20px, radial-gradient(20px, #000 97%, rgba(0, 0, 0, 0)) 50%/40px 38px space repeat;
+  --op-mask-edge-drip-bottom: radial-gradient(20px at bottom, rgba(0, 0, 0, 0) 97%, #000) 50% calc(100% - 20px)/40px 100% repeat-x, radial-gradient(20px at 25% 50%, #000 97%, rgba(0, 0, 0, 0)) calc(50% - 20px) 99%/80px 40px repeat-x;
+  --op-mask-edge-drip-top: radial-gradient(20px at top, rgba(0, 0, 0, 0) 97%, #000) 50% 20px/40px 100% repeat-x, radial-gradient(20px at 25% 50%, #000 97%, rgba(0, 0, 0, 0)) calc(50% - 20px) 1%/80px 40px repeat-x;
+  --op-mask-edge-drip-vertical: radial-gradient(20px at top, rgba(0, 0, 0, 0) 97%, #000) 50% 20px/40px 51% repeat-x, radial-gradient(20px at bottom, rgba(0, 0, 0, 0) 97%, #000) 50% calc(100% - 20px)/40px 51% repeat-x, radial-gradient(20px at 25% 50%, #000 97%, rgba(0, 0, 0, 0)) calc(50% - 20px) 1%/80px 40px repeat-x, radial-gradient(20px at 25% 50%, #000 97%, rgba(0, 0, 0, 0)) calc(50% - 60px) 99%/80px 40px repeat-x;
+  --op-mask-edge-drip-left: radial-gradient(20px at left, rgba(0, 0, 0, 0) 97%, #000) 20px 50%/100% 40px repeat-y, radial-gradient(20px at 50% 25%, #000 97%, rgba(0, 0, 0, 0)) 1% calc(50% - 20px)/40px 80px repeat-y;
+  --op-mask-edge-drip-right: radial-gradient(20px at right, rgba(0, 0, 0, 0) 97%, #000) calc(100% - 20px) 50%/100% 40px repeat-y, radial-gradient(20px at 50% 25%, #000 97%, rgba(0, 0, 0, 0)) 99% calc(50% - 20px)/40px 80px repeat-y;
+  --op-mask-edge-drip-horizontal: radial-gradient(20px at left, rgba(0, 0, 0, 0) 97%, #000) 20px 50%/51% 40px repeat-y, radial-gradient(20px at right, rgba(0, 0, 0, 0) 97%, #000) calc(100% - 20px) 50%/51% 40px repeat-y, radial-gradient(20px at 50% 25%, #000 97%, rgba(0, 0, 0, 0)) 1% calc(50% - 20px)/40px 80px repeat-y, radial-gradient(20px at 50% 25%, #000 97%, rgba(0, 0, 0, 0)) 99% calc(50% - 60px)/40px 80px repeat-y;
+  --op-mask-edge-zig-zag-top: conic-gradient(from 135deg at top, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) 50%/40px 100%;
+  --op-mask-edge-zig-zag-bottom: conic-gradient(from -45deg at bottom, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) 50%/40px 100%;
+  --op-mask-edge-zig-zag-left: conic-gradient(from 45deg at left, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) 50%/100% 40px;
+  --op-mask-edge-zig-zag-right: conic-gradient(from -135deg at right, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) 50%/100% 40px;
+  --op-mask-edge-zig-zag-horizontal: conic-gradient(from 45deg at left, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) left/51% 40px repeat-y, conic-gradient(from -135deg at right, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) right/51% 40px repeat-y;
+  --op-mask-edge-zig-zag-vertical: conic-gradient(from 135deg at top, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) top/40px 51% repeat-x, conic-gradient(from -45deg at bottom, rgba(0, 0, 0, 0), #000 1deg 90deg, rgba(0, 0, 0, 0) 91deg) bottom/40px 51% repeat-x;
+  --op-mask-corner-cut-circles-1: radial-gradient(1rem at 1rem 1rem, rgba(0, 0, 0, 0) 99%, #000) -1rem -1rem;
+  --op-mask-corner-cut-circles-2: radial-gradient(2rem at 2rem 2rem, rgba(0, 0, 0, 0) 99%, #000) -2rem -2rem;
+  --op-mask-corner-cut-circles-3: radial-gradient(4rem at 4rem 4rem, rgba(0, 0, 0, 0) 99%, #000) -4rem -4rem;
+  --op-mask-corner-cut-squares-1: conic-gradient(at 2rem 2rem, #000 75%, rgba(0, 0, 0, 0) 0) -1rem -1rem;
+  --op-mask-corner-cut-squares-2: conic-gradient(at 4rem 4rem, #000 75%, rgba(0, 0, 0, 0) 0) -2rem -2rem;
+  --op-mask-corner-cut-squares-3: conic-gradient(at 8rem 8rem, #000 75%, rgba(0, 0, 0, 0) 0) -4rem -4rem;
+  --op-mask-corner-cut-angles-1: conic-gradient(from -45deg at 1rem 1rem, rgba(0, 0, 0, 0) 25%, #000 0) -1rem 0/100% 51% repeat-x, conic-gradient(from 135deg at 1rem calc(100% - 1rem), rgba(0, 0, 0, 0) 25%, #000 0) -1rem 100%/100% 51% repeat-x;
+  --op-mask-corner-cut-angles-2: conic-gradient(from -45deg at 2rem 2rem, rgba(0, 0, 0, 0) 25%, #000 0) -2rem 0/100% 51% repeat-x, conic-gradient(from 135deg at 2rem calc(100% - 2rem), rgba(0, 0, 0, 0) 25%, #000 0) -2rem 100%/100% 51% repeat-x;
+  --op-mask-corner-cut-angles-3: conic-gradient(from -45deg at 4rem 4rem, rgba(0, 0, 0, 0) 25%, #000 0) -4rem 0/100% 51% repeat-x, conic-gradient(from 135deg at 4rem calc(100% - 4rem), rgba(0, 0, 0, 0) 25%, #000 0) -4rem 100%/100% 51% repeat-x;
+}
