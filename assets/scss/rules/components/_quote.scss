@@ -2,6 +2,19 @@
 
 @layer components {
 
+  :where(blockquote, q) {
+    font-family: var(--font-family-quote, var(--font-family-serif));    
+  }
+
+  // :where(.quote):is(blockquote, q) {    
+  //   &:before {
+  //     content: open-quote;
+  //   }
+  //   &:after {
+  //     content: close-quote;
+  //   }
+  // } 
+
   .quote {
     display: flex;
     align-items: flex-start;
@@ -18,9 +31,9 @@
   
   .quote q {
     quotes: none;
-    @include headings.base();
-    @include headings.heading-xxs-fluid();
-    @include headings.fluid-heading-font-size();
-    font-size: var(--heading-font-size);
+    // @include headings.base();
+    // @include headings.heading-xxs-fluid();
+    // @include headings.fluid-heading-font-size();
+    // font-size: var(--heading-font-size);
   }
 }

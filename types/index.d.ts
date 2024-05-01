@@ -27,9 +27,9 @@ export type FontListSystem =
   | "monospace-code"
   | "cursive-handwritten";
 
-export type FontName<T> = Record<"name", T>;
+export type PropName<T> = Record<"name", T>;
 
-export type SystemFontNames = FontName<FontListSystem>;
+export type SystemFontNames = PropName<FontListSystem>;
 
 export type SizeConfigKeys =
   | "text-size-increment"
@@ -41,17 +41,34 @@ export type SizeConfigKeys =
   | "unit-fluid"
   | "radius";
 
-export type SizeSettingsObj = {
-    value: string;
-    unit: string;
-}  
-
-export type SizeSettings<T extends string> = {
-  [K in T]: SizeSettingsObj;
+export type ValueUnitObj = {
+  value: string;
+  unit: string;
 };
 
-export type SizeProps = SizeSettings<SizeConfigKeys>;
+export type ValueUnitSettings<T extends string> = {
+  [key in T]: ValueUnitObj;
+};
+
+export type SizeProps = ValueUnitSettings<SizeConfigKeys>;
+
+
+export type ColorConfigKeys = 
+"primary-h" 
+| "primary-c" 
+| "primary-l"
+| "secondary-h"
+| "secondary-c"
+| "secondary-l"
+| "accent-h"
+| "accent-c"
+| "accent-l";
+
+export type ColorProps = ValueUnitSettings<ColorConfigKeys>;
+
+export type ColorNames = PropName<ColorConfigKeys>;
 
 export type SitePropSettings = GlobalFontProps & {
-    size: SizeProps
+  size: SizeProps;
+  color: ColorProps;
 };

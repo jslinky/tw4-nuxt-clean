@@ -17,6 +17,7 @@
     "@tailwindcss/vite": "^4.0.0-alpha.11",
     "@vituum/vite-plugin-postcss": "^1.1.0",
     "clsx": "^2.1.1",
+    "css-custom-properties": "^0.1.0",
     "nuxt": "^3.10.3",
     "open-props": "^1.6.21",
     "open-props-scss": "^0.7.1",

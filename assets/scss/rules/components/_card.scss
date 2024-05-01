@@ -30,23 +30,44 @@ $card-footer-selectors: '.card-footer, .p-card-footer';
           @include card.link();
         }
         &[data-card-clip="true"] {
-            overflow: clip;
+            &:is([data-surface-theme], [class*="bg-"]) {
+                overflow: clip;
+            }
         }
     }  
     
     :where(#{$card-title-selectors}) {
         @include h.base();
         @include h.heading-xs();
+        display: block;
     }
     
     :where(#{$card-subtitle-selectors}) {
         @include h.base();
         --flow-space: var(--spacing-rel-1_5);
+        display: block;
     }
     
     :where(#{$card-picture-selectors}) {
         align-self: stretch;
-        aspect-ratio: var(--card-aspect, 16 / 9);
+        aspect-ratio: var(--card-aspect, var(--aspect-landscape));
+        display: flex;
+        justify-content: center;
+        &[data-card-picture-aspect-column="landscape"] {
+            --card-aspect: var(--aspect-landscape);
+        }
+        &[data-card-picture-aspect-column="portrait"] {
+            --card-aspect: var(--aspect-portrait);
+        }
+        &[data-card-picture-aspect-column="widescreen"] {
+            --card-aspect: var(--aspect-widescreen);
+        }
+        &[data-card-picture-aspect-column="ultrawide"] {
+            --card-aspect: var(--aspect-ultrawide);
+        }
+        &[data-card-picture-aspect-column="golden"] {
+            --card-aspect: var(--aspect-golden);
+        }                                
         img {
             height:100%;
             object-fit: cover;
@@ -59,10 +80,15 @@ $card-footer-selectors: '.card-footer, .p-card-footer';
 
     :where(#{$card-body-selectors}) {
         padding: var(--card-body-padding, 0);
+        display: block;
     }
 
     :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]) {
         --card-body-padding: var(--spacing-card-component);
+        &:focus-within {
+            outline: 3px solid var(--color-surface-bg-interact); 
+            outline-offset: -6px;        
+        }   
     }
 
     :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]):is(.card--stacked) {
@@ -99,7 +125,22 @@ $card-footer-selectors: '.card-footer, .p-card-footer';
             max-width: 100%;  
         }
         :where(#{$card-picture-selectors}) {
-            --card-aspect: auto;
+            --card-aspect: var(--card-aspect-cols, auto);
+            &[data-card-picture-aspect-column="landscape"] {
+                --card-aspect-cols: var(--aspect-landscape);
+            }
+            &[data-card-picture-aspect-column="portrait"] {
+                --card-aspect-cols: var(--aspect-portrait);
+            }
+            &[data-card-picture-aspect-column="widescreen"] {
+                --card-aspect-cols: var(--aspect-widescreen);
+            }
+            &[data-card-picture-aspect-column="ultrawide"] {
+                --card-aspect-cols: var(--aspect-ultrawide);
+            }
+            &[data-card-picture-aspect-column="golden"] {
+                --card-aspect-cols: var(--aspect-golden);
+            }             
         }
     }    
         

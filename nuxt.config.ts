@@ -16,11 +16,14 @@ export default defineNuxtConfig({
     },
     importPT: { as: 'Lara', from: path.resolve(__dirname, './prime-vue/presets/lara') },
   },
-  postcss: {
-    plugins: {
-      'postcss-custom-media': {}
-    }
-  },
+  plugins: [
+    '~/plugins/css-custom-properties.client.js'
+  ]
+  // postcss: {
+  //   plugins: {
+  //     'postcss-custom-media': {}
+  //   }
+  // },
 })
 
 

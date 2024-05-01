@@ -1,6 +1,6 @@
 @layer components {
   :is(.heading, h1, h2, h3, h4, h5, h6) {
-    --heading-line-height: 1.2;
+    --heading-line-height: inherit;
     --fs-max: 1rem;
     font-size: var(--heading-font-size, var(--fs-max));
     color: var(--heading-color, var(--color-surface-text));
@@ -18,7 +18,7 @@
 @layer utilities {
   .heading-xxs {
     --heading-fs-fluid-viewport: 1vi;
-    --heading-line-height: 1.166;
+    --heading-line-height: inherit;
     --fs-min: var(--heading-xxs-fs-min);
     --fs: var(--heading-xxs-font-size);
     --heading-font-size: var(--heading-xxs-font-size);
@@ -30,7 +30,7 @@
   }
   .heading-xs {
     --heading-fs-fluid-viewport: 1vi;
-    --heading-line-height: 1.166;
+    --heading-line-height: inherit;
     --fs-min: var(--heading-xs-fs-min);
     --fs: var(--heading-xs-font-size);
     --heading-font-size: var(--heading-xs-font-size);
@@ -42,7 +42,7 @@
   }
   .heading-sm {
     --heading-fs-fluid-viewport: 1vi;
-    --heading-line-height: 1.166;
+    --heading-line-height: inherit;
     --fs-min: var(--heading-sm-fs-min);
     --fs: var(--heading-sm-font-size);
     --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));
@@ -54,7 +54,7 @@
   }
   .heading-md {
     --heading-fs-fluid-viewport: 1.5vi;
-    --heading-line-height: 1;
+    --heading-line-height: inherit;
     --fs-min: var(--heading-md-fs-min);
     --fs: var(--heading-md-font-size);
     --heading-font-size: min(var(--fs), calc(var(--fs-min) + var(--fs-fluid, 3vw)));

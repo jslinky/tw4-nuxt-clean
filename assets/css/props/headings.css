@@ -22,5 +22,5 @@
   --heading-xxs-font-size: var(--text-xl);
   --heading-xxs-fs-min: var(--text-xl);
   --heading-xxs-fs-fluid: 1cqi;
-  --heading-font-family: var(--font-family-base);
+  --heading-font-family: var(--font-family-display, inherit);
 }

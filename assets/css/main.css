@@ -5,6 +5,8 @@
 @import "./open-props/borders";
 @import "./open-props/gradients";
 @import "./open-props/masks";
+@import "./rules/reset.css";
+@import "./rules/base.css";
 @import "./props/key-tokens.css";
 @import "./props/colors.css";
 @import "./props/font-size.css";
@@ -20,7 +22,6 @@
 @import "./rules/flow.css";
 @import "./rules/region.css";
 @import "./rules/surface.css";
-@import "./rules/base.css";
 @import "./rules/components.css";
 
 @import "./tailwindtheme.css";

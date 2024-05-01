@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 type ComponentStyles = {
   card: CssProp;
   caption: CssProp;
@@ -10,14 +9,28 @@ type ComponentStyles = {
   body: CssProp;
   content: CssProp;
   footer: CssProp;
-}
+};
+
+type ComponentPictureRatio =
+  | "square"
+  | "landscape"
+  | "portrait"
+  | "widescreen"
+  | "ultrawide"
+  | "golden";
 
 type ComponentPicture = {
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
   css?: CssProp;
   linkUrl?: string;
+  ratio?: {
+    column?: ComponentPictureRatio;
+    row?: ComponentPictureRatio;
+  };
 };
+
+type ComponentAlignItemsOption = "start" | "center" | "end";
 
 type ComponentPropsStyles = Partial<ComponentStyles>;
 
@@ -30,6 +43,10 @@ type ComponentProps = {
   reverseOrder?: boolean;
   interact?: boolean;
   noClip?: boolean;
+  alignItems?: {
+    column?: ComponentAlignItemsOption;
+    row?: ComponentAlignItemsOption;
+  };
   css?: ComponentPropsStyles;
 };
 
@@ -41,9 +58,34 @@ const {
   isStacked = false,
   reverseOrder = false,
   interact = false,
-  noClip,  
-  css
+  noClip,
+  alignItems,
+  css,
 } = defineProps<ComponentProps>();
+
+const alignItemsClass = (val: string) => {
+  switch (val) {
+    case "start":
+      return "items-start";
+      break;
+    case "center":
+      return "items-center";
+      break;
+    case "end":
+      return "items-end";
+      break;
+    default:
+      return "";
+      break;
+  }
+};
+
+const alignItemsColumn = computed(() =>
+  alignItems?.column ? alignItemsClass(alignItems.column) : ""
+);
+const alignItemsRow = computed(() =>
+  alignItems?.row ? alignItemsClass(alignItems.row) : ""
+);
 
 const {
   card: cardStyles,
@@ -56,7 +98,15 @@ const {
   content: contentStyles,
   footer: footerStyles,
 } = reactive({
-  card: cn(["card", isStacked ? "card--stacked" : ""], css?.card),
+  card: cn(
+    [
+      "card",
+      isStacked ? "card--stacked" : "",
+      alignItemsColumn.value,
+      alignItemsRow.value,
+    ],
+    css?.card
+  ),
   caption: cn("card-caption", css?.caption),
   tagline: cn("card-tagline", css?.tagline),
   title: cn("card-title", css?.title),
@@ -69,65 +119,72 @@ const {
 
 const slots = useSlots();
 
+const renderPicture = () => {
+  return h(
+    "div",
+    {
+      class: pictureStyles,
+      "data-card-picture-aspect-column": picture?.ratio?.column || null,
+      "data-card-picture-aspect-row": picture?.ratio?.row || null,
+    },
+    [
+      // Render slot 'picture' or the <img> tag if 'picture' prop is provided
+      slots.picture
+        ? slots.picture()
+        : picture
+        ? h("img", {
+            src: picture.src,
+            alt: picture.alt,
+            css: picture.css, // Note: Vue doesn't inherently handle `css` prop, use `style` if it was intended to be inline styles
+          })
+        : undefined,
+    ]
+  );
+};
+
+const renderBody = () => {
+  return h("div", { class: bodyStyles }, [
+    h("div", { class: captionStyles }, [
+      // Render 'caption' slot or fallback content
+      slots.caption
+        ? slots.caption({
+            css: {
+              title: titleStyles,
+              tagline: taglineStyles,
+              subtitle: subtitleStyles,
+            },
+          })
+        : [
+            tagline ? h("p", { class: taglineStyles }, tagline) : undefined,
+            title ? h("h3", { class: titleStyles }, title) : undefined,
+            subtitle ? h("p", { class: subtitleStyles }, subtitle) : undefined,
+          ],
+    ]),
+    // Conditionally render the default slot
+    slots.default
+      ? h("div", { class: contentStyles }, slots.default())
+      : undefined,
+    // Conditionally render the footer slot
+    slots.footer
+      ? h("div", { class: footerStyles }, slots.footer())
+      : undefined,
+  ]);
+};
 </script>
 
 <template>
-  <article :class="cardStyles" :data-surface-interact="interact" :data-card-clip="noClip ? false : true">
+  <article
+    :class="cardStyles"
+    :data-surface-interact="interact"
+    :data-card-clip="noClip ? false : true"
+  >
     <template v-if="!reverseOrder">
-      <div v-if="slots.picture || picture" :class="pictureStyles">
-      <slot name="picture">
-        <img
-          v-if="picture"
-          :src="picture.src"
-          :alt="picture.alt"
-          :css="picture.css"
-        />
-      </slot>
-    </div>
-    <div v-if="(slots.caption || tagline || subtitle || title)" :class="bodyStyles">
-      <div :class="captionStyles">
-        <slot name="caption" :css="{ title: titleStyles, tagline: taglineStyles, subtitle: subtitleStyles }">
-          <p v-if="tagline" :class="taglineStyles">{{ tagline }}</p>
-          <h3 :class="titleStyles">{{ title }}</h3>
-          <p v-if="subtitle" :class="subtitleStyles">{{ subtitle }}</p>
-        </slot>
-      </div>
-
-      <div v-if="slots.default" :class="contentStyles">
-        <slot></slot>
-      </div>
-      <div v-if="slots.footer" :class="footerStyles">
-        <slot name="footer"></slot>
-      </div>
-    </div>    
+      <component v-if="slots.picture || picture" :is="renderPicture" />
+      <component v-if="slots.caption || slots.default || slots.footer || tagline || subtitle || title" :is="renderBody" />
     </template>
     <template v-else>
-
-    <div :class="bodyStyles">
-      <div :class="captionStyles">
-        <p v-if="tagline" :class="taglineStyles">{{ tagline }}</p>
-        <h3 :class="titleStyles">{{ title }}</h3>
-        <p v-if="subtitle" :class="subtitleStyles">{{ subtitle }}</p>
-      </div>
-
-      <div v-if="slots.default" :class="contentStyles">
-        <slot></slot>
-      </div>
-      <div v-if="slots.footer" :class="footerStyles">
-        <slot name="footer"></slot>
-      </div>
-    </div> 
-    <div v-if="slots.picture || picture" :class="pictureStyles">
-      <slot name="picture">
-        <img
-          v-if="picture"
-          :src="picture.src"
-          :alt="picture.alt"
-          :css="picture.css"
-        />
-      </slot>
-    </div>       
+      <component v-if="slots.caption || slots.default || slots.footer || tagline || subtitle || title" :is="renderBody" />
+      <component v-if="slots.picture || picture" :is="renderPicture" />
     </template>
-
   </article>
 </template>

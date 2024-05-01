@@ -2,8 +2,8 @@ $heading-base: (
     "font-size": 1rem,
     "fs-min": 1rem,
     "fs-max": 1rem,
-    "line-height": 1.2,
-    "font-family": var(--font-family-base),
+    "line-height": inherit,
+    "font-family": var(--font-family-display, inherit),
 ) !default;
 
 $heading-2xl: (
@@ -41,7 +41,7 @@ $heading-md: (
     "fs-fluid": unquote('1cqi'),
     "fs-fluid-viewport": unquote('1.5vi'),
     "is-fluid": true,
-    "line-height": 1,
+    "line-height": inherit,
 ) !default;
 
 $heading-sm: (
@@ -50,7 +50,7 @@ $heading-sm: (
     "fs-fluid": unquote('1cqi'),
     "fs-fluid-viewport": unquote('1vi'),
     "is-fluid": true,
-    "line-height": 1.166,
+    "line-height": inherit,
 ) !default;
 
 $heading-xs: (
@@ -58,7 +58,7 @@ $heading-xs: (
     "fs-min": var(--text-display-xs),
     "fs-fluid": unquote('1cqi'),
     "fs-fluid-viewport": unquote('1vi'),
-    "line-height": 1.166,
+    "line-height": inherit,
     "is-fluid": false,
 ) !default;
 
@@ -68,5 +68,5 @@ $heading-xxs: (
     "fs-fluid": unquote('1cqi'),
     "fs-fluid-viewport": unquote('1vi'),
     "is-fluid": false,
-    "line-height": 1.166,
+    "line-height": inherit,
 ) !default;

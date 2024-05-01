@@ -1,6 +1,6 @@
 <template>
-    <div class="col-start-2 col-end-2 hero-content__container flex-layout-grid justify-center">
-      <div class="hero-content__text @container flex-col flow justify-center place-content-center pl-card lg:pl-2xl">
+    <div class="col-span-full @[120ch]:col-start-2 @[120ch]:col-end-2 hero-content__container flex-layout-grid justify-center">
+      <div class="hero-content__text @container flex-col flow justify-center place-content-center py-2xl px-card-component pl-card @[120ch]:py-card-component lg:pl-2xl">
         <h2 class="heading-xl">We build your digital future</h2>
         <p class="text-xl max-w-prose text-balance">Help us help you take the next step in a journey which will lead you to the final step</p>
         <div class="flex">
@@ -17,10 +17,3 @@
 
 </script>
 
-<style scoped>
-/* Move this temp - tailwind not picking up classes */
-  .hero-content__container {
-    grid-column-start:2;
-    grid-column-end:4;
-  }
-</style>

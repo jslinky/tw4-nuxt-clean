@@ -17,13 +17,6 @@
         // --headingFontSize: clamp(var(--heading-mSize), 5cqi, var(--heading-lSize));
         text-wrap: balance;
     } 
-    &:focus-within {
-        outline: 3px solid var(--color-surface-bg-interact); 
-        outline-offset: -6px;        
-    }   
-    ///
-    
-      
 }
 
 @mixin stacked() {

@@ -19,41 +19,53 @@
 
 <script lang="ts" setup>
 import { useSiteSettings } from "~/composables/useSiteSettings";
-import splitValueAndUnit from "@/utils/splitValueAndUnit"
-import globalFontProps from "@/data/config/global-font-props"
+import globalFontProps, { systemFontDefinitions } from "@/data/config/global-font-props"
 import sizeProps from "@/data/config/size-props"
+import colorProps from "@/data/config/color-props"
+const { $CssCustomProperties } = useNuxtApp();
 
-import type { SitePropSettings, GlobalFontConfigPropNames, SizeConfigKeys } from "~/types";
+import type { SitePropSettings, GlobalFontConfigPropNames, SizeConfigKeys, ColorConfigKeys } from "~/types";
+import type { ValueUnitObj } from "~/types";
 
 const uiSettings = useState("ui-settings", () => false);
 const settings: globalThis.Ref<SitePropSettings> = useSiteSettings();
 const propsLoaded = ref(false)
 
 const getPropValues = () => {
-  const computedRootStyles = window.getComputedStyle(document.documentElement)
 
   Object.entries(globalFontProps.fonts).forEach(([key, value]) => {
     if (key as GlobalFontConfigPropNames) {
-      const propValue = computedRootStyles.getPropertyValue(`--${key}`).trim();
+      const propValue = $CssCustomProperties.get(`--${key}`)
       if (propValue) {
-        settings.value.fonts[key as GlobalFontConfigPropNames].name = propValue;
+        console.log(key,  propValue)
+        const fontPropLookup = Object.entries(systemFontDefinitions).filter(([fontName, fontValue]) => {
+          return propValue === fontValue
+        })
+        if(fontPropLookup) {
+          console.log(fontPropLookup)
+          const name = fontPropLookup[0] as unknown as string;
+          settings.value.fonts[key as GlobalFontConfigPropNames].name = name;
+        }
       }
     }
   });
+  
+  const setValueAndUnit = <T extends SizeConfigKeys | ColorConfigKeys>(props: Record<T, ValueUnitObj>, type: keyof SitePropSettings) => {
+    Object.entries(props as Record<string, ValueUnitObj>).forEach(([key, config]) => {
+      const propValue = $CssCustomProperties.get(`--${key}`).toString().trim()
+      const propValueResult = splitValueAndUnit(propValue);
 
-  Object.entries(sizeProps).forEach(([key, config]) => {
-    const propValue = computedRootStyles.getPropertyValue(`--${key}`).trim(); 
-    const propValueResult = splitValueAndUnit(propValue);
-
-    if (propValueResult) {
-      const [value, unit] = propValueResult;
-      if (key as SizeConfigKeys) {
-      if (value) {
-        settings.value.size[key as SizeConfigKeys] = { value, unit }; // Properly update nested objects
+      if (propValueResult) {
+        const [value, unit] = propValueResult;
+        if (value && settings.value[type] && key in settings.value[type]) {
+          settings.value[type][key as T] = { value, unit }; // Ensure type-safe assignment
+        }
       }
-    }
+  });  
   }
-  });    
+
+  setValueAndUnit<SizeConfigKeys>(sizeProps, 'size')
+  setValueAndUnit<ColorConfigKeys>(colorProps, 'color')
 }
 
 
@@ -75,6 +87,16 @@ onMounted(() => {
     const unitMax = settings.value.size["unit-max"]
     const unitFluid = settings.value.size["unit-fluid"]
     const radius = settings.value.size["radius"]
+
+    const primaryH = settings.value.color["primary-h"]
+    const primaryC = settings.value.color["primary-c"]
+    const primaryL = settings.value.color["primary-l"]
+    const secondaryH = settings.value.color["secondary-h"]
+    const secondaryC = settings.value.color["secondary-c"]
+    const secondaryL = settings.value.color["secondary-l"]   
+    const accentH = settings.value.color["accent-h"]
+    const accentC = settings.value.color["accent-c"]
+    const accentL = settings.value.color["accent-l"]        
 
     if (newBodyFont) {
       updateCustomProp('--font-base', `var(--font-family-${newBodyFont})`)
@@ -105,7 +127,36 @@ onMounted(() => {
     }
     if (radius) {
       updateSizeCustomProp('--radius', radius)
-    }                            
+    }
+    if (primaryH) {
+      updateSizeCustomProp('--primary-h', primaryH)
+    }  
+    if (primaryC) {
+      updateSizeCustomProp('--primary-c', primaryC)
+    }
+    if (primaryL) {
+      updateSizeCustomProp('--primary-l', primaryL)
+    }
+    if (secondaryH) {
+      updateSizeCustomProp('--secondary-h', secondaryH)
+    }  
+    if (secondaryC) {
+      updateSizeCustomProp('--secondary-c', secondaryC)
+    }
+    if (secondaryL) {
+      updateSizeCustomProp('--secondary-l', secondaryL)
+    } 
+    if (accentH) {
+      updateSizeCustomProp('--accent-h', accentH)
+    }  
+    if (accentC) {
+      updateSizeCustomProp('--accent-c', accentC)
+    }
+    if (accentL) {
+      updateSizeCustomProp('--accent-l', accentL)
+    }                    
+    
+
   });  
 
 })

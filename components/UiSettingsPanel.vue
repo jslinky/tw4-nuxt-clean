@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SystemFontNames, SitePropSettings } from "@/types";
+import type { SystemFontNames, SitePropSettings, ColorNames } from "@/types";
 
 const sitePropSettings = defineModel<SitePropSettings>("sitePropSettings");
 
@@ -13,6 +13,16 @@ const spaceIncrement = ref();
 const unitMax = ref();
 const unitFluid = ref();
 const radius = ref();
+
+const primaryH = ref();
+const primaryC = ref();
+const primaryL = ref();
+const secondaryH = ref();
+const secondaryC = ref();
+const secondaryL = ref();
+const accentH = ref();
+const accentC = ref();
+const accentL = ref();
 
 const systemFonts: Ref<SystemFontNames[]> = ref([
   { name: "sans-system-ui" },
@@ -31,6 +41,18 @@ const systemFonts: Ref<SystemFontNames[]> = ref([
   { name: "monospace-code" },
   { name: "cursive-handwritten" },
 ]);
+
+const colors: Ref<ColorNames[]> = ref([
+  { name: "primary-h" },
+  { name: "primary-c" },
+  { name: "primary-l" },
+  { name: "secondary-h" },
+  { name: "secondary-c" },
+  { name: "secondary-l" },
+  { name: "accent-h" },
+  { name: "accent-c" },
+  { name: "accent-l" },    
+])
 
 defineProps<{
   showMenu: boolean;
@@ -72,6 +94,38 @@ onMounted(() => {
       }
     }
 
+    const textFrameRatioVal = splitValueAndUnit(styles("--text-frame-ratio"));
+    if (textFrameRatioVal) {
+      const [value] = textFrameRatioVal;
+      if (value) {
+        textFrameRatio.value = Number(value);
+      }
+    } 
+    
+    const textFrameYVal = splitValueAndUnit(styles("--text-frame-y"));
+    if (textFrameYVal) {
+      const [value] = textFrameYVal;
+      if (value) {
+        textFrameY.value = Number(value);
+      }
+    }
+    
+    const unitMaxVal = splitValueAndUnit(styles("--unit-max"));
+    if (unitMaxVal) {
+      const [value] = unitMaxVal;
+      if (value) {
+        unitMax.value = Number(value);
+      }
+    } 
+    
+    const unitFluidVal = splitValueAndUnit(styles("--unit-fluid"));
+    if (unitFluidVal) {
+      const [value] = unitFluidVal;
+      if (value) {
+        unitFluid.value = Number(value);
+      }
+    }     
+
   }
 });
 
@@ -99,7 +153,43 @@ watchEffect(() => {
   if (radius.value && sitePropSettings.value) {
     sitePropSettings.value.size["radius"].value =
       radius.value.toString();
+  } 
+  
+  if (textFrameRatio.value && sitePropSettings.value) {
+    sitePropSettings.value.size["text-frame-ratio"].value =
+      textFrameRatio.value.toString();
+  } 
+  
+  if (textFrameY.value && sitePropSettings.value) {
+    sitePropSettings.value.size["text-frame-y"].value =
+      textFrameY.value.toString();
+  }
+  
+  if (unitMax.value && sitePropSettings.value) {
+    sitePropSettings.value.size["unit-max"].value =
+      unitMax.value.toString();
   }  
+
+  if (unitFluid.value && sitePropSettings.value) {
+    sitePropSettings.value.size["unit-fluid"].value =
+      unitFluid.value.toString();
+  } 
+  
+  if (primaryH.value && sitePropSettings.value) {
+    sitePropSettings.value.color["primary-h"].value =
+      primaryH.value.toString();
+  }
+  
+  if (primaryC.value && sitePropSettings.value) {
+    sitePropSettings.value.color["primary-c"].value =
+      primaryC.value.toString();
+  }
+  
+  if (primaryL.value && sitePropSettings.value) {
+    sitePropSettings.value.color["primary-l"].value =
+      primaryL.value.toString();
+  }  
+
 });
 </script>
 
@@ -179,6 +269,104 @@ watchEffect(() => {
           class="w-full"
         />
       </div>
+
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Text frame ratio</h4>
+        <p>
+          {{ textFrameRatio }}
+        </p>
+        <Slider
+          v-model="textFrameRatio"
+          :step="0.025"
+          :min="1"
+          :max="3"
+          class="w-full"
+        />
+      </div>  
+      
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Text frame Y</h4>
+        <p>
+          {{ textFrameY }}
+        </p>
+        <Slider
+          v-model="textFrameY"
+          :step="0.025"
+          :min="0.25"
+          :max="1.5"
+          class="w-full"
+        />
+      </div>
+      
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Unit (max)</h4>
+        <p>
+          {{ unitMax }}
+        </p>
+        <Slider
+          v-model="unitMax"
+          :step="0.025"
+          :min="0.25"
+          :max="1.5"
+          class="w-full"
+        />
+      </div>  
+      
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Unit (fluid)</h4>
+        <p>
+          {{ unitFluid }}
+        </p>
+        <Slider
+          v-model="unitFluid"
+          :step="0.025"
+          :min="0.25"
+          :max="2"
+          class="w-full"
+        />
+      </div>
+      
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Primary Hue</h4>
+        <p>
+          {{ primaryH }}
+        </p>
+        <Slider
+          v-model="primaryH"
+          :step="1"
+          :min="0"
+          :max="360"
+          class="w-full"
+        />
+      </div>    
+      
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Primary Chroma</h4>
+        <p>
+          {{ primaryC }}
+        </p>
+        <Slider
+          v-model="primaryC"
+          :step="0.01"
+          :min="0"
+          :max="0.37"
+          class="w-full"
+        />
+      </div> 
+      
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Primary Lightness</h4>
+        <p>
+          {{ primaryL }}
+        </p>
+        <Slider
+          v-model="primaryL"
+          :step="0.25"
+          :min="0"
+          :max="100"
+          class="w-full"
+        />
+      </div>       
 
     </div>
   </div>
