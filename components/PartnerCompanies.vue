@@ -1,21 +1,8 @@
 <script setup lang="ts">
 import { useElementBounding, useDebouncedRefHistory } from "@vueuse/core";
 import type { Ref } from "vue";
+import type { PartnerLogos } from "@/types";
 
-type SvgProp = {
-    el: string | typeof import("vue");
-}
-
-type PartnerLogos = {
-    item?: {
-        css: string;
-    };
-    svg?: Pick<SvgProp, "el">;
-    link?: {
-        url: string;
-        title?: string;
-    };
-};
 
 type ComponentProps = {
     logos?: PartnerLogos[];
@@ -113,8 +100,7 @@ onMounted(async () => {
             'opacity-0': !componentLoadedHistory[0].snapshot,
         }"
     >
-        <slot name="heading">
-            <h2 class="heading heading-sm text-center pb-sm">Trusted by...</h2>
+        <slot name="heading">            
         </slot>
         <slot name="intro"></slot>
         <slot name="logos">
@@ -184,7 +170,7 @@ onMounted(async () => {
         calc(100vw - var(--wrapper-padding) * 2)
     );
     // overflow: hidden;
-    margin-top: var(--spacing-2xl);
+    // margin-top: var(--spacing-2xl);
 }
 
 .c-partner-logos svg {

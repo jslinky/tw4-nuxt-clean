@@ -414,6 +414,9 @@
   :where(.card-body, .p-card-body, .card-caption, .p-card-caption, .card-content, .p-card-content, .card-footer, .p-card-footer) > * + * {
     margin-top: var(--flow-space, 1em);
   }
+  :where(.card-body, .p-card-body, .card-caption, .p-card-caption, .card-content, .p-card-content, .card-footer, .p-card-footer) > * + *:where(button:only-of-type, .btn:only-of-type, :has(> button, > .btn)) {
+    --flow-space: var(--spacing-rel-6);
+  }
   :where(.card-body, .p-card-body) {
     padding: var(--card-body-padding, 0);
     display: block;
@@ -489,9 +492,17 @@
       --card-left-col: 0.6fr;
       --card-right-col: 0.4fr;
     }
+    :where(.card, .p-card):not([class*=card--side]):has(:is(.card-picture, .p-card-header):is([data-card-picture-aspect-column=sqaure]):first-child + :is(.card-body, .p-card-body)) {
+      --card-left-col: 0.5fr;
+      --card-right-col: 0.5fr;
+    }
     :where(.card, .p-card):not([class*=card--side]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .p-card-header)) {
       --card-left-col: 0.4fr;
       --card-right-col: 0.6fr;
+    }
+    :where(.card, .p-card):not([class*=card--side]):has(:is(.card-body, .p-card-body):first-child + :is(.card-picture, .p-card-header):is([data-card-picture-aspect-column=sqaure])) {
+      --card-left-col: 0.5fr;
+      --card-right-col: 0.5fr;
     }
     :where(.card-picture, .p-card-header) {
       order: initial;
@@ -624,12 +635,6 @@
 @layer components {
   :where(blockquote, q) {
     font-family: var(--font-family-quote, var(--font-family-serif));
-  }
-  :where(.quote):is(blockquote, q):before {
-    content: open-quote;
-  }
-  :where(.quote):is(blockquote, q):after {
-    content: close-quote;
   }
   .quote {
     display: flex;

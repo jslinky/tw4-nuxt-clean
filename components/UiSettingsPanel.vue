@@ -13,6 +13,8 @@ const spaceIncrement = ref();
 const unitMax = ref();
 const unitFluid = ref();
 const radius = ref();
+const lineHeightFixed = ref();
+const lineHeightRelative = ref();
 
 const primaryH = ref();
 const primaryC = ref();
@@ -41,6 +43,12 @@ const systemFonts: Ref<SystemFontNames[]> = ref([
   { name: "monospace-code" },
   { name: "cursive-handwritten" },
 ]);
+
+const googleFonts: Ref<GoogleFontNames[]> = ref([
+  {
+    name: "sans-montserrat"
+  }
+])
 
 const colors: Ref<ColorNames[]> = ref([
   { name: "primary-h" },
@@ -124,14 +132,30 @@ onMounted(() => {
       if (value) {
         unitFluid.value = Number(value);
       }
-    }     
+    }
+    
+    const lineHeightFixedVal = splitValueAndUnit(styles("--line-height-fixed"));
+    if (lineHeightFixedVal) {
+      const [value] = lineHeightFixedVal;
+      if (value) {
+        lineHeightFixed.value = Number(value);
+      }
+    }
+    
+    const lineHeightRelativeVal = splitValueAndUnit(styles("--line-height-relative"));
+    if (lineHeightRelativeVal) {
+      const [value] = lineHeightRelativeVal;
+      if (value) {
+        lineHeightRelative.value = Number(value);
+      }
+    }    
 
   }
 });
 
 watchEffect(() => {
   if (selectedBodyFont.value && sitePropSettings.value) {
-    sitePropSettings.value.fonts["font-base"].name = selectedBodyFont.value;
+    sitePropSettings.value.fonts["font-family-base"].name = selectedBodyFont.value;
   }
   if (selectedHeadingFont.value && sitePropSettings.value) {
     sitePropSettings.value.fonts["heading-font-family"].name =
@@ -173,7 +197,17 @@ watchEffect(() => {
   if (unitFluid.value && sitePropSettings.value) {
     sitePropSettings.value.size["unit-fluid"].value =
       unitFluid.value.toString();
-  } 
+  }
+  
+  if (lineHeightFixed.value && sitePropSettings.value) {
+    sitePropSettings.value.size["line-height-fixed"].value =
+      lineHeightFixed.value.toString();
+  }
+  
+  if (lineHeightRelative.value && sitePropSettings.value) {
+    sitePropSettings.value.size["line-height-relative"].value =
+      lineHeightRelative.value.toString();
+  }  
   
   if (primaryH.value && sitePropSettings.value) {
     sitePropSettings.value.color["primary-h"].value =
@@ -196,11 +230,11 @@ watchEffect(() => {
 <template>
   <div
     v-if="showMenu"
-    class="ui-settings-panel col-start-2 col-end-4 row-span-full bg-light/90 w-56 h-full ml-auto mr-0 z-50"
+    class="ui-settings-panel fixed top-0 right-0 col-start-2 col-end-4 row-span-full bg-light/90 w-56 h-full ml-auto mr-0 z-50"
   >
     <div class="px-sm">
       <Dropdown
-        :options="systemFonts"
+        :options="[...systemFonts, ...googleFonts]"
         @change="(val) => (selectedBodyFont = val.value.name)"
         optionLabel="name"
         placeholder="Select a body font"
@@ -325,6 +359,34 @@ watchEffect(() => {
           class="w-full"
         />
       </div>
+
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Line height (fixed)</h4>
+        <p>
+          {{ lineHeightFixed }}
+        </p>
+        <Slider
+          v-model="lineHeightFixed"
+          :step="0.125"
+          :min="-0.25"
+          :max="1.5"
+          class="w-full"
+        />
+      </div> 
+      
+      <div class="flex flex-col justify-content-center min-h-8">
+        <h4>Line height (relative)</h4>
+        <p>
+          {{ lineHeightRelative }}
+        </p>
+        <Slider
+          v-model="lineHeightRelative"
+          :step="0.125"
+          :min="-0.125"
+          :max="1.5"
+          class="w-full"
+        />
+      </div>       
       
       <div class="flex flex-col justify-content-center min-h-8">
         <h4>Primary Hue</h4>

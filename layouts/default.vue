@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import { useSiteSettings } from "~/composables/useSiteSettings";
-import globalFontProps, { systemFontDefinitions } from "@/data/config/global-font-props"
+import globalFontProps, { systemFontDefinitions, googleFontDefinitions } from "@/data/config/global-font-props"
 import sizeProps from "@/data/config/size-props"
 import colorProps from "@/data/config/color-props"
 const { $CssCustomProperties } = useNuxtApp();
@@ -38,7 +38,7 @@ const getPropValues = () => {
       const propValue = $CssCustomProperties.get(`--${key}`)
       if (propValue) {
         console.log(key,  propValue)
-        const fontPropLookup = Object.entries(systemFontDefinitions).filter(([fontName, fontValue]) => {
+        const fontPropLookup = Object.entries({...systemFontDefinitions, ...googleFontDefinitions}).filter(([fontName, fontValue]) => {
           return propValue === fontValue
         })
         if(fontPropLookup) {
@@ -52,7 +52,7 @@ const getPropValues = () => {
   
   const setValueAndUnit = <T extends SizeConfigKeys | ColorConfigKeys>(props: Record<T, ValueUnitObj>, type: keyof SitePropSettings) => {
     Object.entries(props as Record<string, ValueUnitObj>).forEach(([key, config]) => {
-      const propValue = $CssCustomProperties.get(`--${key}`).toString().trim()
+      const propValue = $CssCustomProperties.get(`--${key}`) ? $CssCustomProperties.get(`--${key}`).toString().trim() : ''
       const propValueResult = splitValueAndUnit(propValue);
 
       if (propValueResult) {
@@ -77,7 +77,7 @@ onMounted(() => {
 
   watchEffect(() => {
 
-    const newBodyFont = settings.value.fonts["font-base"].name;
+    const newBodyFont = settings.value.fonts["font-family-base"].name;
     const newHeadingFont = settings.value.fonts["heading-font-family"].name;
     const newBaseFontSizePx = settings.value.size["font-size-base-px"]
     const textSizeIncrement = settings.value.size["text-size-increment"]
@@ -87,6 +87,8 @@ onMounted(() => {
     const unitMax = settings.value.size["unit-max"]
     const unitFluid = settings.value.size["unit-fluid"]
     const radius = settings.value.size["radius"]
+    const lineHeightFixed = settings.value.size["line-height-fixed"]
+    const lineHeightRelative = settings.value.size["line-height-relative"]
 
     const primaryH = settings.value.color["primary-h"]
     const primaryC = settings.value.color["primary-c"]
@@ -99,7 +101,8 @@ onMounted(() => {
     const accentL = settings.value.color["accent-l"]        
 
     if (newBodyFont) {
-      updateCustomProp('--font-base', `var(--font-family-${newBodyFont})`)
+      // check if google font and output based on value on googleFontDefinitions
+      updateCustomProp('--font-family-base', `var(--font-family-${newBodyFont})`)
     }
     if (newHeadingFont) {
       updateCustomProp('--heading-font-family', `var(--font-family-${newHeadingFont})`)
@@ -128,6 +131,12 @@ onMounted(() => {
     if (radius) {
       updateSizeCustomProp('--radius', radius)
     }
+    if (lineHeightFixed) {
+      updateSizeCustomProp('--line-height-fixed', lineHeightFixed)
+    }
+    if (lineHeightRelative) {
+      updateSizeCustomProp('--line-height-relative', lineHeightRelative)
+    }        
     if (primaryH) {
       updateSizeCustomProp('--primary-h', primaryH)
     }  

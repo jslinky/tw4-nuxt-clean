@@ -4,7 +4,7 @@
       <Card
         :css="{
           card: 'py-gutter-xl col-start-2 col-end-2 w-full p-0 [--card-left-col:0.5fr] [--card-right-col:0.5fr]',
-          title: 'heading-lg leading-none',
+          title: 'heading-md',
         }"
         :reverse-order="true"
         :interact="false"

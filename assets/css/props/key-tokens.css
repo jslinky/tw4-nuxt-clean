@@ -10,4 +10,6 @@
   --unit-fluid: 1vi;
   --unit: clamp(var(--unit-min, 0.25rem), var(--unit-fluid, 1vi), var(--unit-max));
   --radius: 1rem;
+  --line-height-relative: 1.4em;
+  --line-height-fixed: 0.375rem;
 }

@@ -7,47 +7,46 @@
 /// Default - no padding on component or body, no bg-class or data-surface-theme
 /// Card with background - has bg-class or data-surface theme
 /// Card with background but no picture
-/// 
+///
 /// Create a padding prop for component and body which reference card-spacing
 
-$card-component-selectors: '.card, .p-card';
-$card-caption-selectors: '.card-caption, .p-card-caption';
-$card-title-selectors: '.card-title, .p-card-title';
-$card-subtitle-selectors: '.card-subtitle, .p-card-subtitle';
-$card-picture-selectors: '.card-picture, .p-card-header';
-$card-body-selectors: '.card-body, .p-card-body';
-$card-content-selectors: '.card-content, .p-card-content';
-$card-footer-selectors: '.card-footer, .p-card-footer';
+$card-component-selectors: ".card, .p-card";
+$card-caption-selectors: ".card-caption, .p-card-caption";
+$card-title-selectors: ".card-title, .p-card-title";
+$card-subtitle-selectors: ".card-subtitle, .p-card-subtitle";
+$card-picture-selectors: ".card-picture, .p-card-header";
+$card-body-selectors: ".card-body, .p-card-body";
+$card-content-selectors: ".card-content, .p-card-content";
+$card-footer-selectors: ".card-footer, .p-card-footer";
 
 @layer components {
-
     :where(#{$card-component-selectors}) {
-        @include card.default-rules();          
+        @include card.default-rules();
         &.image-full {
-          @include card.image-full();
+            @include card.image-full();
         }
         :is(.btn, button) {
-          @include card.link();
+            @include card.link();
         }
         &[data-card-clip="true"] {
             &:is([data-surface-theme], [class*="bg-"]) {
                 overflow: clip;
             }
         }
-    }  
-    
+    }
+
     :where(#{$card-title-selectors}) {
         @include h.base();
         @include h.heading-xs();
         display: block;
     }
-    
+
     :where(#{$card-subtitle-selectors}) {
         @include h.base();
         --flow-space: var(--spacing-rel-1_5);
         display: block;
     }
-    
+
     :where(#{$card-picture-selectors}) {
         align-self: stretch;
         aspect-ratio: var(--card-aspect, var(--aspect-landscape));
@@ -67,13 +66,13 @@ $card-footer-selectors: '.card-footer, .p-card-footer';
         }
         &[data-card-picture-aspect-column="golden"] {
             --card-aspect: var(--aspect-golden);
-        }                                
+        }
         img {
-            height:100%;
+            height: 100%;
             object-fit: cover;
         }
     }
-    
+
     :where(#{$card-body-selectors}, #{$card-caption-selectors}, #{$card-content-selectors}, #{$card-footer-selectors}) {
         @include flow();
     }
@@ -86,43 +85,44 @@ $card-footer-selectors: '.card-footer, .p-card-footer';
     :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]) {
         --card-body-padding: var(--spacing-card-component);
         &:focus-within {
-            outline: 3px solid var(--color-surface-bg-interact); 
-            outline-offset: -6px;        
-        }   
+            outline: 3px solid var(--color-surface-bg-interact);
+            outline-offset: -6px;
+        }
     }
 
-    :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]):is(.card--stacked) {
-        &:has(:where(#{$card-picture-selectors}:not(.hidden, [class*="order-"])) + :where(#{$card-body-selectors})) :where(#{$card-body-selectors}) {
+    :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]):is(
+            .card--stacked
+        ) {
+        &:has(:where(#{$card-picture-selectors}:not(.hidden, [class*="order-"])) + :where(#{$card-body-selectors}))
+            :where(#{$card-body-selectors}) {
             padding-block-start: 0;
             // background:red;
         }
-    }    
+    }
 
-    @container (inline-size <= 80ch) { 
+    @container (inline-size <= 80ch) {
         :where(#{$card-component-selectors}):is([class*="bg-"], [data-surface-theme], [class*="--color-surface-bg"]) {
             &:has(:where(#{$card-picture-selectors}:not(.hidden, [class*="order-"]))) :where(#{$card-body-selectors}) {
                 padding-block-start: 0;
                 // background:red;
-            }            
-        } 
-        :where(#{$card-component-selectors}) {
-
-            &:not([class*="card--side"]) {              
-                &:has(#{$card-picture-selectors}) {
-                    grid-auto-rows: max-content;
-                }       
             }
         }
-
+        :where(#{$card-component-selectors}) {
+            &:not([class*="card--side"]) {
+                &:has(#{$card-picture-selectors}) {
+                    grid-auto-rows: max-content;
+                }
+            }
+        }
     }
 
-    /// Card container queries 
+    /// Card container queries
     // @container layout-container (inline-size > 80ch) {
-    @container (inline-size > 80ch) {    
+    @container (inline-size > 80ch) {
         :where(#{$card-component-selectors}) {
-            --card-gutter: var(--card-gutter-cols-gutter, var(--spacing-gutter-xl));            
+            --card-gutter: var(--card-gutter-cols-gutter, var(--spacing-gutter-xl));
             aspect-ratio: 4/3;
-            max-width: 100%;  
+            max-width: 100%;
         }
         :where(#{$card-picture-selectors}) {
             --card-aspect: var(--card-aspect-cols, auto);
@@ -140,70 +140,85 @@ $card-footer-selectors: '.card-footer, .p-card-footer';
             }
             &[data-card-picture-aspect-column="golden"] {
                 --card-aspect-cols: var(--aspect-golden);
-            }             
+            }
         }
-    }    
-        
-    // @container grid-item (inline-size > 35ch) {
-    @container (inline-size > 35ch) {    
-    
-        :where(#{$card-component-selectors}) {
+    }
 
+    // @container grid-item (inline-size > 35ch) {
+    @container (inline-size > 35ch) {
+        :where(#{$card-component-selectors}) {
             &:not([class*="card--side"]) {
                 grid-auto-flow: column;
                 align-items: flex-start;
                 justify-content: start;
                 aspect-ratio: unset;
-                
+
                 &:has(#{$card-picture-selectors}) {
                     grid-auto-flow: row;
                     grid-auto-rows: max-content;
-                    // grid-template-columns: 1fr;                    
-                }       
+                    // grid-template-columns: 1fr;
+                }
             }
         }
-    
+
         :where(#{$card-picture-selectors}) {
-            order:-1;
+            order: -1;
             img {
                 width: 100%;
             }
         }
-    
     }
-    
+
     // @container grid-item (inline-size > 80ch) {
-    @container (inline-size > 80ch) {    
+    @container (inline-size > 80ch) {
         :where(#{$card-component-selectors}):not([class*="card--side"]):has(#{$card-picture-selectors}) {
             --card-columns: var(--card-two-columns);
-            --card-gap: calc(var(--card-p) * 2);                
+            --card-gap: calc(var(--card-p) * 2);
             // display: flex;
-            // flex-direction: row;            
-            grid-auto-flow: column;        
+            // flex-direction: row;
+            grid-auto-flow: column;
         }
-    
-        :where(#{$card-component-selectors}):not([class*="card--side"]):has(:is(#{$card-picture-selectors}):first-child + :is(#{$card-body-selectors})) {
-            --card-left-col: 0.6fr;
-            --card-right-col: 0.4fr;
+
+        :where(#{$card-component-selectors}):not([class*="card--side"]):has(
+                :is(#{$card-picture-selectors}):first-child + :is(#{$card-body-selectors})
+            ) {
+                --card-left-col: 0.6fr;
+                --card-right-col: 0.4fr;
             // grid-template-columns: 0.6fr 0.4fr;
         }
-    
-        :where(#{$card-component-selectors}):not([class*="card--side"]):has(:is(#{$card-body-selectors}):first-child + :is(#{$card-picture-selectors})) {
-            --card-left-col: 0.4fr;
-            --card-right-col: 0.6fr;        
+
+        :where(#{$card-component-selectors}):not([class*="card--side"]):has(
+                :is(#{$card-picture-selectors}):is([data-card-picture-aspect-column="sqaure"]):first-child
+                    + :is(#{$card-body-selectors})
+            ) {
+            --card-left-col: 0.5fr;
+            --card-right-col: 0.5fr;
+        }
+
+        :where(#{$card-component-selectors}):not([class*="card--side"]):has(
+                :is(#{$card-body-selectors}):first-child + :is(#{$card-picture-selectors})
+            ) {
+                --card-left-col: 0.4fr;
+                --card-right-col: 0.6fr;
             // grid-template-columns: 0.4fr 0.6fr;
-        }    
-    
+        }
+
+        :where(#{$card-component-selectors}):not([class*="card--side"]):has(
+                :is(#{$card-body-selectors}):first-child
+                    + :is(#{$card-picture-selectors}):is([data-card-picture-aspect-column="sqaure"])
+            ) {
+            --card-left-col: 0.5fr;
+            --card-right-col: 0.5fr;
+        }
+
         :where(#{$card-picture-selectors}) {
             order: initial;
-        }               
-    } 
+        }
+    }
 
     :is(#{$card-component-selectors}) {
-
         &.card--stacked {
             @include card.stacked();
         }
     }
-
 }

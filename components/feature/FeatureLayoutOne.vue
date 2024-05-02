@@ -3,13 +3,14 @@
     <div class="wrapper-grid">
       <Card
         title="Test card"
-        :reverse-order="false"
+        tagline="Tagline"
+        :reverse-order="true"
         :align-items="{
           column: 'center',
         }"
         :picture="{
           ratio: {
-            column: 'landscape',
+            column: 'sqaure',
             row: 'square',
           },
         }"
@@ -25,22 +26,19 @@
           <img
             alt="user header"
             class="w-full"
-            src="https://picsum.photos/800/600"
+            src="https://picsum.photos/600/600"
           />
         </template>
         <template #default>
-          <p class="text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <p class="text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            varius enim in eros elementum tristique. Duis cursus, mi quis
+            viverra ornare, eros dolor interdum nulla, ut commodo diam libero
+            vitae erat.
           </p>
-          <Accordion :activeIndex="0">
-            <AccordionTab
-              v-for="tab in tabs"
-              :key="tab.title"
-              :header="tab.title"
-            >
-              <p class="m-0">{{ tab.content }}</p>
-            </AccordionTab>
-          </Accordion>
+        </template>
+        <template #footer>
+          <button class="btn btn-primary btn-outline">Buy Now</button>
         </template>
       </Card>
     </div>
@@ -48,21 +46,6 @@
 </template>
 
 <script setup lang="ts">
-import Card from "@/components/Card.vue";
 import CarPicture from "@/components/demo-homepage-temp/CarPicture.vue";
-
-const tabs = ref([
-  {
-    title: "This is a title",
-    content: "This is some content",
-  },
-  {
-    title: "This is a title",
-    content: "This is some content",
-  },
-  {
-    title: "This is a title",
-    content: "This is some content",
-  },
-]);
+import Card from "@/components/Card.vue";
 </script>

@@ -14,7 +14,7 @@
         }"
       >
         <template #default>
-          <blockquote class="m-0 text-display-xs leading-snug">
+          <blockquote class="m-0 text-display-xs -snug">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
             sed consequuntur error repudiandae numquam deserunt quisquam
             repellat libero asperiores earum nam nobis, culpa ratione quam

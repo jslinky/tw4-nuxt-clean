@@ -23,7 +23,7 @@
           />
         </template>
         <template #default>
-          <p class="text-xl leading-tight">
+          <p class="text-xl">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
             sed consequuntur error repudiandae numquam deserunt quisquam
             repellat libero asperiores earum nam nobis, culpa ratione quam

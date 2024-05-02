@@ -32,7 +32,15 @@ const sizeProps: SizeProps = {
         'radius': {
           value: '',
           unit: ''
-        }    
+        },
+        'line-height-fixed': {
+          value: '',
+          unit: ''
+        },
+        'line-height-relative': {
+          value: '',
+          unit: ''
+        }                    
   }
 
   export default sizeProps;

@@ -5,7 +5,7 @@
         :reverse-order="true"
         :css="{
           card: '[--card-left-col:1fr] [--card-right-col:auto]',
-          title: 'heading-lg leading-none',
+          title: 'heading-lg',
           picture: 'flex items-center',
         }"
         title="Add function to your flair with built-in business tools"

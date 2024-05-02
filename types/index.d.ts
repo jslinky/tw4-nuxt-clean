@@ -1,4 +1,20 @@
-export type GlobalFontConfigPropNames = "font-base" | "heading-font-family";
+
+export type SvgProp = {
+  el: string | typeof import("vue");
+}
+
+export type PartnerLogos = {
+  item?: {
+      css: string;
+  };
+  svg?: Pick<SvgProp, "el">;
+  link?: {
+      url: string;
+      title?: string;
+  };
+};
+
+export type GlobalFontConfigPropNames = "font-family-base" | "heading-font-family";
 
 export type FontSettings<T extends string> = {
   fonts: {
@@ -27,9 +43,12 @@ export type FontListSystem =
   | "monospace-code"
   | "cursive-handwritten";
 
+export type GoogleFontList = "sans-montserrat";
+
 export type PropName<T> = Record<"name", T>;
 
 export type SystemFontNames = PropName<FontListSystem>;
+export type GoogleFontNames = PropName<GoogleFontList>;
 
 export type SizeConfigKeys =
   | "text-size-increment"
@@ -39,7 +58,9 @@ export type SizeConfigKeys =
   | "space-increment"
   | "unit-max"
   | "unit-fluid"
-  | "radius";
+  | "radius"
+  | "line-height-fixed"
+  | "line-height-relative";
 
 export type ValueUnitObj = {
   value: string;

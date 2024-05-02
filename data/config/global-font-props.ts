@@ -1,8 +1,8 @@
-import type { GlobalFontProps, FontListSystem } from "@/types"
+import type { GlobalFontProps, FontListSystem, GoogleFontList } from "@/types"
 
 const globalFontProps: GlobalFontProps = {
     fonts: {
-        'font-base': {
+        'font-family-base': {
             name: ''
         },
         'heading-font-family': {
@@ -28,6 +28,10 @@ export const systemFontDefinitions: Record<FontListSystem, string> = {
     'monospace-slab-serif': "'Nimbus Mono PS', 'Courier New', monospace",
     'monospace-code': "ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
     'cursive-handwritten': "'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive",
+}
+
+export const googleFontDefinitions: Record<GoogleFontList, string> = {
+    "sans-montserrat": "'Montserrat', sans-serif",
 }
 
 export default globalFontProps
