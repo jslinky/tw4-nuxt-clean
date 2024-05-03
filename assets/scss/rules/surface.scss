@@ -2,10 +2,10 @@
     &[data-surface-theme="#{$type}"] {
         --color-surface-bg: var(--color-#{$type});
         --color-surface-text: var(--color-#{$type}-text);
-        --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+        --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
         .btn-outline {
             --button-color: var(--color-surface-text);
-            --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+            --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
         }
     }
 }

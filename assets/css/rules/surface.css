@@ -8,99 +8,99 @@
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=light] {
   --color-surface-bg: var(--color-light);
   --color-surface-text: var(--color-light-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=light] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=dark] {
   --color-surface-bg: var(--color-dark);
   --color-surface-text: var(--color-dark-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=dark] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=primary] {
   --color-surface-bg: var(--color-primary);
   --color-surface-text: var(--color-primary-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=primary] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=primary-light] {
   --color-surface-bg: var(--color-primary-light);
   --color-surface-text: var(--color-primary-light-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=primary-light] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=primary-dark] {
   --color-surface-bg: var(--color-primary-dark);
   --color-surface-text: var(--color-primary-dark-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=primary-dark] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=secondary] {
   --color-surface-bg: var(--color-secondary);
   --color-surface-text: var(--color-secondary-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=secondary] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=secondary-light] {
   --color-surface-bg: var(--color-secondary-light);
   --color-surface-text: var(--color-secondary-light-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=secondary-light] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=secondary-dark] {
   --color-surface-bg: var(--color-secondary-dark);
   --color-surface-text: var(--color-secondary-dark-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=secondary-dark] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=accent] {
   --color-surface-bg: var(--color-accent);
   --color-surface-text: var(--color-accent-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=accent] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=accent-light] {
   --color-surface-bg: var(--color-accent-light);
   --color-surface-text: var(--color-accent-light-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=accent-light] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=accent-dark] {
   --color-surface-bg: var(--color-accent-dark);
   --color-surface-text: var(--color-accent-dark-text);
-  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(l + 0.025), calc((l - var(--threshold)) * -100), calc(l - 0.025)) c h) 5%);
+  --color-surface-bg-interact: color-mix(in oklch, var(--color-surface-bg) 95%, oklch(from var(--color-surface-text) clamp(calc(var(--color-surface-bg-lightness, l) + 0.025), calc((var(--color-surface-bg-lightness, l) - var(--threshold)) * -100), calc(var(--color-surface-bg-lightness, l) - 0.025)) c h) 5%);
 }
 :where(.surface, .region, .quote, .card, .p-card, .hero)[data-surface-theme=accent-dark] .btn-outline {
   --button-color: var(--color-surface-text);
-  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((l - var(--threshold)) * -100), var(--darkest-text)) c h);
+  --button-color-hover: oklch(from var(--button-color) clamp(var(--lightest-text), calc((var(--button-color-lightness, l) - var(--threshold)) * -100), var(--darkest-text)) c h);
 }
