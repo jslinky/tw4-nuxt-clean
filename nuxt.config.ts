@@ -4,6 +4,7 @@ import * as path from 'path';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  extends: ['../purity-components'],
   vite: {
     plugins: [tailwindcss()]
 
@@ -11,6 +12,10 @@ export default defineNuxtConfig({
   modules: ['nuxt-icon', '@vueuse/nuxt', "@nuxt/fonts", "nuxt-primevue"],
   primevue: {
     // cssLayerOrder: 'base, components, primevue, utilities',
+    components: {
+      include: '*',
+      exclude: ['Card', 'Carousel']
+    },    
     options: {
       unstyled: true,      
     },

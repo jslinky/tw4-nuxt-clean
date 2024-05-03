@@ -1,36 +1,33 @@
 <template>
   <Hero />
 
-  <SectionOne />
+  <DemoHomepageTempSectionOne />
 
-  <SectionTwo />
+  <DemoHomepageTempSectionTwo />
 
-  <SectionThree />
+  <DemoHomepageTempSectionThree />
 
-  <SectionFour />
+  <DemoHomepageTempSectionFour />
 
-  <SectionFive />
+  <DemoHomepageTempSectionFive />
 
-  <SectionSix />
+  <DemoHomepageTempSectionSix />
 
-  <SectionSeven />
+  <DemoHomepageTempSectionSeven />
 
-  <!-- <SectionEight /> -->
+  <DemoHomepageTempSectionNine />
 
-  <SectionNine />
+  <DemoHomepageTempSectionTen />
 
-  <SectionTen />
+  <DemoHomepageTempSectionEleven />
 
-  <SectionEleven />
+  <DemoHomepageTempSectionTwelve />
 
-  <SectionTwelve />
+  <DemoHomepageTempSectionThirteen />
 
-  <SectionThirteen />
+  <DemoHomepageTempSectionFourteen />
 
-  <SectionFourteen />
-
-  <SectionFifthteen />
-
+  <DemoHomepageTempSectionFifthteen />
 
   <div
     class="flex flex-col md:flex-row text-center md:text-left gap-5 items-center justify-between p-[10vmin] md:p-5 bg-white rounded-lg shadow-sm"
@@ -53,21 +50,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import SectionOne from '~/components/demo-homepage-temp/SectionOne.vue';
-import SectionTwo from '~/components/demo-homepage-temp/SectionTwo.vue';
-import SectionThree from '~/components/demo-homepage-temp/SectionThree.vue';
-import SectionFour from '~/components/demo-homepage-temp/SectionFour.vue';
-import SectionFive from '~/components/demo-homepage-temp/SectionFive.vue';
-import SectionSix from '~/components/demo-homepage-temp/SectionSix.vue';
-import SectionSeven from '~/components/demo-homepage-temp/SectionSeven.vue';
-import SectionEight from '~/components/demo-homepage-temp/SectionEight.vue';
-import SectionNine from '~/components/demo-homepage-temp/SectionNine.vue';
-import SectionTen from '~/components/demo-homepage-temp/SectionTen.vue';
-import SectionEleven from '~/components/demo-homepage-temp/SectionEleven.vue';
-import SectionTwelve from '~/components/demo-homepage-temp/SectionTwelve.vue';
-import SectionThirteen from '~/components/demo-homepage-temp/SectionThirteen.vue';
-import SectionFourteen from '~/components/demo-homepage-temp/SectionFourteen.vue';
-import SectionFifthteen from '~/components/demo-homepage-temp/SectionFifthteen.vue';
-</script>

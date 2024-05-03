@@ -1,4 +1,0 @@
-<template>
-      <HeroContent />
-
-</template>
