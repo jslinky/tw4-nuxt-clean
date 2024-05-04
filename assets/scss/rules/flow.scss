@@ -1,7 +1,0 @@
-@use "../mixins/rules/flow" as *;
-
-@layer utilities {
-    .flow {
-        @include flow();
-    }
-}

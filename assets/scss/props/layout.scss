@@ -1,8 +1,0 @@
-@use "../mixins/ultilities/output-props" as *;
-@use "../mixins/ultilities/exclude-keys" as *;
-@use "../props/maps/layout" as layout;
-
-:where(html) {
-    // @include output-props(custom, module-variables("layout")... );    
-    @include output-props(custom, exclude-keys(module-variables("layout"), column-count breakpoint column-size)...);    
-}
