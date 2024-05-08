@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
 
   },
+  vue: {
+    propsDestructure: true
+  },
   modules: ['nuxt-icon', '@vueuse/nuxt', "@nuxt/fonts", "nuxt-primevue"],
   primevue: {
     // cssLayerOrder: 'base, components, primevue, utilities',
