@@ -29,6 +29,10 @@
 
   <DemoHomepageTempSectionFifthteen />
 
+  <Feature />
+
+  <Faq />
+
   <div
     class="flex flex-col md:flex-row text-center md:text-left gap-5 items-center justify-between p-[10vmin] md:p-5 bg-white rounded-lg shadow-sm"
   >

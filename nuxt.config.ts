@@ -10,12 +10,15 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
 
   },
+  vue: {
+    propsDestructure: true
+  },
   modules: ['nuxt-icon', '@vueuse/nuxt', "@nuxt/fonts", "nuxt-primevue"],
   primevue: {
     // cssLayerOrder: 'base, components, primevue, utilities',
     components: {
       include: '*',
-      exclude: ['Card', 'Carousel']
+      exclude: ['Card', 'Carousel', 'Editor', 'Chart']
     },    
     options: {
       unstyled: true,      
