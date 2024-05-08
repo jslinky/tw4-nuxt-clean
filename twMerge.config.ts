@@ -80,7 +80,7 @@ const conflictingClassGroupModifiers = {
 };
 
 export const twMerge = extendTailwindMerge({
-//   theme: conflictingClassGroupModifiers,
+  theme: conflictingClassGroupModifiers,
   classGroups: {
     "flow-space": flowValues,
     text: fontSizeClasses,

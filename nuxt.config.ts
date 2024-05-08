@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     // cssLayerOrder: 'base, components, primevue, utilities',
     components: {
       include: '*',
-      exclude: ['Card', 'Carousel']
+      exclude: ['Card', 'Carousel', 'Editor', 'Chart']
     },    
     options: {
       unstyled: true,      

@@ -11,6 +11,22 @@
         <NuxtLink to="/style-guide/components/feature/featureSixteen">Feature Sixteen</NuxtLink>
       </div>
     </details>
+    <details>
+      <summary>FAQ</summary>
+      <div class="flex flex-col">
+        <NuxtLink to="/style-guide/components/faq/faqOne">FAQ One</NuxtLink>
+        <NuxtLink to="/style-guide/components/faq/faqTwo">FAQ Two</NuxtLink>
+        <NuxtLink to="/style-guide/components/faq/faqThree">FAQ Three</NuxtLink>
+        <NuxtLink to="/style-guide/components/faq/faqSeven">FAQ Seven</NuxtLink>
+      </div>
+    </details>    
+    <details>
+      <summary>Testimonial</summary>
+      <div class="flex flex-col">
+        <NuxtLink to="/style-guide/components/testimonial/testimonialOne">Testimonial One</NuxtLink>
+        <NuxtLink to="/style-guide/components/testimonial/testimonialFour">Testimonial Four</NuxtLink>
+      </div>
+    </details>        
   </aside>
   <slot></slot>
 </template>
