@@ -13,30 +13,4 @@ export default defineNuxtConfig({
   vue: {
     propsDestructure: true
   },
-  modules: ['nuxt-icon', '@vueuse/nuxt', "@nuxt/fonts", "nuxt-primevue"],
-  primevue: {
-    // cssLayerOrder: 'base, components, primevue, utilities',
-    components: {
-      include: '*',
-      exclude: ['Card', 'Carousel', 'Editor', 'Chart']
-    },    
-    options: {
-      unstyled: true,      
-    },
-    importPT: { as: 'Lara', from: path.resolve(__dirname, './prime-vue/presets/lara') },
-  },
-  // plugins: [
-  //   '~/plugins/css-custom-properties.client.js'
-  // ]
-  // postcss: {
-  //   plugins: {
-  //     'postcss-custom-media': {}
-  //   }
-  // },
 })
-
-
-
-// export default {
-//     plugins: [postcss(), postcssCustomMedia]
-// }
