@@ -1,8 +1,8 @@
 {
-  "id": "page",
-  "label": "Page",
   "format": "page",
-  "repeatable": true,
+  "id": "feature_component_library",
+  "label": "Feature Component Library",
+  "repeatable": false,
   "status": true,
   "json": {
     "Main": {
@@ -14,12 +14,10 @@
         }
       },
       "title": {
-        "type": "StructuredText",
+        "type": "Text",
         "config": {
           "label": "Title",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "heading1"
+          "placeholder": ""
         }
       },
       "slices": {
@@ -27,41 +25,38 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "heading": {
-              "type": "SharedSlice"
-            },
-            "hero": {
+            "feature": {
               "type": "SharedSlice"
             }
           }
         }
       }
     },
-    "SEO": {
-      "meta_title": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Title",
-          "placeholder": ""
-        }
-      },
+    "SEO & Metadata": {
       "meta_description": {
-        "type": "Text",
         "config": {
           "label": "Meta Description",
-          "placeholder": ""
-        }
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
       },
       "meta_image": {
-        "type": "Image",
         "config": {
-          "label": "Meta Image",
           "constraint": {
-            "width": 1280,
-            "height": 720
+            "height": 1260,
+            "width": 2400
           },
+          "label": "Meta Image",
           "thumbnails": []
-        }
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
       }
     }
   }

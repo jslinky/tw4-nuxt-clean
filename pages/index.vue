@@ -17,7 +17,8 @@ useSeoMeta({
 
 <template>
   <SliceZone
-    wrapper="main"
+    wrapper="div"
+    class="contents"
     :slices="page?.data.slices ?? []"
     :components="components"
   />
