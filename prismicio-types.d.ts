@@ -4,6 +4,249 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type CardDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Card documents
+ */
+interface CardDocumentData {
+  /**
+   * Image field in *Card*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.tagline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Title field in *Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.title_type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
+
+  /**
+   * Sub Title field in *Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.sub_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.sub_title_size
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<"sm" | "md" | "lg" | "xl">;
+
+  /**
+   * Content field in *Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Footer field in *Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.footer
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Card*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CardDocumentDataSlicesSlice> /**
+   * Reverse Column field in *Card*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.reverse_column
+   * - **Tab**: Options
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */;
+  reverse_column: prismic.BooleanField;
+
+  /**
+   * Reverse Row field in *Card*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.reverse_row
+   * - **Tab**: Options
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row: prismic.BooleanField;
+
+  /**
+   * Stacked field in *Card*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.stacked
+   * - **Tab**: Options
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.surface_background
+   * - **Tab**: Options
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+}
+
+/**
+ * Card document from Prismic
+ *
+ * - **API ID**: `card`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CardDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<CardDocumentData>, "card", Lang>;
+
+type CardComponentLibraryDocumentDataSlicesSlice = CardSlice;
+
+/**
+ * Content for Card Component Library documents
+ */
+interface CardComponentLibraryDocumentData {
+  /**
+   * Slice Zone field in *Card Component Library*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_component_library.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CardComponentLibraryDocumentDataSlicesSlice> /**
+   * Meta Description field in *Card Component Library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: card_component_library.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Card Component Library*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_component_library.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Card Component Library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: card_component_library.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Card Component Library document from Prismic
+ *
+ * - **API ID**: `card_component_library`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CardComponentLibraryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CardComponentLibraryDocumentData>,
+    "card_component_library",
+    Lang
+  >;
+
 type FeatureComponentLibraryDocumentDataSlicesSlice = FeatureSlice;
 
 /**
@@ -156,7 +399,11 @@ export type HeroComponentLibraryDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = HeadingSlice | HeroSlice;
+type PageDocumentDataSlicesSlice =
+  | TestimonialSlice
+  | CardSlice
+  | HeadingSlice
+  | HeroSlice;
 
 /**
  * Content for Page documents
@@ -318,11 +565,415 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Testimonial documents
+ */
+interface TestimonialDocumentData {
+  /**
+   * Name field in *Testimonial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Job Title field in *Testimonial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.job_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  job_title: prismic.KeyTextField;
+
+  /**
+   * Company Name field in *Testimonial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.company_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company_name: prismic.KeyTextField;
+
+  /**
+   * Quote field in *Testimonial*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.quote
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  quote: prismic.RichTextField /**
+   * Company Logo field in *Testimonial*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.company_logo
+   * - **Tab**: Extras
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */;
+  company_logo: prismic.ImageField<never>;
+
+  /**
+   * Avatar field in *Testimonial*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.avatar
+   * - **Tab**: Extras
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  avatar: prismic.ImageField<never>;
+
+  /**
+   * Rating field in *Testimonial*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.rating
+   * - **Tab**: Extras
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  rating: prismic.SelectField<"1" | "2" | "3" | "4" | "5">;
+
+  /**
+   * Surface Background field in *Testimonial*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: testimonial.surface_background
+   * - **Tab**: Extras
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  surface_background: prismic.BooleanField;
+}
+
+/**
+ * Testimonial document from Prismic
+ *
+ * - **API ID**: `testimonial`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TestimonialDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TestimonialDocumentData>,
+    "testimonial",
+    Lang
+  >;
+
+type TestimonialsComponentLibraryDocumentDataSlicesSlice = TestimonialSlice;
+
+/**
+ * Content for Testimonials Component Library documents
+ */
+interface TestimonialsComponentLibraryDocumentData {
+  /**
+   * Slice Zone field in *Testimonials Component Library*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_component_library.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TestimonialsComponentLibraryDocumentDataSlicesSlice> /**
+   * Meta Description field in *Testimonials Component Library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: testimonials_component_library.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Testimonials Component Library*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_component_library.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Testimonials Component Library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: testimonials_component_library.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Testimonials Component Library document from Prismic
+ *
+ * - **API ID**: `testimonials_component_library`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TestimonialsComponentLibraryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<TestimonialsComponentLibraryDocumentData>,
+    "testimonials_component_library",
+    Lang
+  >;
+
 export type AllDocumentTypes =
+  | CardDocument
+  | CardComponentLibraryDocument
   | FeatureComponentLibraryDocument
   | HeroComponentLibraryDocument
   | PageDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | TestimonialDocument
+  | TestimonialsComponentLibraryDocument;
+
+/**
+ * Primary content in *Card → Default → Primary*
+ */
+export interface CardSliceDefaultPrimary {
+  /**
+   * Image field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Title field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.title_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
+
+  /**
+   * Sub Title field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.sub_title_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<"sm" | "md" | "lg" | "xl">;
+
+  /**
+   * Content field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Footer field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Reverse Column Layout field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.default.primary.reverse_column_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_column_layout: prismic.BooleanField;
+
+  /**
+   * Reverse Row Layout field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.default.primary.reverse_row_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.default.primary.stacked_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout Image Placement field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.stacked_layout_image_placement
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  stacked_layout_image_placement: prismic.SelectField<"1" | "2">;
+
+  /**
+   * Surface Background field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+}
+
+/**
+ * Primary content in *Card → Items*
+ */
+export interface CardSliceDefaultItem {
+  /**
+   * Button Link field in *Card → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Text field in *Card → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.items[].button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Style field in *Card → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.items[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_style: prismic.SelectField<"1" | "2">;
+
+  /**
+   * ButtonTest field in *Card → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.items[].button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.ContentRelationshipField<
+    "card_component_library" | "page" | "hero_component_library"
+  >;
+}
+
+/**
+ * Default variation for Card Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CardSliceDefaultPrimary>,
+  Simplify<CardSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Card*
+ */
+type CardSliceVariation = CardSliceDefault;
+
+/**
+ * Card Shared Slice
+ *
+ * - **API ID**: `card`
+ * - **Description**: Card
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardSlice = prismic.SharedSlice<"card", CardSliceVariation>;
 
 /**
  * Primary content in *Feature → Default → Primary*
@@ -366,7 +1017,9 @@ export interface FeatureSliceDefaultPrimary {
    * - **API ID Path**: feature.default.primary.title_type
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  title_type: prismic.SelectField<"2xl" | "xl">;
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
 
   /**
    * Sub Title field in *Feature → Default → Primary*
@@ -399,6 +1052,26 @@ export interface FeatureSliceDefaultPrimary {
   content: prismic.RichTextField;
 
   /**
+   * Content Column Text Align field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Content Row Text Align field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
    * Footer field in *Feature → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -407,6 +1080,137 @@ export interface FeatureSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   footer: prismic.RichTextField;
+
+  /**
+   * Justify Column Body Content field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Row Body Content field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "row">;
+
+  /**
+   * Reverse Column Layout field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.default.primary.reverse_column_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_column_layout: prismic.BooleanField;
+
+  /**
+   * Reverse Row Layout field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.default.primary.reverse_row_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.default.primary.stacked_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked_layout: prismic.BooleanField;
+
+  /**
+   * Column Image Ratio field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Span Full Width field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.default.primary.span_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  span_full_width: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.default.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
 }
 
 /**
@@ -471,9 +1275,930 @@ export type FeatureSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Feature → Feature 2 → Primary*
+ */
+export interface FeatureSliceFeature2Primary {
+  /**
+   * Image field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Title field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.title_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
+
+  /**
+   * Sub Title field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.sub_title_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<"sm" | "md" | "lg" | "xl">;
+
+  /**
+   * Content field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Footer field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Justify Column Body Content field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Row Body Content field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "row">;
+
+  /**
+   * Reverse Column Layout field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature2.primary.reverse_column_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_column_layout: prismic.BooleanField;
+
+  /**
+   * Reverse Row Layout field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature2.primary.reverse_row_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature2.primary.stacked_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked_layout: prismic.BooleanField;
+
+  /**
+   * Column Image Ratio field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Span Full Width field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature2.primary.span_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  span_full_width: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Feature → Feature 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature2.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+}
+
+/**
+ * Primary content in *Feature → Items*
+ */
+export interface FeatureSliceFeature2Item {
+  /**
+   * Button Link field in *Feature → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Text field in *Feature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Style field in *Feature → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_style: prismic.SelectField<
+    | "default"
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "ghost"
+    | "link"
+    | "outline-default"
+    | "outline-neutral"
+    | "outline-primary"
+    | "outline-secondary"
+    | "outline-accent"
+  >;
+
+  /**
+   * Sub Heading field in *Feature → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_heading: prismic.RichTextField;
+
+  /**
+   * Sub Heading Type field in *Feature → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_heading_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_heading_type: prismic.SelectField<"xxs" | "xs" | "sm" | "md">;
+
+  /**
+   * Sub Content field in *Feature → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_content: prismic.RichTextField;
+
+  /**
+   * Sub Content Size field in *Feature → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_content_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_content_size: prismic.SelectField<"xs" | "sm" | "md">;
+}
+
+/**
+ * Feature 2 variation for Feature Slice
+ *
+ * - **API ID**: `feature2`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureSliceFeature2 = prismic.SharedSliceVariation<
+  "feature2",
+  Simplify<FeatureSliceFeature2Primary>,
+  Simplify<FeatureSliceFeature2Item>
+>;
+
+/**
+ * Primary content in *Feature → Feature 3 → Primary*
+ */
+export interface FeatureSliceFeature3Primary {
+  /**
+   * Image field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Title field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.title_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
+
+  /**
+   * Sub Title field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.sub_title_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<"sm" | "md" | "lg" | "xl">;
+
+  /**
+   * Content field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Footer field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Justify Column Body Content field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Row Body Content field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "row">;
+
+  /**
+   * Reverse Column Layout field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature3.primary.reverse_column_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_column_layout: prismic.BooleanField;
+
+  /**
+   * Reverse Row Layout field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature3.primary.reverse_row_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature3.primary.stacked_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked_layout: prismic.BooleanField;
+
+  /**
+   * Column Image Ratio field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Span Full Width field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature3.primary.span_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  span_full_width: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Feature → Feature 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature3.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+}
+
+/**
+ * Primary content in *Feature → Items*
+ */
+export interface FeatureSliceFeature3Item {
+  /**
+   * Sub Heading Icon field in *Feature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_heading_icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  sub_heading_icon: prismic.KeyTextField;
+
+  /**
+   * Sub Heading field in *Feature → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_heading: prismic.RichTextField;
+
+  /**
+   * Sub Heading Type field in *Feature → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_heading_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_heading_type: prismic.SelectField<"xxs" | "xs" | "sm" | "md">;
+
+  /**
+   * Sub Content field in *Feature → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].sub_content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_content: prismic.RichTextField;
+
+  /**
+   * Button Link field in *Feature → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Text field in *Feature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Style field in *Feature → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_style: prismic.SelectField<
+    | "default"
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "ghost"
+    | "link"
+    | "outline-default"
+    | "outline-neutral"
+    | "outline-primary"
+    | "outline-secondary"
+    | "outline-accent"
+  >;
+}
+
+/**
+ * Feature 3 variation for Feature Slice
+ *
+ * - **API ID**: `feature3`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureSliceFeature3 = prismic.SharedSliceVariation<
+  "feature3",
+  Simplify<FeatureSliceFeature3Primary>,
+  Simplify<FeatureSliceFeature3Item>
+>;
+
+/**
+ * Primary content in *Feature → Default Reversed → Primary*
+ */
+export interface FeatureSliceDefaultReversedPrimary {
+  /**
+   * Image field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Title field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.title_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
+
+  /**
+   * Sub Title field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.sub_title_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<"sm" | "md" | "lg" | "xl">;
+
+  /**
+   * Content field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Justify Column Body Content field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Row Body Content field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "row">;
+
+  /**
+   * Footer field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Reverse Column Layout field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.defaultReversed.primary.reverse_column_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_column_layout: prismic.BooleanField;
+
+  /**
+   * Reverse Row Layout field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.defaultReversed.primary.reverse_row_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.defaultReversed.primary.stacked_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked_layout: prismic.BooleanField;
+
+  /**
+   * Column Image Ratio field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Span Full Width field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.defaultReversed.primary.span_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  span_full_width: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Feature → Default Reversed → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.defaultReversed.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+}
+
+/**
+ * Primary content in *Feature → Items*
+ */
+export interface FeatureSliceDefaultReversedItem {
+  /**
+   * Button Link field in *Feature → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Text field in *Feature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Style field in *Feature → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.items[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_style: prismic.SelectField<
+    | "default"
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "ghost"
+    | "link"
+    | "outline-default"
+    | "outline-neutral"
+    | "outline-primary"
+    | "outline-secondary"
+    | "outline-accent"
+  >;
+}
+
+/**
+ * Default Reversed variation for Feature Slice
+ *
+ * - **API ID**: `defaultReversed`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureSliceDefaultReversed = prismic.SharedSliceVariation<
+  "defaultReversed",
+  Simplify<FeatureSliceDefaultReversedPrimary>,
+  Simplify<FeatureSliceDefaultReversedItem>
+>;
+
+/**
  * Slice variation for *Feature*
  */
-type FeatureSliceVariation = FeatureSliceDefault;
+type FeatureSliceVariation =
+  | FeatureSliceDefault
+  | FeatureSliceFeature2
+  | FeatureSliceFeature3
+  | FeatureSliceDefaultReversed;
 
 /**
  * Feature Shared Slice
@@ -1122,48 +2847,128 @@ type HeroSliceVariation =
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
- * Primary content in *RichText → Default → Primary*
+ * Primary content in *Testimonial → Default → Primary*
  */
-export interface RichTextSliceDefaultPrimary {
+export interface TestimonialSliceDefaultPrimary {
   /**
-   * Content field in *RichText → Default → Primary*
+   * Heading field in *Testimonial → Default → Primary*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Lorem ipsum...
-   * - **API ID Path**: rich_text.default.primary.content
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.default.primary.heading
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  content: prismic.RichTextField;
+  heading: prismic.TitleField;
+
+  /**
+   * Intro field in *Testimonial → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.default.primary.intro
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  intro: prismic.RichTextField;
 }
 
 /**
- * Default variation for RichText Slice
+ * Primary content in *Testimonial → Items*
+ */
+export interface TestimonialSliceDefaultItem {
+  /**
+   * Testimonial field in *Testimonial → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.items[].testimonial
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  testimonial: prismic.ContentRelationshipField<"testimonial">;
+}
+
+/**
+ * Default variation for Testimonial Slice
  *
  * - **API ID**: `default`
- * - **Description**: RichText
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
+export type TestimonialSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<RichTextSliceDefaultPrimary>,
-  never
+  Simplify<TestimonialSliceDefaultPrimary>,
+  Simplify<TestimonialSliceDefaultItem>
 >;
 
 /**
- * Slice variation for *RichText*
+ * Primary content in *Testimonial → Testimonial2 → Primary*
  */
-type RichTextSliceVariation = RichTextSliceDefault;
+export interface TestimonialSliceTestimonial2Primary {
+  /**
+   * Heading field in *Testimonial → Testimonial2 → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.testimonial2.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Intro field in *Testimonial → Testimonial2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.testimonial2.primary.intro
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  intro: prismic.RichTextField;
+}
 
 /**
- * RichText Shared Slice
+ * Primary content in *Testimonial → Items*
+ */
+export interface TestimonialSliceTestimonial2Item {
+  /**
+   * Testimonial field in *Testimonial → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.items[].testimonial
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  testimonial: prismic.ContentRelationshipField<"testimonial">;
+}
+
+/**
+ * Testimonial2 variation for Testimonial Slice
  *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
+ * - **API ID**: `testimonial2`
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RichTextSlice = prismic.SharedSlice<
-  "rich_text",
-  RichTextSliceVariation
+export type TestimonialSliceTestimonial2 = prismic.SharedSliceVariation<
+  "testimonial2",
+  Simplify<TestimonialSliceTestimonial2Primary>,
+  Simplify<TestimonialSliceTestimonial2Item>
+>;
+
+/**
+ * Slice variation for *Testimonial*
+ */
+type TestimonialSliceVariation =
+  | TestimonialSliceDefault
+  | TestimonialSliceTestimonial2;
+
+/**
+ * Testimonial Shared Slice
+ *
+ * - **API ID**: `testimonial`
+ * - **Description**: Testimonial
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialSlice = prismic.SharedSlice<
+  "testimonial",
+  TestimonialSliceVariation
 >;
 
 declare module "@prismicio/client" {
@@ -1176,6 +2981,12 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CardDocument,
+      CardDocumentData,
+      CardDocumentDataSlicesSlice,
+      CardComponentLibraryDocument,
+      CardComponentLibraryDocumentData,
+      CardComponentLibraryDocumentDataSlicesSlice,
       FeatureComponentLibraryDocument,
       FeatureComponentLibraryDocumentData,
       FeatureComponentLibraryDocumentDataSlicesSlice,
@@ -1188,12 +2999,31 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      TestimonialDocument,
+      TestimonialDocumentData,
+      TestimonialsComponentLibraryDocument,
+      TestimonialsComponentLibraryDocumentData,
+      TestimonialsComponentLibraryDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CardSlice,
+      CardSliceDefaultPrimary,
+      CardSliceDefaultItem,
+      CardSliceVariation,
+      CardSliceDefault,
       FeatureSlice,
       FeatureSliceDefaultPrimary,
       FeatureSliceDefaultItem,
+      FeatureSliceFeature2Primary,
+      FeatureSliceFeature2Item,
+      FeatureSliceFeature3Primary,
+      FeatureSliceFeature3Item,
+      FeatureSliceDefaultReversedPrimary,
+      FeatureSliceDefaultReversedItem,
       FeatureSliceVariation,
       FeatureSliceDefault,
+      FeatureSliceFeature2,
+      FeatureSliceFeature3,
+      FeatureSliceDefaultReversed,
       HeadingSlice,
       HeadingSliceDefaultPrimary,
       HeadingSliceVariation,
@@ -1210,10 +3040,14 @@ declare module "@prismicio/client" {
       HeroSliceHero2,
       HeroSliceHero3,
       HeroSliceHero4,
-      RichTextSlice,
-      RichTextSliceDefaultPrimary,
-      RichTextSliceVariation,
-      RichTextSliceDefault,
+      TestimonialSlice,
+      TestimonialSliceDefaultPrimary,
+      TestimonialSliceDefaultItem,
+      TestimonialSliceTestimonial2Primary,
+      TestimonialSliceTestimonial2Item,
+      TestimonialSliceVariation,
+      TestimonialSliceDefault,
+      TestimonialSliceTestimonial2,
     };
   }
 }

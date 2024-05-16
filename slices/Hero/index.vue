@@ -12,23 +12,9 @@ const { slice, index, slices, context } = defineProps(
   ])
 );
 
-const surfaceVariations = [
-  "light",
-  "dark",
-  "eggshell",
-  "primary",
-  "primary-light",
-  "primary-dark",
-  "secondary",
-  "secondary-light",
-  "secondary-dark",
-  "accent",
-  "accent-light",
-  "accent-dark",
-] as const;
+const surfaceVariations = useSurfaceTheme();
 
 const selectedSurfaceType = ref(slice.primary?.surface_background);
-
 </script>
 
 <template>
@@ -39,14 +25,30 @@ const selectedSurfaceType = ref(slice.primary?.surface_background);
   >
     <!-- Placeholder component for hero (variation: {{ slice.variation }}) Slices -->
     <div data-admin>
-      <select name="surface-options" id="surface-options" v-model="selectedSurfaceType">
-          <option v-for="(options, index) in surfaceVariations" :key="index" :value="options">
-            {{ options }}
-          </option>
-        </select>
+      <select
+        name="surface-options"
+        id="surface-options"
+        v-model="selectedSurfaceType"
+      >
+        <option
+          v-for="(options, index) in surfaceVariations"
+          :key="index"
+          :value="options"
+        >
+          {{ options }}
+        </option>
+      </select>
     </div>
 
-    <div class="hero" :data-surface-theme="selectedSurfaceType" :class="{'hero--full-overlay': slice.variation === 'hero3', 'is-overlay': slice.variation === 'hero3' && slice.primary.add_backdrop, 'hero--top-down': slice.variation === 'hero4'}">
+    <div
+      class="hero"
+      :data-surface-theme="selectedSurfaceType"
+      :class="{
+        'hero--full-overlay': slice.variation === 'hero3',
+        'is-overlay': slice.variation === 'hero3' && slice.primary.add_backdrop,
+        'hero--top-down': slice.variation === 'hero4',
+      }"
+    >
       <div class="hero__container">
         <HeroClassic
           v-if="
@@ -112,7 +114,7 @@ const selectedSurfaceType = ref(slice.primary?.surface_background);
           </template>
           <template #hero-content-image>
             <PrismicImage :field="slice.primary.image" />
-          </template>    
+          </template>
         </HeroOverlay>
         <HeroTopDown v-if="slice.variation === 'hero4'">
           <template #hero-content-heading>
