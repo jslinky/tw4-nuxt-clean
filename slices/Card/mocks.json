@@ -3,115 +3,31 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"reverse_column_layout": {
-				"__TYPE__": "BooleanContent",
-				"value": true
-			},
-			"reverse_row_layout": {
-				"__TYPE__": "BooleanContent",
-				"value": false
-			},
-			"image": {
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
-					"width": 3212,
-					"height": 3880
-				},
-				"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
-				"width": 3212,
-				"height": 3880,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"credits": null,
-				"alt": null,
-				"__TYPE__": "ImageContent",
-				"thumbnails": {}
-			},
-			"tagline": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Consequat dolore consequat sint laboris dolor fugiat fugiat ipsum. Labore cupidatat excepteur duis ullamco ullamco ex cillum cupidatat officia ea."
-						}
-					}
-				]
-			},
-			"title": {
+			"section_title": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Compare"
+							"text": "Actual"
 						}
 					}
 				]
 			},
-			"title_type": {
-				"__TYPE__": "FieldContent",
-				"value": "md",
-				"type": "Select"
-			},
-			"sub_title": {
+			"section_intro": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Et occaecat exercitation duis reprehenderit."
+							"text": "Proident ad sint nulla occaecat. Nulla enim cillum sit ipsum. Ut duis non irure veniam exercitation."
 						}
 					}
 				]
 			},
-			"sub_title_size": {
-				"__TYPE__": "FieldContent",
-				"value": "md",
-				"type": "Select"
-			},
-			"content": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Aute fugiat incididunt pariatur magna mollit culpa sit commodo ea eu voluptate."
-						}
-					}
-				]
-			},
-			"footer": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Dolor amet aliquip fugiat ex."
-						}
-					}
-				]
-			},
-			"surface_background": {
-				"__TYPE__": "FieldContent",
-				"value": "secondary-dark",
-				"type": "Select"
-			},
-			"stacked_layout": {
+			"expand_to_full_width": {
 				"__TYPE__": "BooleanContent",
 				"value": true
-			},
-			"stacked_layout_image_placement": {
-				"__TYPE__": "FieldContent",
-				"value": "2",
-				"type": "Select"
 			}
 		},
 		"items": [
@@ -119,33 +35,7 @@
 				"__TYPE__": "GroupItemContent",
 				"value": [
 					[
-						"button_link",
-						{
-							"__TYPE__": "LinkContent",
-							"value": {
-								"__TYPE__": "ExternalLink",
-								"url": "https://slicemachine.dev"
-							}
-						}
-					],
-					[
-						"button_text",
-						{
-							"__TYPE__": "FieldContent",
-							"value": "full",
-							"type": "Text"
-						}
-					],
-					[
-						"button_style",
-						{
-							"__TYPE__": "FieldContent",
-							"value": "1",
-							"type": "Select"
-						}
-					],
-					[
-						"button",
+						"card",
 						{
 							"__TYPE__": "LinkContent",
 							"value": {

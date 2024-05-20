@@ -1,0 +1,44 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "FieldContent",
+				"value": "bit",
+				"type": "Text"
+			},
+			"icon_svg_name": {
+				"__TYPE__": "FieldContent",
+				"value": "expression",
+				"type": "Text"
+			},
+			"icon_position": {
+				"__TYPE__": "FieldContent",
+				"value": "bottom",
+				"type": "Select"
+			},
+			"button_style": {
+				"__TYPE__": "FieldContent",
+				"value": "neutral",
+				"type": "Select"
+			},
+			"button_size": {
+				"__TYPE__": "FieldContent",
+				"value": "md",
+				"type": "Select"
+			},
+			"icon_size": {
+				"__TYPE__": "FieldContent",
+				"value": "2xl",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

@@ -70,15 +70,6 @@
           "placeholder": "",
           "options": ["1", "2", "3", "4", "5"]
         }
-      },
-      "surface_background": {
-        "type": "Boolean",
-        "config": {
-          "label": "Surface Background",
-          "default_value": false,
-          "placeholder_true": "true",
-          "placeholder_false": "false"
-        }
       }
     }
   }

@@ -1,0 +1,96 @@
+{
+  "id": "button",
+  "type": "SharedSlice",
+  "name": "Button",
+  "description": "Button",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        },
+        "icon_svg_name": {
+          "type": "Text",
+          "config": {
+            "label": "Icon SVG Name",
+            "placeholder": ""
+          }
+        },
+        "icon_position": {
+          "type": "Select",
+          "config": {
+            "label": "Icon Position",
+            "placeholder": "",
+            "options": [
+              "left",
+              "right",
+              "top",
+              "bottom"
+            ]
+          }
+        },
+        "icon_size": {
+          "type": "Select",
+          "config": {
+            "label": "Icon Size",
+            "placeholder": "",
+            "options": [
+              "xxs",
+              "xs",
+              "sm",
+              "md (default)",
+              "lg",
+              "xl",
+              "2xl",
+              "3xl"
+            ]
+          }
+        },
+        "button_style": {
+          "type": "Select",
+          "config": {
+            "label": "Button Style",
+            "placeholder": "",
+            "options": [
+              "default",
+              "neutral",
+              "primary",
+              "secondary",
+              "accent",
+              "ghost",
+              "link",
+              "outline-default",
+              "outline-neutral",
+              "outline-primary",
+              "outline-secondary",
+              "outline-accent"
+            ]
+          }
+        },
+        "button_size": {
+          "type": "Select",
+          "config": {
+            "label": "Button Size",
+            "placeholder": "",
+            "options": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -29,6 +29,81 @@
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em"
           }
+        },
+        "justify_logo": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Logo",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_quote": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Quote",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_profile": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Profile",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "stacked_layout_user_profile": {
+          "type": "Boolean",
+          "config": {
+            "label": "Stacked Layout User Profile",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "items": {
@@ -39,6 +114,27 @@
             "select": "document",
             "customtypes": [
               "testimonial"
+            ]
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
             ]
           }
         }
@@ -69,6 +165,81 @@
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em"
           }
+        },
+        "justify_rating": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Rating",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_quote": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Quote",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_profile": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Profile",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "stacked_layout_user_profile": {
+          "type": "Boolean",
+          "config": {
+            "label": "Stacked Layout User Profile",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "items": {
@@ -79,6 +250,27 @@
             "select": "document",
             "customtypes": [
               "testimonial"
+            ]
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
             ]
           }
         }

@@ -24,6 +24,34 @@
 						}
 					}
 				]
+			},
+			"stacked_layout_user_profile": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"justify_quote": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_profile": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_logo": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "light",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": [
@@ -38,6 +66,14 @@
 								"__TYPE__": "DocumentLink",
 								"id": "mock_document_id"
 							}
+						}
+					],
+					[
+						"surface_background",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "light",
+							"type": "Select"
 						}
 					]
 				]
@@ -69,6 +105,20 @@
 						}
 					}
 				]
+			},
+			"stacked_layout_user_profile": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"justify_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_rating": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
 			}
 		},
 		"items": [

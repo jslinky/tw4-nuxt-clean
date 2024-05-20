@@ -85,33 +85,19 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "button": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
     "Options": {
-      "reverse_column": {
+      "expand_to_full_width": {
         "type": "Boolean",
         "config": {
-          "label": "Reverse Column",
-          "placeholder_false": "false",
-          "placeholder_true": "true",
-          "default_value": false
-        }
-      },
-      "reverse_row": {
-        "type": "Boolean",
-        "config": {
-          "label": "Reverse Row",
-          "placeholder_false": "false",
-          "placeholder_true": "true",
-          "default_value": false
-        }
-      },
-      "stacked": {
-        "type": "Boolean",
-        "config": {
-          "label": "Stacked",
+          "label": "Expand to Full Width",
           "default_value": false,
           "placeholder_true": "true",
           "placeholder_false": "false"
@@ -136,6 +122,151 @@
             "accent-light",
             "accent-dark"
           ]
+        }
+      },
+      "overflow_clip": {
+        "type": "Boolean",
+        "config": {
+          "label": "Overflow clip",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": true
+        }
+      },
+      "class": {
+        "type": "Text",
+        "config": {
+          "label": "Class",
+          "placeholder": ""
+        }
+      }
+    },
+    "Image": {
+      "column_image_ratio": {
+        "type": "Select",
+        "config": {
+          "label": "Column Image Ratio",
+          "placeholder": "",
+          "options": [
+            "square",
+            "landscape",
+            "portrait",
+            "widescreen",
+            "ultrawide",
+            "golden"
+          ]
+        }
+      },
+      "row_image_ratio": {
+        "type": "Select",
+        "config": {
+          "label": "Row Image Ratio",
+          "placeholder": "",
+          "options": [
+            "square",
+            "landscape",
+            "portrait",
+            "widescreen",
+            "ultrawide",
+            "golden"
+          ]
+        }
+      }
+    },
+    "Layout": {
+      "stacked_layout": {
+        "type": "Boolean",
+        "config": {
+          "label": "Stacked Layout",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "column_layout": {
+        "type": "Boolean",
+        "config": {
+          "label": "Column Layout",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "reverse_source_order": {
+        "type": "Boolean",
+        "config": {
+          "label": "Reverse Source Order (Content + Picture) ",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "reverse_column_layout": {
+        "type": "Boolean",
+        "config": {
+          "label": "Reverse Column Layout",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "reverse_row_layout": {
+        "type": "Boolean",
+        "config": {
+          "label": "Reverse Row Layout",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      }
+    },
+    "Text Align": {
+      "content_column_text_align": {
+        "type": "Select",
+        "config": {
+          "label": "Content Column Text Align",
+          "placeholder": "",
+          "options": ["start", "center", "end"]
+        }
+      },
+      "content_row_text_align": {
+        "type": "Boolean",
+        "config": {
+          "label": "Content Row Text Align"
+        }
+      }
+    },
+    "Content Placement": {
+      "justify_column_body_content": {
+        "type": "Select",
+        "config": {
+          "label": "Justify Column Body Content",
+          "placeholder": "",
+          "options": ["start", "center", "end"]
+        }
+      },
+      "justify_row_body_content": {
+        "type": "Select",
+        "config": {
+          "label": "Justify Row Body Content",
+          "placeholder": "",
+          "options": ["start", "center", "end"]
+        }
+      },
+      "align_column_body_content": {
+        "type": "Select",
+        "config": {
+          "label": "Align Column Body Content",
+          "placeholder": "",
+          "options": ["start", "center", "end"]
+        }
+      },
+      "align_row_body_content": {
+        "type": "Select",
+        "config": {
+          "label": "Align Row Body Content",
+          "placeholder": "",
+          "options": ["start", "center", "end"]
         }
       }
     }

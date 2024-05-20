@@ -23,10 +23,10 @@ const testimonials = computed(() => {
 </script>
 
 <template>
-  <section
+  <div
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-    class="col-span-full"
+    class="contents"
   >
     Placeholder component for testimonial (variation: {{ slice.variation }})
     Slices
@@ -43,10 +43,11 @@ const testimonials = computed(() => {
     <PrismicImage :field="testimonial.data.avatar" />
     <PrismicImage :field="testimonial.data.company_logo" />
   </div> -->
+
     <TestimonialOne :slice="slice" v-if="slice.variation === 'default'" />
     <TestimonialTwo :slice="slice" v-else-if="slice.variation === 'testimonial2'" />
+  
 
 
-
-  </section>
+  </div>
 </template>
