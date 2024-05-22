@@ -38,6 +38,44 @@
             "placeholder_true": "true",
             "placeholder_false": "false"
           }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark"
+            ]
+          }
+        },
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "Choose Layout type",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
         }
       },
       "items": {

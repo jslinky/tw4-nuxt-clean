@@ -19,6 +19,7 @@
     "@tailwindcss/postcss": "^4.0.0-alpha.11",
     "@tailwindcss/vite": "^4.0.0-alpha.11",
     "@vituum/vite-plugin-postcss": "^1.1.0",
+    "@vueuse/motion": "^2.1.0",
     "clsx": "^2.1.1",
     "css-custom-properties": "^0.1.0",
     "nuxt": "^3.10.3",
@@ -32,17 +33,17 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@nuxtjs/prismic": "^3.2.1",
     "@nuxt/eslint-config": "^0.2.0",
+    "@nuxtjs/prismic": "^3.2.1",
     "@slicemachine/adapter-nuxt": "^0.3.38",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
     "nuxt-icon": "^0.6.10",
     "nuxt-primevue": "^0.3.1",
     "postcss-custom-media": "^10.0.4",
     "slice-machine-ui": "^1.26.0",
-    "typescript": "^5.4.5",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.57.0"
+    "typescript": "^5.4.5"
   }
 }

@@ -190,6 +190,40 @@ interface CardDocumentData {
    */
   row_image_ratio: prismic.SelectField<
     "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Image Mask field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.image_mask
+   * - **Tab**: Image
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  image_mask: prismic.SelectField<
+    | "linear-to-top"
+    | "linear-to-right"
+    | "linear-to-bottom"
+    | "linear-to-left"
+    | "none"
+  >;
+
+  /**
+   * Row Image Mask field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.row_image_mask
+   * - **Tab**: Image
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_mask: prismic.SelectField<
+    | "linear-to-top"
+    | "linear-to-right"
+    | "linear-to-bottom"
+    | "linear-to-left"
+    | "none"
   > /**
    * Stacked Layout field in *Card*
    *
@@ -248,7 +282,69 @@ interface CardDocumentData {
    * - **Tab**: Layout
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
-  reverse_row_layout: prismic.BooleanField /**
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Content Overlay Image field in *Card*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.content_overlay_image
+   * - **Tab**: Layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  content_overlay_image: prismic.BooleanField;
+
+  /**
+   * Content Overlay Backdrop field in *Card*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card.content_overlay_backdrop
+   * - **Tab**: Layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  content_overlay_backdrop: prismic.BooleanField;
+
+  /**
+   * Content Overlay Backdrop Dir Column field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: uniform
+   * - **API ID Path**: card.content_overlay_backdrop_dir_column
+   * - **Tab**: Layout
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_overlay_backdrop_dir_column: prismic.SelectField<
+    | "uniform"
+    | "linear-to-top"
+    | "linear-to-right"
+    | "linear-to-bottom"
+    | "linear-to-left",
+    "filled"
+  >;
+
+  /**
+   * Content Overlay Backdrop Dir Row field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: uniform
+   * - **API ID Path**: card.content_overlay_backdrop_dir_row
+   * - **Tab**: Layout
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_overlay_backdrop_dir_row: prismic.SelectField<
+    | "uniform"
+    | "linear-to-top"
+    | "linear-to-right"
+    | "linear-to-bottom"
+    | "linear-to-left",
+    "filled"
+  > /**
    * Content Column Text Align field in *Card*
    *
    * - **Field Type**: Select
@@ -310,7 +406,29 @@ interface CardDocumentData {
    * - **Tab**: Content Placement
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end"> /**
+   * Tagline Icon SVG Name field in *Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.tagline_icon_svg_name
+   * - **Tab**: Icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  tagline_icon_svg_name: prismic.KeyTextField;
+
+  /**
+   * Tagline Icon Size field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.tagline_icon_size
+   * - **Tab**: Icon
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  tagline_icon_size: prismic.SelectField<
+    "xxs" | "xs" | "sm" | "md (default)" | "lg" | "xl" | "2xl" | "3xl"
+  >;
 }
 
 /**
@@ -543,6 +661,7 @@ export type HeroComponentLibraryDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | FeatureSlice
   | TestimonialSlice
   | CardSlice
   | HeadingSlice
@@ -1020,6 +1139,48 @@ export interface CardSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: card.default.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<"light" | "dark">;
+
+  /**
+   * Layout Grid Type field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Choose Layout type
+   * - **Default Value**: flex
+   * - **API ID Path**: card.default.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
 }
 
 /**

@@ -171,6 +171,34 @@
             "golden"
           ]
         }
+      },
+      "image_mask": {
+        "type": "Select",
+        "config": {
+          "label": "Column Image Mask",
+          "placeholder": "",
+          "options": [
+            "linear-to-top",
+            "linear-to-right",
+            "linear-to-bottom",
+            "linear-to-left",
+            "none"
+          ]
+        }
+      },
+      "row_image_mask": {
+        "type": "Select",
+        "config": {
+          "label": "Row Image Mask",
+          "placeholder": "",
+          "options": [
+            "linear-to-top",
+            "linear-to-right",
+            "linear-to-bottom",
+            "linear-to-left",
+            "none"
+          ]
+        }
       }
     },
     "Layout": {
@@ -217,6 +245,54 @@
           "placeholder_false": "false",
           "placeholder_true": "true",
           "default_value": false
+        }
+      },
+      "content_overlay_image": {
+        "type": "Boolean",
+        "config": {
+          "label": "Content Overlay Image",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "content_overlay_backdrop": {
+        "type": "Boolean",
+        "config": {
+          "label": "Content Overlay Backdrop",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "content_overlay_backdrop_dir_column": {
+        "type": "Select",
+        "config": {
+          "label": "Content Overlay Backdrop Dir Column",
+          "placeholder": "",
+          "options": [
+            "uniform",
+            "linear-to-top",
+            "linear-to-right",
+            "linear-to-bottom",
+            "linear-to-left"
+          ],
+          "default_value": "uniform"
+        }
+      },
+      "content_overlay_backdrop_dir_row": {
+        "type": "Select",
+        "config": {
+          "label": "Content Overlay Backdrop Dir Row",
+          "placeholder": "",
+          "options": [
+            "uniform",
+            "linear-to-top",
+            "linear-to-right",
+            "linear-to-bottom",
+            "linear-to-left"
+          ],
+          "default_value": "uniform"
         }
       }
     },
@@ -267,6 +343,32 @@
           "label": "Align Row Body Content",
           "placeholder": "",
           "options": ["start", "center", "end"]
+        }
+      }
+    },
+    "Icon": {
+      "tagline_icon_svg_name": {
+        "type": "Text",
+        "config": {
+          "label": "Tagline Icon SVG Name",
+          "placeholder": ""
+        }
+      },
+      "tagline_icon_size": {
+        "type": "Select",
+        "config": {
+          "label": "Tagline Icon Size",
+          "placeholder": "",
+          "options": [
+            "xxs",
+            "xs",
+            "sm",
+            "md (default)",
+            "lg",
+            "xl",
+            "2xl",
+            "3xl"
+          ]
         }
       }
     }

@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     propsDestructure: true
   },
 
-  modules: ['@nuxtjs/prismic'],
+  modules: ['@nuxtjs/prismic', '@vueuse/nuxt', '@vueuse/motion/nuxt'],
 
   prismic: {
     endpoint: 'pixelpurity-clean',

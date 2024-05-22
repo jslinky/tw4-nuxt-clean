@@ -28,6 +28,20 @@
 			"expand_to_full_width": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "light",
+				"type": "Select"
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid-5-cols",
+				"type": "Select"
 			}
 		},
 		"items": [

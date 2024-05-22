@@ -31,19 +31,6 @@ const testimonials = computed(() => {
     Placeholder component for testimonial (variation: {{ slice.variation }})
     Slices
 
-
-  <!-- <PrismicRichText :field="slice.primary.heading" />  
-  <PrismicRichText :field="slice.primary.intro" /> -->
-
-  <!-- <div v-for="testimonial of testimonials" :key="testimonial.data.name ?? ''">
-    {{ testimonial.data.name }}
-    {{ testimonial.data.job_title }}
-    {{ testimonial.data.company_name }}
-    <PrismicRichText :field="testimonial.data.quote" />
-    <PrismicImage :field="testimonial.data.avatar" />
-    <PrismicImage :field="testimonial.data.company_logo" />
-  </div> -->
-
     <TestimonialOne :slice="slice" v-if="slice.variation === 'default'" />
     <TestimonialTwo :slice="slice" v-else-if="slice.variation === 'testimonial2'" />
   
