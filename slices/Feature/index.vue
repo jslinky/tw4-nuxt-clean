@@ -22,6 +22,7 @@ const selectedSurfaceType = ref(slice.primary?.surface_background ?? '');
   <section
     :data-slice-type="slice.slice_type ?? 'feature'"
     :data-slice-variation="slice.variation ?? 'default'"
+    class="col-start-2 col-end-2"
   >
     Placeholder component for feature (variation: {{ slice.variation ?? 'default' }}) Slices
 

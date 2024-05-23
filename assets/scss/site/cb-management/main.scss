@@ -1,0 +1,14 @@
+@layer site {
+    :root {
+        --primary-h: 50;
+        --primary-c: 0.22;
+        --primary-l: 67.75%;
+        // --secondary-h: calc(var(--primary-h) + 11);
+        // --secondary-c: 0.1;
+        --secondary-l: 50%;
+        --accent-c: 0.2;
+        --accent-l: 30%;
+        --accent-h: calc(var(--primary-h) - 16);
+    
+    }
+}

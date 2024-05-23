@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   // css: ['~/assets/css/main.css', '../purity-styles/assets/test.css'],
-  css: ['../purity-styles/assets/css/main.css'],
+  css: ['../purity-styles/assets/css/main.css', '~/assets/scss/site/cb-management/main.scss'],
 
   extends: ['../purity-components', '../purity-styles'],
 
