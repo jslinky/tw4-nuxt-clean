@@ -12,84 +12,220 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "section_title": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "tagline": {
           "type": "StructuredText",
           "config": {
-            "label": "Section Title",
+            "label": "Tagline",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "heading2,heading3,strong,em"
+            "single": "paragraph,strong,em,embed,image"
           }
         },
-        "section_intro": {
-          "type": "StructuredText",
+        "tagline_icon_svg_name": {
+          "type": "Text",
           "config": {
-            "label": "Section Intro",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,heading3"
+            "label": "Tagline Icon SVG Name",
+            "placeholder": ""
           }
         },
-        "expand_to_full_width": {
-          "type": "Boolean",
-          "config": {
-            "label": "Expand to Full Width",
-            "default_value": false,
-            "placeholder_true": "true",
-            "placeholder_false": "false"
-          }
-        },
-        "constrain_content_when_expanded": {
-          "type": "Boolean",
-          "config": {
-            "label": "Constrain content when expanded",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": true
-          }
-        },
-        "surface_background": {
+        "tagline_icon_size": {
           "type": "Select",
           "config": {
-            "label": "Surface Background",
+            "label": "Tagline Icon Size",
             "placeholder": "",
             "options": [
-              "light",
-              "dark"
+              "xxs",
+              "xs",
+              "sm",
+              "md (default)",
+              "lg",
+              "xl",
+              "2xl",
+              "3xl"
             ]
           }
         },
-        "layout_grid_type": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2,heading3,strong,em,embed"
+          }
+        },
+        "title_type": {
           "type": "Select",
           "config": {
-            "label": "Layout Grid Type",
-            "placeholder": "Choose Layout type",
+            "label": "Title Type",
+            "placeholder": "",
             "options": [
-              "flex",
-              "grid",
-              "grid-1-cols",
-              "grid-2-cols",
-              "grid-3-cols",
-              "grid-4-cols",
-              "grid-5-cols",
-              "grid-6-cols"
-            ],
-            "default_value": "flex"
+              "heading-2xl",
+              "heading-xl",
+              "heading-lg",
+              "heading-md",
+              "heading-sm",
+              "heading-xs",
+              "heading-xxs"
+            ]
+          }
+        },
+        "sub_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Sub Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "sub_title_size": {
+          "type": "Select",
+          "config": {
+            "label": "Sub Title Size",
+            "placeholder": "",
+            "options": [
+              "text-sm",
+              "text-md",
+              "text-lg",
+              "text-xl"
+            ]
+          }
+        },
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading3,heading4,strong,em,hyperlink,image,embed,list-item,o-list-item"
+          }
+        },
+        "footer": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Footer",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,image,embed"
+          }
+        },
+        "button": {
+          "type": "Group",
+          "config": {
+            "label": "Button",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": ""
+                }
+              },
+              "icon_svg_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Icon SVG Name",
+                  "placeholder": ""
+                }
+              },
+              "icon_position": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon Position",
+                  "placeholder": "",
+                  "options": [
+                    "left",
+                    "right",
+                    "top",
+                    "bottom"
+                  ],
+                  "default_value": "left"
+                }
+              },
+              "icon_size": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon Size",
+                  "placeholder": "",
+                  "options": [
+                    "xxs",
+                    "xs",
+                    "sm",
+                    "md (default)",
+                    "lg",
+                    "xl",
+                    "2xl",
+                    "3xl"
+                  ]
+                }
+              },
+              "button_style": {
+                "type": "Select",
+                "config": {
+                  "label": "Button Style",
+                  "placeholder": "",
+                  "options": [
+                    "default",
+                    "neutral",
+                    "primary",
+                    "secondary",
+                    "accent",
+                    "ghost",
+                    "link",
+                    "outline-default",
+                    "outline-neutral",
+                    "outline-primary",
+                    "outline-secondary",
+                    "outline-accent"
+                  ]
+                }
+              },
+              "button_size": {
+                "type": "Select",
+                "config": {
+                  "label": "Button Size",
+                  "placeholder": "",
+                  "options": [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg"
+                  ]
+                }
+              },
+              "circular": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Circular",
+                  "default_value": false,
+                  "placeholder_true": "true",
+                  "placeholder_false": "false"
+                }
+              },
+              "full_width": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Full Width",
+                  "default_value": false,
+                  "placeholder_true": "true",
+                  "placeholder_false": "false"
+                }
+              }
+            }
           }
         }
       },
-      "items": {
-        "card": {
-          "type": "Link",
-          "config": {
-            "label": "Card",
-            "select": "document",
-            "customtypes": [
-              "card"
-            ]
-          }
-        }
-      }
+      "items": {}
     }
   ]
 }

@@ -199,6 +199,14 @@
             "none"
           ]
         }
+      },
+      "image_link": {
+        "type": "Link",
+        "config": {
+          "label": "Image Link",
+          "placeholder": "",
+          "select": null
+        }
       }
     },
     "Layout": {
@@ -294,6 +302,22 @@
           ],
           "default_value": "uniform"
         }
+      },
+      "column_widths": {
+        "type": "Select",
+        "config": {
+          "label": "Column Widths",
+          "placeholder": "",
+          "options": [
+            "picture_3-content_9",
+            "picture_4-content_8",
+            "picture_5-content_7",
+            "picture_6-content_6",
+            "picture_7-content_5",
+            "picture_8-content_4",
+            "picture_9-content_3"
+          ]
+        }
       }
     },
     "Text Align": {
@@ -306,9 +330,11 @@
         }
       },
       "content_row_text_align": {
-        "type": "Boolean",
+        "type": "Select",
         "config": {
-          "label": "Content Row Text Align"
+          "label": "Content Row Text Align",
+          "placeholder": "",
+          "options": ["start", "center", "end"]
         }
       }
     },

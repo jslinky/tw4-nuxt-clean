@@ -16,6 +16,8 @@ const surfaceVariations = useSurfaceTheme();
 
 const selectedSurfaceType = ref(slice.primary?.surface_background ?? '');
 
+import PrismicFeatureTen from "../../purity-components/components/feature/prismic/PrismicFeatureTen.vue";
+
 </script>
 
 <template>
@@ -82,7 +84,7 @@ const selectedSurfaceType = ref(slice.primary?.surface_background ?? '');
           </div>
         </template>
       </FeatureLayoutOne>
-      <FeatureLayoutFour :slice="slice" v-else-if="slice.variation === 'feature2' || slice.variation === 'feature3'">
+      <FeatureLayoutFour :slice="slice" v-if="slice.variation === 'feature2' || slice.variation === 'feature3'">
         <template #feature-image>
           <PrismicImage :field="slice.primary.image" />        
         </template>
@@ -123,7 +125,10 @@ const selectedSurfaceType = ref(slice.primary?.surface_background ?? '');
   
       </FeatureLayoutFour>
   
-      <FeatureLayoutSeven v-else-if="slice.variation === 'feature3'" />
+      <!-- <FeatureLayoutSeven v-if="slice.variation === 'feature3'" /> -->
+
+      <PrismicFeatureTen v-if="slice.variation === 'feature10'" :slice="slice" />
+
     </template>
     <template v-else>
       <p>No matching components</p>

@@ -67,9 +67,15 @@ const selectedSurfaceType = ref(slice.primary?.surface_background);
             <PrismicRichText :field="slice.primary.body" />
           </template>
           <template #hero-content-button>
-            <PrismicLink :field="slice.primary.button_link" class="btn">{{
-              slice.primary.button_text
-            }}</PrismicLink>
+            <!-- {{slice.primary.button}} -->
+            <template v-for="item in slice.primary.button">
+              <PrismicLink
+                class="btn"
+                :class="item?.button_style ?? ''"
+                :field="item.button_link"
+                >{{ item.text }}</PrismicLink
+              >
+            </template>
           </template>
           <template #hero-content-image>
             <PrismicImage :field="slice.primary.image" />
@@ -127,10 +133,13 @@ const selectedSurfaceType = ref(slice.primary?.surface_background);
             <PrismicRichText :field="slice.primary.body" />
           </template>
           <template #hero-content-button>
-            <div class="flex justify-center gap-x-md" v-if="slice?.primary?.button_text">
-            <PrismicLink :field="slice.primary.button_link" class="btn">{{
-              slice.primary.button_text
-            }}</PrismicLink>
+            <div
+              class="flex justify-center gap-x-md"
+              v-if="slice?.primary?.button_text"
+            >
+              <PrismicLink :field="slice.primary.button_link" class="btn">{{
+                slice.primary.button_text
+              }}</PrismicLink>
             </div>
           </template>
           <template #hero-content-image>

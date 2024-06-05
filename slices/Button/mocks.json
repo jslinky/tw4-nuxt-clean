@@ -32,6 +32,21 @@
 				"__TYPE__": "FieldContent",
 				"value": "2xl",
 				"type": "Select"
+			},
+			"circular": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
 			}
 		},
 		"items": [

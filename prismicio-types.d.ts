@@ -224,7 +224,18 @@ interface CardDocumentData {
     | "linear-to-bottom"
     | "linear-to-left"
     | "none"
-  > /**
+  >;
+
+  /**
+   * Image Link field in *Card*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.image_link
+   * - **Tab**: Image
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  image_link: prismic.LinkField /**
    * Stacked Layout field in *Card*
    *
    * - **Field Type**: Boolean
@@ -344,6 +355,25 @@ interface CardDocumentData {
     | "linear-to-bottom"
     | "linear-to-left",
     "filled"
+  >;
+
+  /**
+   * Column Widths field in *Card*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.column_widths
+   * - **Tab**: Layout
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
   > /**
    * Content Column Text Align field in *Card*
    *
@@ -358,13 +388,13 @@ interface CardDocumentData {
   /**
    * Content Row Text Align field in *Card*
    *
-   * - **Field Type**: Boolean
+   * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **API ID Path**: card.content_row_text_align
    * - **Tab**: Text Align
-   * - **Documentation**: https://prismic.io/docs/field#boolean
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
-  content_row_text_align: prismic.BooleanField /**
+  content_row_text_align: prismic.SelectField<"start" | "center" | "end"> /**
    * Justify Column Body Content field in *Card*
    *
    * - **Field Type**: Select
@@ -443,7 +473,7 @@ interface CardDocumentData {
 export type CardDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CardDocumentData>, "card", Lang>;
 
-type CardComponentLibraryDocumentDataSlicesSlice = CardSlice;
+type CardComponentLibraryDocumentDataSlicesSlice = CardRowSlice | CardSlice;
 
 /**
  * Content for Card Component Library documents
@@ -663,7 +693,6 @@ export type HeroComponentLibraryDocument<Lang extends string = string> =
 type PageDocumentDataSlicesSlice =
   | FeatureSlice
   | TestimonialSlice
-  | CardSlice
   | HeadingSlice
   | HeroSlice;
 
@@ -1003,6 +1032,16 @@ export type AllDocumentTypes =
  */
 export interface ButtonSliceDefaultPrimary {
   /**
+   * Link field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
    * Text field in *Button → Default → Primary*
    *
    * - **Field Type**: Text
@@ -1076,6 +1115,28 @@ export interface ButtonSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   button_size: prismic.SelectField<"sm" | "md" | "lg">;
+
+  /**
+   * Circular field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: button.default.primary.circular
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  circular: prismic.BooleanField;
+
+  /**
+   * Full Width field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: button.default.primary.full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  full_width: prismic.BooleanField;
 }
 
 /**
@@ -1106,96 +1167,236 @@ type ButtonSliceVariation = ButtonSliceDefault;
 export type ButtonSlice = prismic.SharedSlice<"button", ButtonSliceVariation>;
 
 /**
- * Primary content in *Card → Default → Primary*
+ * Item in *Card → Default → Primary → Button*
  */
-export interface CardSliceDefaultPrimary {
+export interface CardSliceDefaultPrimaryButtonItem {
   /**
-   * Section Title field in *Card → Default → Primary*
+   * Text field in *Card → Default → Primary → Button*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: card.default.primary.section_title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **API ID Path**: card.default.primary.button[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  section_title: prismic.RichTextField;
+  text: prismic.KeyTextField;
 
   /**
-   * Section Intro field in *Card → Default → Primary*
+   * Icon SVG Name field in *Card → Default → Primary → Button*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: card.default.primary.section_intro
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **API ID Path**: card.default.primary.button[].icon_svg_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  section_intro: prismic.RichTextField;
+  icon_svg_name: prismic.KeyTextField;
 
   /**
-   * Expand to Full Width field in *Card → Default → Primary*
+   * Icon Position field in *Card → Default → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: left
+   * - **API ID Path**: card.default.primary.button[].icon_position
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon_position: prismic.SelectField<
+    "left" | "right" | "top" | "bottom",
+    "filled"
+  >;
+
+  /**
+   * Icon Size field in *Card → Default → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.button[].icon_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon_size: prismic.SelectField<
+    "xxs" | "xs" | "sm" | "md (default)" | "lg" | "xl" | "2xl" | "3xl"
+  >;
+
+  /**
+   * Button Style field in *Card → Default → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.button[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_style: prismic.SelectField<
+    | "default"
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "ghost"
+    | "link"
+    | "outline-default"
+    | "outline-neutral"
+    | "outline-primary"
+    | "outline-secondary"
+    | "outline-accent"
+  >;
+
+  /**
+   * Button Size field in *Card → Default → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.button[].button_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_size: prismic.SelectField<"xs" | "sm" | "md" | "lg">;
+
+  /**
+   * Circular field in *Card → Default → Primary → Button*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
    * - **Default Value**: false
-   * - **API ID Path**: card.default.primary.expand_to_full_width
+   * - **API ID Path**: card.default.primary.button[].circular
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
-  expand_to_full_width: prismic.BooleanField;
+  circular: prismic.BooleanField;
 
   /**
-   * Constrain content when expanded field in *Card → Default → Primary*
+   * Full Width field in *Card → Default → Primary → Button*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: card.default.primary.constrain_content_when_expanded
+   * - **Default Value**: false
+   * - **API ID Path**: card.default.primary.button[].full_width
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
-  constrain_content_when_expanded: prismic.BooleanField;
-
-  /**
-   * Surface Background field in *Card → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: card.default.primary.surface_background
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  surface_background: prismic.SelectField<"light" | "dark">;
-
-  /**
-   * Layout Grid Type field in *Card → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Choose Layout type
-   * - **Default Value**: flex
-   * - **API ID Path**: card.default.primary.layout_grid_type
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  layout_grid_type: prismic.SelectField<
-    | "flex"
-    | "grid"
-    | "grid-1-cols"
-    | "grid-2-cols"
-    | "grid-3-cols"
-    | "grid-4-cols"
-    | "grid-5-cols"
-    | "grid-6-cols",
-    "filled"
-  >;
+  full_width: prismic.BooleanField;
 }
 
 /**
- * Primary content in *Card → Items*
+ * Primary content in *Card → Default → Primary*
  */
-export interface CardSliceDefaultItem {
+export interface CardSliceDefaultPrimary {
   /**
-   * Card field in *Card → Items*
+   * Image field in *Card → Default → Primary*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: card.items[].card
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **API ID Path**: card.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  card: prismic.ContentRelationshipField<"card">;
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Tagline Icon SVG Name field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.tagline_icon_svg_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline_icon_svg_name: prismic.KeyTextField;
+
+  /**
+   * Tagline Icon Size field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.tagline_icon_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  tagline_icon_size: prismic.SelectField<
+    "xxs" | "xs" | "sm" | "md (default)" | "lg" | "xl" | "2xl" | "3xl"
+  >;
+
+  /**
+   * Title field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.title_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    | "heading-2xl"
+    | "heading-xl"
+    | "heading-lg"
+    | "heading-md"
+    | "heading-sm"
+    | "heading-xs"
+    | "heading-xxs"
+  >;
+
+  /**
+   * Sub Title field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.sub_title_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<
+    "text-sm" | "text-md" | "text-lg" | "text-xl"
+  >;
+
+  /**
+   * Content field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Footer field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Button field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.button[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  button: prismic.GroupField<Simplify<CardSliceDefaultPrimaryButtonItem>>;
 }
 
 /**
@@ -1208,7 +1409,7 @@ export interface CardSliceDefaultItem {
 export type CardSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<CardSliceDefaultPrimary>,
-  Simplify<CardSliceDefaultItem>
+  never
 >;
 
 /**
@@ -1224,6 +1425,4286 @@ type CardSliceVariation = CardSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type CardSlice = prismic.SharedSlice<"card", CardSliceVariation>;
+
+/**
+ * Item in *CardRow → Default → Primary → Card*
+ */
+export interface CardRowSliceDefaultPrimaryCardItem {
+  /**
+   * Card field in *CardRow → Default → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.default.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 1 → Primary → Card*
+ */
+export interface CardRowSliceCardRow1PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 1 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 2 → Primary → Card*
+ */
+export interface CardRowSliceCardRow2PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 2 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 3 → Primary → Card*
+ */
+export interface CardRowSliceCardRow3PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 3 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 4 → Primary → Card*
+ */
+export interface CardRowSliceCardRow4PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 4 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 5 → Primary → Card*
+ */
+export interface CardRowSliceCardRow5PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 5 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 6 → Primary → Card*
+ */
+export interface CardRowSliceCardRow6PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 6 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 7 → Primary → Card*
+ */
+export interface CardRowSliceCardRow7PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 7 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 8 → Primary → Card*
+ */
+export interface CardRowSliceCardRow8PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 8 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 9 → Primary → Card*
+ */
+export interface CardRowSliceCardRow9PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 9 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 10 → Primary → Card*
+ */
+export interface CardRowSliceCardRow10PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 10 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 11 → Primary → Card*
+ */
+export interface CardRowSliceCardRow11PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 11 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 12 → Primary → Card*
+ */
+export interface CardRowSliceCardRow12PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 12 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 13 → Primary → Card*
+ */
+export interface CardRowSliceCardRow13PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 13 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 14 → Primary → Card*
+ */
+export interface CardRowSliceCardRow14PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 14 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 16 → Primary → Card*
+ */
+export interface CardRowSliceCardRow16PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 16 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 17 → Primary → Card*
+ */
+export interface CardRowSliceCardRow17PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 17 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Item in *CardRow → Card Row 18 → Primary → Card*
+ */
+export interface CardRowSliceCardRow18PrimaryCardItem {
+  /**
+   * Card field in *CardRow → Card Row 18 → Primary → Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.card[].card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card: prismic.ContentRelationshipField<"card">;
+}
+
+/**
+ * Primary content in *CardRow → Default → Primary*
+ */
+export interface CardRowSliceDefaultPrimary {
+  /**
+   * Layout Grid Type field in *CardRow → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.default.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.default.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.default.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.default.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.default.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceDefaultPrimaryCardItem>>;
+}
+
+/**
+ * Default variation for CardRow Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CardRowSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 1 → Primary*
+ */
+export interface CardRowSliceCardRow1Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow1.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow1.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow1.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow1PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow1.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow1.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow1.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 1 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow1.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 1 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow1`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow1 = prismic.SharedSliceVariation<
+  "cardRow1",
+  Simplify<CardRowSliceCardRow1Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 2 → Primary*
+ */
+export interface CardRowSliceCardRow2Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow2.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow2.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow2.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow2PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow2.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow2.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow2.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 2 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow2.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 2 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow2`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow2 = prismic.SharedSliceVariation<
+  "cardRow2",
+  Simplify<CardRowSliceCardRow2Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 3 → Primary*
+ */
+export interface CardRowSliceCardRow3Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow3.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow3.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow3.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow3PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow3.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow3.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow3.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 3 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow3.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 3 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow3`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow3 = prismic.SharedSliceVariation<
+  "cardRow3",
+  Simplify<CardRowSliceCardRow3Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 4 → Primary*
+ */
+export interface CardRowSliceCardRow4Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow4.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow4.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow4.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow4PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow4.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow4.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow4.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 4 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow4.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 4 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow4`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow4 = prismic.SharedSliceVariation<
+  "cardRow4",
+  Simplify<CardRowSliceCardRow4Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 5 → Primary*
+ */
+export interface CardRowSliceCardRow5Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow5.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow5.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow5.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow5PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow5.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow5.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow5.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 5 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow5.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 5 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow5`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow5 = prismic.SharedSliceVariation<
+  "cardRow5",
+  Simplify<CardRowSliceCardRow5Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 6 → Primary*
+ */
+export interface CardRowSliceCardRow6Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow6.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow6.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow6.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow6PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow6.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow6.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow6.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 6 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow6.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 6 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow6`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow6 = prismic.SharedSliceVariation<
+  "cardRow6",
+  Simplify<CardRowSliceCardRow6Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 7 → Primary*
+ */
+export interface CardRowSliceCardRow7Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow7.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow7.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow7.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow7PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow7.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow7.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow7.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 7 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow7.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 7 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow7`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow7 = prismic.SharedSliceVariation<
+  "cardRow7",
+  Simplify<CardRowSliceCardRow7Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 8 → Primary*
+ */
+export interface CardRowSliceCardRow8Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow8.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow8.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow8.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow8PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow8.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow8.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow8.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 8 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow8.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 8 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow8`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow8 = prismic.SharedSliceVariation<
+  "cardRow8",
+  Simplify<CardRowSliceCardRow8Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 9 → Primary*
+ */
+export interface CardRowSliceCardRow9Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow9.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow9.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow9.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow9PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow9.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow9.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow9.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 9 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow9.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 9 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow9`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow9 = prismic.SharedSliceVariation<
+  "cardRow9",
+  Simplify<CardRowSliceCardRow9Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 10 → Primary*
+ */
+export interface CardRowSliceCardRow10Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow10.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow10.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow10.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow10PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow10.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow10.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow10.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow10.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 10 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow10`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow10 = prismic.SharedSliceVariation<
+  "cardRow10",
+  Simplify<CardRowSliceCardRow10Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 11 → Primary*
+ */
+export interface CardRowSliceCardRow11Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow11.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow11.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow11.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow11PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow11.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow11.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow11.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 11 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow11.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 11 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow11`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow11 = prismic.SharedSliceVariation<
+  "cardRow11",
+  Simplify<CardRowSliceCardRow11Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 12 → Primary*
+ */
+export interface CardRowSliceCardRow12Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow12.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow12.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow12.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow12PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow12.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow12.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow12.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 12 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow12.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 12 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow12`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow12 = prismic.SharedSliceVariation<
+  "cardRow12",
+  Simplify<CardRowSliceCardRow12Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 13 → Primary*
+ */
+export interface CardRowSliceCardRow13Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow13.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow13.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow13.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow13PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow13.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow13.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow13.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 13 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow13.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 13 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow13`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow13 = prismic.SharedSliceVariation<
+  "cardRow13",
+  Simplify<CardRowSliceCardRow13Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 14 → Primary*
+ */
+export interface CardRowSliceCardRow14Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow14.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow14.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow14.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow14PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow14.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow14.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow14.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 14 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow14.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 14 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow14`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow14 = prismic.SharedSliceVariation<
+  "cardRow14",
+  Simplify<CardRowSliceCardRow14Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 16 → Primary*
+ */
+export interface CardRowSliceCardRow16Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow16.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow16.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow16.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow16PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow16.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow16.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow16.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow16.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+
+  /**
+   * Show Images field in *CardRow → Card Row 16 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow16.primary.show_images
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  show_images: prismic.BooleanField;
+}
+
+/**
+ * Card Row 16 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow16`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow16 = prismic.SharedSliceVariation<
+  "cardRow16",
+  Simplify<CardRowSliceCardRow16Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 17 → Primary*
+ */
+export interface CardRowSliceCardRow17Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow17.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow17.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow17.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow17PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow17.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow17.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow17.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 17 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow17.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 17 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow17`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow17 = prismic.SharedSliceVariation<
+  "cardRow17",
+  Simplify<CardRowSliceCardRow17Primary>,
+  never
+>;
+
+/**
+ * Primary content in *CardRow → Card Row 18 → Primary*
+ */
+export interface CardRowSliceCardRow18Primary {
+  /**
+   * Layout Grid Type field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: flex
+   * - **API ID Path**: card_row.cardRow18.primary.layout_grid_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout_grid_type: prismic.SelectField<
+    | "flex"
+    | "grid"
+    | "grid-1-cols"
+    | "grid-2-cols"
+    | "grid-3-cols"
+    | "grid-4-cols"
+    | "grid-5-cols"
+    | "grid-6-cols",
+    "filled"
+  >;
+
+  /**
+   * Surface Background field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Expand to Full Width field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow18.primary.expand_to_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  expand_to_full_width: prismic.BooleanField;
+
+  /**
+   * Constrain content when expanded field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: card_row.cardRow18.primary.constrain_content_when_expanded
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  constrain_content_when_expanded: prismic.BooleanField;
+
+  /**
+   * Card field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<CardRowSliceCardRow18PrimaryCardItem>>;
+
+  /**
+   * Content Column Text Align field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow18.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Content Row Text Align field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: start
+   * - **API ID Path**: card_row.cardRow18.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<
+    "start" | "center" | "end",
+    "filled"
+  >;
+
+  /**
+   * Justify Column Body Content field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: card_row.cardRow18.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<
+    "center" | "start" | "end",
+    "filled"
+  >;
+
+  /**
+   * Align Row Body Content field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Column Image Ratio field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Column Widths field in *CardRow → Card Row 18 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card_row.cardRow18.primary.column_widths
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_widths: prismic.SelectField<
+    | "picture_3-content_9"
+    | "picture_4-content_8"
+    | "picture_5-content_7"
+    | "picture_6-content_6"
+    | "picture_7-content_5"
+    | "picture_8-content_4"
+    | "picture_9-content_3"
+  >;
+}
+
+/**
+ * Card Row 18 variation for CardRow Slice
+ *
+ * - **API ID**: `cardRow18`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSliceCardRow18 = prismic.SharedSliceVariation<
+  "cardRow18",
+  Simplify<CardRowSliceCardRow18Primary>,
+  never
+>;
+
+/**
+ * Slice variation for *CardRow*
+ */
+type CardRowSliceVariation =
+  | CardRowSliceDefault
+  | CardRowSliceCardRow1
+  | CardRowSliceCardRow2
+  | CardRowSliceCardRow3
+  | CardRowSliceCardRow4
+  | CardRowSliceCardRow5
+  | CardRowSliceCardRow6
+  | CardRowSliceCardRow7
+  | CardRowSliceCardRow8
+  | CardRowSliceCardRow9
+  | CardRowSliceCardRow10
+  | CardRowSliceCardRow11
+  | CardRowSliceCardRow12
+  | CardRowSliceCardRow13
+  | CardRowSliceCardRow14
+  | CardRowSliceCardRow16
+  | CardRowSliceCardRow17
+  | CardRowSliceCardRow18;
+
+/**
+ * CardRow Shared Slice
+ *
+ * - **API ID**: `card_row`
+ * - **Description**: CardRow
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardRowSlice = prismic.SharedSlice<
+  "card_row",
+  CardRowSliceVariation
+>;
+
+/**
+ * Item in *Feature → Feature 10 → Primary → Sub Content*
+ */
+export interface FeatureSliceFeature10PrimarySubContentItem {
+  /**
+   * Heading Icon field in *Feature → Feature 10 → Primary → Sub Content*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_content[].heading_icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_icon: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Feature → Feature 10 → Primary → Sub Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_content[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Heading Type field in *Feature → Feature 10 → Primary → Sub Content*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_content[].heading_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  heading_type: prismic.SelectField<"xxs" | "xs" | "sm" | "md">;
+
+  /**
+   * Content field in *Feature → Feature 10 → Primary → Sub Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_content[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Content Size field in *Feature → Feature 10 → Primary → Sub Content*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_content[].content_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_size: prismic.SelectField<"xxs" | "xs" | "sm" | "md" | "lg">;
+}
+
+/**
+ * Item in *Feature → Feature 10 → Primary → Button*
+ */
+export interface FeatureSliceFeature10PrimaryButtonItem {
+  /**
+   * Link field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkToMediaField;
+
+  /**
+   * Text field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Icon SVG Name field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[].icon_svg_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  icon_svg_name: prismic.KeyTextField;
+
+  /**
+   * Icon Position field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[].icon_position
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon_position: prismic.SelectField<"left" | "right" | "top" | "bottom">;
+
+  /**
+   * Icon Size field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[].icon_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon_size: prismic.SelectField<
+    "xxs" | "xs" | "sm" | "md (default)" | "lg" | "xl" | "2xl" | "3xl"
+  >;
+
+  /**
+   * Button Style field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_style: prismic.SelectField<
+    | "default"
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "ghost"
+    | "link"
+    | "outline-default"
+    | "outline-neutral"
+    | "outline-primary"
+    | "outline-secondary"
+    | "outline-accent"
+  >;
+
+  /**
+   * Button Size field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[].button_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_size: prismic.SelectField<"sm" | "md" | "lg">;
+
+  /**
+   * Circular field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature10.primary.button[].circular
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  circular: prismic.BooleanField;
+
+  /**
+   * Full Width field in *Feature → Feature 10 → Primary → Button*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature10.primary.button[].full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  full_width: prismic.BooleanField;
+}
+
+/**
+ * Item in *Feature → Feature 16 → Primary → Sub Content*
+ */
+export interface FeatureSliceFeature16PrimarySubContentItem {
+  /**
+   * Heading Icon field in *Feature → Feature 16 → Primary → Sub Content*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_content[].heading_icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_icon: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Feature → Feature 16 → Primary → Sub Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_content[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Heading Type field in *Feature → Feature 16 → Primary → Sub Content*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_content[].heading_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  heading_type: prismic.SelectField<"xxs" | "xs" | "sm" | "md">;
+
+  /**
+   * Content field in *Feature → Feature 16 → Primary → Sub Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_content[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Content Size field in *Feature → Feature 16 → Primary → Sub Content*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_content[].content_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_size: prismic.SelectField<"xxs" | "xs" | "sm" | "md" | "lg">;
+}
+
+/**
+ * Item in *Feature → Feature 16 → Primary → Button*
+ */
+export interface FeatureSliceFeature16PrimaryButtonItem {
+  /**
+   * Link field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkToMediaField;
+
+  /**
+   * Text field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Icon SVG Name field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[].icon_svg_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  icon_svg_name: prismic.KeyTextField;
+
+  /**
+   * Icon Position field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[].icon_position
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon_position: prismic.SelectField<"left" | "right" | "top" | "bottom">;
+
+  /**
+   * Icon Size field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[].icon_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon_size: prismic.SelectField<
+    "xxs" | "xs" | "sm" | "md (default)" | "lg" | "xl" | "2xl" | "3xl"
+  >;
+
+  /**
+   * Button Style field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_style: prismic.SelectField<
+    | "default"
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "ghost"
+    | "link"
+    | "outline-default"
+    | "outline-neutral"
+    | "outline-primary"
+    | "outline-secondary"
+    | "outline-accent"
+  >;
+
+  /**
+   * Button Size field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[].button_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_size: prismic.SelectField<"sm" | "md" | "lg">;
+
+  /**
+   * Circular field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature16.primary.button[].circular
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  circular: prismic.BooleanField;
+
+  /**
+   * Full Width field in *Feature → Feature 16 → Primary → Button*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature16.primary.button[].full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  full_width: prismic.BooleanField;
+}
 
 /**
  * Primary content in *Feature → Default → Primary*
@@ -1369,7 +5850,7 @@ export interface FeatureSliceDefaultPrimary {
    * - **API ID Path**: feature.default.primary.align_row_body_content
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  align_row_body_content: prismic.SelectField<"start" | "center" | "row">;
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
 
   /**
    * Reverse Column Layout field in *Feature → Default → Primary*
@@ -2442,13 +6923,561 @@ export type FeatureSliceDefaultReversed = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Feature → Feature 10 → Primary*
+ */
+export interface FeatureSliceFeature10Primary {
+  /**
+   * Image field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Title field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.title_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
+
+  /**
+   * Sub Title field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_title_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<"sm" | "md" | "lg" | "xl">;
+
+  /**
+   * Content field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Footer field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Justify Column Body Content field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Row Body Content field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Content Column Text Align field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Content Row Text Align field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Reverse Column Layout field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature10.primary.reverse_column_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_column_layout: prismic.BooleanField;
+
+  /**
+   * Reverse Row Layout field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature10.primary.reverse_row_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature10.primary.stacked_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked_layout: prismic.BooleanField;
+
+  /**
+   * Column Image Ratio field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Span Full Width field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature10.primary.span_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  span_full_width: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Sub Content field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.sub_content[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sub_content: prismic.GroupField<
+    Simplify<FeatureSliceFeature10PrimarySubContentItem>
+  >;
+
+  /**
+   * Button field in *Feature → Feature 10 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature10.primary.button[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  button: prismic.GroupField<Simplify<FeatureSliceFeature10PrimaryButtonItem>>;
+}
+
+/**
+ * Feature 10 variation for Feature Slice
+ *
+ * - **API ID**: `feature10`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureSliceFeature10 = prismic.SharedSliceVariation<
+  "feature10",
+  Simplify<FeatureSliceFeature10Primary>,
+  never
+>;
+
+/**
+ * Primary content in *Feature → Feature 16 → Primary*
+ */
+export interface FeatureSliceFeature16Primary {
+  /**
+   * Image field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Tagline field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
+
+  /**
+   * Title field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Type field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.title_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  title_type: prismic.SelectField<
+    "2xl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs"
+  >;
+
+  /**
+   * Sub Title field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Sub Title Size field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_title_size
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sub_title_size: prismic.SelectField<"sm" | "md" | "lg" | "xl">;
+
+  /**
+   * Content field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Footer field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer: prismic.RichTextField;
+
+  /**
+   * Justify Column Body Content field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.justify_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Justify Row Body Content field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.justify_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  justify_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Column Body Content field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.align_column_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_column_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Align Row Body Content field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.align_row_body_content
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  align_row_body_content: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Content Column Text Align field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.content_column_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_column_text_align: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Content Row Text Align field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.content_row_text_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_row_text_align: prismic.SelectField<"start" | "center" | "end">;
+
+  /**
+   * Reverse Column Layout field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature16.primary.reverse_column_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_column_layout: prismic.BooleanField;
+
+  /**
+   * Reverse Row Layout field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature16.primary.reverse_row_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  reverse_row_layout: prismic.BooleanField;
+
+  /**
+   * Stacked Layout field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature16.primary.stacked_layout
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  stacked_layout: prismic.BooleanField;
+
+  /**
+   * Column Image Ratio field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.column_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  column_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Row Image Ratio field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.row_image_ratio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  row_image_ratio: prismic.SelectField<
+    "square" | "landscape" | "portrait" | "widescreen" | "ultrawide" | "golden"
+  >;
+
+  /**
+   * Span Full Width field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature.feature16.primary.span_full_width
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  span_full_width: prismic.BooleanField;
+
+  /**
+   * Surface Background field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.surface_background
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  surface_background: prismic.SelectField<
+    | "light"
+    | "dark"
+    | "eggshell"
+    | "primary"
+    | "primary-light"
+    | "primary-dark"
+    | "secondary"
+    | "secondary-light"
+    | "secondary-dark"
+    | "accent"
+    | "accent-light"
+    | "accent-dark"
+  >;
+
+  /**
+   * Sub Content field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.sub_content[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sub_content: prismic.GroupField<
+    Simplify<FeatureSliceFeature16PrimarySubContentItem>
+  >;
+
+  /**
+   * Button field in *Feature → Feature 16 → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.feature16.primary.button[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  button: prismic.GroupField<Simplify<FeatureSliceFeature16PrimaryButtonItem>>;
+}
+
+/**
+ * Feature 16 variation for Feature Slice
+ *
+ * - **API ID**: `feature16`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureSliceFeature16 = prismic.SharedSliceVariation<
+  "feature16",
+  Simplify<FeatureSliceFeature16Primary>,
+  never
+>;
+
+/**
  * Slice variation for *Feature*
  */
 type FeatureSliceVariation =
   | FeatureSliceDefault
   | FeatureSliceFeature2
   | FeatureSliceFeature3
-  | FeatureSliceDefaultReversed;
+  | FeatureSliceDefaultReversed
+  | FeatureSliceFeature10
+  | FeatureSliceFeature16;
 
 /**
  * Feature Shared Slice
@@ -3456,10 +8485,66 @@ declare module "@prismicio/client" {
       ButtonSliceVariation,
       ButtonSliceDefault,
       CardSlice,
+      CardSliceDefaultPrimaryButtonItem,
       CardSliceDefaultPrimary,
-      CardSliceDefaultItem,
       CardSliceVariation,
       CardSliceDefault,
+      CardRowSlice,
+      CardRowSliceDefaultPrimaryCardItem,
+      CardRowSliceDefaultPrimary,
+      CardRowSliceCardRow1PrimaryCardItem,
+      CardRowSliceCardRow1Primary,
+      CardRowSliceCardRow2PrimaryCardItem,
+      CardRowSliceCardRow2Primary,
+      CardRowSliceCardRow3PrimaryCardItem,
+      CardRowSliceCardRow3Primary,
+      CardRowSliceCardRow4PrimaryCardItem,
+      CardRowSliceCardRow4Primary,
+      CardRowSliceCardRow5PrimaryCardItem,
+      CardRowSliceCardRow5Primary,
+      CardRowSliceCardRow6PrimaryCardItem,
+      CardRowSliceCardRow6Primary,
+      CardRowSliceCardRow7PrimaryCardItem,
+      CardRowSliceCardRow7Primary,
+      CardRowSliceCardRow8PrimaryCardItem,
+      CardRowSliceCardRow8Primary,
+      CardRowSliceCardRow9PrimaryCardItem,
+      CardRowSliceCardRow9Primary,
+      CardRowSliceCardRow10PrimaryCardItem,
+      CardRowSliceCardRow10Primary,
+      CardRowSliceCardRow11PrimaryCardItem,
+      CardRowSliceCardRow11Primary,
+      CardRowSliceCardRow12PrimaryCardItem,
+      CardRowSliceCardRow12Primary,
+      CardRowSliceCardRow13PrimaryCardItem,
+      CardRowSliceCardRow13Primary,
+      CardRowSliceCardRow14PrimaryCardItem,
+      CardRowSliceCardRow14Primary,
+      CardRowSliceCardRow16PrimaryCardItem,
+      CardRowSliceCardRow16Primary,
+      CardRowSliceCardRow17PrimaryCardItem,
+      CardRowSliceCardRow17Primary,
+      CardRowSliceCardRow18PrimaryCardItem,
+      CardRowSliceCardRow18Primary,
+      CardRowSliceVariation,
+      CardRowSliceDefault,
+      CardRowSliceCardRow1,
+      CardRowSliceCardRow2,
+      CardRowSliceCardRow3,
+      CardRowSliceCardRow4,
+      CardRowSliceCardRow5,
+      CardRowSliceCardRow6,
+      CardRowSliceCardRow7,
+      CardRowSliceCardRow8,
+      CardRowSliceCardRow9,
+      CardRowSliceCardRow10,
+      CardRowSliceCardRow11,
+      CardRowSliceCardRow12,
+      CardRowSliceCardRow13,
+      CardRowSliceCardRow14,
+      CardRowSliceCardRow16,
+      CardRowSliceCardRow17,
+      CardRowSliceCardRow18,
       FeatureSlice,
       FeatureSliceDefaultPrimary,
       FeatureSliceDefaultItem,
@@ -3469,11 +8554,19 @@ declare module "@prismicio/client" {
       FeatureSliceFeature3Item,
       FeatureSliceDefaultReversedPrimary,
       FeatureSliceDefaultReversedItem,
+      FeatureSliceFeature10PrimarySubContentItem,
+      FeatureSliceFeature10PrimaryButtonItem,
+      FeatureSliceFeature10Primary,
+      FeatureSliceFeature16PrimarySubContentItem,
+      FeatureSliceFeature16PrimaryButtonItem,
+      FeatureSliceFeature16Primary,
       FeatureSliceVariation,
       FeatureSliceDefault,
       FeatureSliceFeature2,
       FeatureSliceFeature3,
       FeatureSliceDefaultReversed,
+      FeatureSliceFeature10,
+      FeatureSliceFeature16,
       HeadingSlice,
       HeadingSliceDefaultPrimary,
       HeadingSliceVariation,

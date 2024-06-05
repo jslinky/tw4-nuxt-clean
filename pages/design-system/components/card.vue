@@ -18,12 +18,14 @@ const { data: page } = useAsyncData("[card_component_library]", () =>
       "card.content_overlay_backdrop",
       "card.content_overlay_backdrop_dir_column",
       "card.content_overlay_backdrop_dir_row",
+      "card.column_widths",
       "card.stacked_layout",
       "card.column_layout",
       "card.column_image_ratio",
       "card.row_image_ratio",
       "card.image_mask",
       "card.row_image_mask",
+      "card.image_link",
       "card.content_column_text_align",
       "card.content_row_text_align",
       "card.justify_column_body_content",
@@ -54,10 +56,14 @@ useHead({
 </script>
 
 <template>
+  <!-- <div class="col-start-2 col-end-2">
+    {{components}}
+    {{ page?.data.slices }}
+  </div> -->
   <SliceZone
     wrapper="div"
     :slices="page?.data.slices ?? []"
     :components="components"
     class="contents"
-  />
+  />  
 </template>

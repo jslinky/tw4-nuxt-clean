@@ -1,0 +1,1666 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "primary-dark",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow1",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid-2-cols",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "eggshell",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "widescreen",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "golden",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_8-content_4",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow2",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "dark",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "portrait",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "widescreen",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_5-content_7",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow3",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "accent-dark",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "widescreen",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "ultrawide",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_4-content_8",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow4",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "secondary",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_9-content_3",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow5",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "primary-dark",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "portrait",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "square",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_6-content_6",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow6",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid-3-cols",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "primary-light",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "portrait",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "golden",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_5-content_7",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow7",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "secondary",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "ultrawide",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "golden",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_6-content_6",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow8",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid-4-cols",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "primary-dark",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "square",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "widescreen",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_8-content_4",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow9",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "secondary-light",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "golden",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "square",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_5-content_7",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow10",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "dark",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "square",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_3-content_9",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow11",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid-2-cols",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "accent",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "ultrawide",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_9-content_3",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow12",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "secondary-light",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "square",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "square",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_3-content_9",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow13",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "accent-light",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "golden",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_3-content_9",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow14",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "secondary-light",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "ultrawide",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "widescreen",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_3-content_9",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow16",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "dark",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "square",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "portrait",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_3-content_9",
+				"type": "Select"
+			},
+			"show_images": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow17",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "grid-6-cols",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "primary-light",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_9-content_3",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "cardRow18",
+		"primary": {
+			"layout_grid_type": {
+				"__TYPE__": "FieldContent",
+				"value": "flex",
+				"type": "Select"
+			},
+			"surface_background": {
+				"__TYPE__": "FieldContent",
+				"value": "eggshell",
+				"type": "Select"
+			},
+			"expand_to_full_width": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"constrain_content_when_expanded": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"content_column_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"content_row_text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "start",
+				"type": "Select"
+			},
+			"justify_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"justify_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"align_column_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			},
+			"align_row_body_content": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Select"
+			},
+			"column_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "landscape",
+				"type": "Select"
+			},
+			"row_image_ratio": {
+				"__TYPE__": "FieldContent",
+				"value": "ultrawide",
+				"type": "Select"
+			},
+			"column_widths": {
+				"__TYPE__": "FieldContent",
+				"value": "picture_4-content_8",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

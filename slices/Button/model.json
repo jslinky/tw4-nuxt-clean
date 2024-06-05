@@ -12,6 +12,15 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
         "text": {
           "type": "Text",
           "config": {
@@ -87,6 +96,24 @@
               "md",
               "lg"
             ]
+          }
+        },
+        "circular": {
+          "type": "Boolean",
+          "config": {
+            "label": "Circular",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
           }
         }
       },

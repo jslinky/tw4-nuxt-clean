@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "card_row": {
+              "type": "SharedSlice"
+            },
             "card": {
               "type": "SharedSlice"
             }

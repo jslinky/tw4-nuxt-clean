@@ -1,0 +1,3640 @@
+{
+  "id": "card_row",
+  "type": "SharedSlice",
+  "name": "CardRow",
+  "description": "CardRow",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow1",
+      "name": "Card Row 1",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow2",
+      "name": "Card Row 2",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow3",
+      "name": "Card Row 3",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow4",
+      "name": "Card Row 4",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow5",
+      "name": "Card Row 5",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow6",
+      "name": "Card Row 6",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow7",
+      "name": "Card Row 7",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow8",
+      "name": "Card Row 8",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow9",
+      "name": "Card Row 9",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow10",
+      "name": "Card Row 10",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow11",
+      "name": "Card Row 11",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow12",
+      "name": "Card Row 12",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow13",
+      "name": "Card Row 13",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow14",
+      "name": "Card Row 14",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow16",
+      "name": "Card Row 16",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        },
+        "show_images": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Images",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow17",
+      "name": "Card Row 17",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "cardRow18",
+      "name": "Card Row 18",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "layout_grid_type": {
+          "type": "Select",
+          "config": {
+            "label": "Layout Grid Type",
+            "placeholder": "",
+            "options": [
+              "flex",
+              "grid",
+              "grid-1-cols",
+              "grid-2-cols",
+              "grid-3-cols",
+              "grid-4-cols",
+              "grid-5-cols",
+              "grid-6-cols"
+            ],
+            "default_value": "flex"
+          }
+        },
+        "surface_background": {
+          "type": "Select",
+          "config": {
+            "label": "Surface Background",
+            "placeholder": "",
+            "options": [
+              "light",
+              "dark",
+              "eggshell",
+              "primary",
+              "primary-light",
+              "primary-dark",
+              "secondary",
+              "secondary-light",
+              "secondary-dark",
+              "accent",
+              "accent-light",
+              "accent-dark"
+            ]
+          }
+        },
+        "expand_to_full_width": {
+          "type": "Boolean",
+          "config": {
+            "label": "Expand to Full Width",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "constrain_content_when_expanded": {
+          "type": "Boolean",
+          "config": {
+            "label": "Constrain content when expanded",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "card": {
+                "type": "Link",
+                "config": {
+                  "label": "Card",
+                  "select": "document",
+                  "customtypes": [
+                    "card"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "content_column_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Column Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "content_row_text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Content Row Text Align",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default_value": "start"
+          }
+        },
+        "justify_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Column Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "justify_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Justify Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "align_column_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Column Body Content",
+            "placeholder": "",
+            "options": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default_value": "center"
+          }
+        },
+        "align_row_body_content": {
+          "type": "Select",
+          "config": {
+            "label": "Align Row Body Content",
+            "placeholder": "",
+            "options": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "column_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Column Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "row_image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Row Image Ratio",
+            "placeholder": "",
+            "options": [
+              "square",
+              "landscape",
+              "portrait",
+              "widescreen",
+              "ultrawide",
+              "golden"
+            ]
+          }
+        },
+        "column_widths": {
+          "type": "Select",
+          "config": {
+            "label": "Column Widths",
+            "placeholder": "",
+            "options": [
+              "picture_3-content_9",
+              "picture_4-content_8",
+              "picture_5-content_7",
+              "picture_6-content_6",
+              "picture_7-content_5",
+              "picture_8-content_4",
+              "picture_9-content_3"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

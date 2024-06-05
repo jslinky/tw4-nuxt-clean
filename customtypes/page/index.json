@@ -33,9 +33,6 @@
             "testimonial": {
               "type": "SharedSlice"
             },
-            "card": {
-              "type": "SharedSlice"
-            },
             "heading": {
               "type": "SharedSlice"
             },
